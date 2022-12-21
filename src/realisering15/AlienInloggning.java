@@ -4,24 +4,24 @@
  */
 package realisering15;
 
-import javax.swing.JOptionPane;
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
  *
- * @author Grupp15
+ * @author olive
  */
-public class AgentInloggning extends javax.swing.JFrame {
+public class AlienInloggning extends javax.swing.JFrame {
 
     private static InfDB databas;
 
     /**
-     * Creates new form HuvudFonster
+     * Creates new form AlienInloggning
      */
-    public AgentInloggning() {
+    public AlienInloggning() {
         try {
             databas = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         } catch (InfException ex) {
@@ -41,21 +41,18 @@ public class AgentInloggning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLoggaIn = new javax.swing.JButton();
+        lblValkommenAlien = new javax.swing.JLabel();
+        lblIDNr = new javax.swing.JLabel();
         lblLösenord = new javax.swing.JLabel();
         txtIDNr = new javax.swing.JTextField();
-        lblIDNr = new javax.swing.JLabel();
-        lblNamn = new javax.swing.JLabel();
         txtPLosen = new javax.swing.JPasswordField();
+        btnLoggaIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnLoggaIn.setText("Logga in");
-        btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoggaInActionPerformed(evt);
-            }
-        });
+        lblValkommenAlien.setText("Välkommen Alien!");
+
+        lblIDNr.setText("ID-nummer");
 
         lblLösenord.setText("Lösenord");
 
@@ -65,13 +62,16 @@ public class AgentInloggning extends javax.swing.JFrame {
             }
         });
 
-        lblIDNr.setText("ID-nummer");
-
-        lblNamn.setText("lblNamn");
-
         txtPLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPLosenActionPerformed(evt);
+            }
+        });
+
+        btnLoggaIn.setText("Logga in");
+        btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaInActionPerformed(evt);
             }
         });
 
@@ -82,72 +82,70 @@ public class AgentInloggning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(154, 154, 154)
+                        .addComponent(lblValkommenAlien))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblIDNr)
                             .addComponent(lblLösenord))
-                        .addGap(56, 56, 56)
+                        .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIDNr, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtPLosen)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLoggaIn)
-                            .addComponent(lblNamn))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                            .addComponent(txtIDNr, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                            .addComponent(txtPLosen))))
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLoggaIn)
+                .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(70, 70, 70)
+                .addComponent(lblValkommenAlien)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIDNr)
                     .addComponent(txtIDNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLösenord)
                     .addComponent(txtPLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(btnLoggaIn)
-                .addGap(18, 18, 18)
-                .addComponent(lblNamn)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtIDNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDNrActionPerformed
+
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
-
         try {
             String id = txtIDNr.getText();
-            //Enbart för test
-            String namn = "SELECT namn FROM agent where agent_id=" + id;
-            String rattLosen = "SELECT losenord FROM agent where agent_id=" + id;
+            String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;
             String svarLosen = databas.fetchSingle(rattLosen);
-            //Enbart för test
-            String svarNamn = databas.fetchSingle(namn);
             //Dekryptering av JPassword
             char[] losenKrypt = txtPLosen.getPassword();
             String losenOkrypt = new String(losenKrypt);
 
-            if (losenOkrypt.equals(svarLosen)) {
-                lblNamn.setText("Hej " + svarNamn);
-            } else {
+            if (losenOkrypt.equals(svarLosen)){
+                //new
+            } 
+            else{
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
             }
-        } catch (InfException ex1) {
+        } 
+        catch (InfException ex1){
             JOptionPane.showMessageDialog(null, "Inget resultat hittades");
             System.out.println("Internt felmeddelande" + ex1.getMessage());
-
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
-
-    private void txtIDNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDNrActionPerformed
 
     private void txtPLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPLosenActionPerformed
         // TODO add your handling code here:
@@ -170,21 +168,20 @@ public class AgentInloggning extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlienInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlienInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlienInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlienInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentInloggning().setVisible(true);
+                new AlienInloggning().setVisible(true);
             }
         });
     }
@@ -193,7 +190,7 @@ public class AgentInloggning extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JLabel lblIDNr;
     private javax.swing.JLabel lblLösenord;
-    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblValkommenAlien;
     private javax.swing.JTextField txtIDNr;
     private javax.swing.JPasswordField txtPLosen;
     // End of variables declaration//GEN-END:variables
