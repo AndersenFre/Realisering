@@ -14,10 +14,13 @@ import oru.inf.InfException;
  */
 public class AgentFonster extends javax.swing.JFrame {
     private static InfDB databas;
+    private String id;
     /**
      * Creates new form AgentFonster
      */
-    public AgentFonster(InfDB enDatabas) {
+    public AgentFonster(InfDB databas, String id) {
+        this.id=id;
+        this.databas=databas;
         initComponents();
     }
 
@@ -35,6 +38,7 @@ public class AgentFonster extends javax.swing.JFrame {
         lblValkommenAgent = new javax.swing.JLabel();
         listaMetoderAgent = new javax.swing.JComboBox<>();
         btnOkAgent = new javax.swing.JButton();
+        btnLoggaUtAgent = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -58,6 +62,13 @@ public class AgentFonster extends javax.swing.JFrame {
             }
         });
 
+        btnLoggaUtAgent.setText("Logga ut");
+        btnLoggaUtAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +82,10 @@ public class AgentFonster extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOkAgent)
-                            .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btnLoggaUtAgent)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,7 +97,9 @@ public class AgentFonster extends javax.swing.JFrame {
                 .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnOkAgent)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(btnLoggaUtAgent)
+                .addGap(53, 53, 53))
         );
 
         pack();
@@ -95,8 +111,14 @@ public class AgentFonster extends javax.swing.JFrame {
     }//GEN-LAST:event_listaMetoderAgentActionPerformed
 
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
-        // TODO add your handling code here:
+        // Funktion för ok-knapp
+        
     }//GEN-LAST:event_btnOkAgentActionPerformed
+
+    private void btnLoggaUtAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtAgentActionPerformed
+        new Start().setVisible(true);
+        AgentFonster.this.dispose();
+    }//GEN-LAST:event_btnLoggaUtAgentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,12 +150,13 @@ public class AgentFonster extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentFonster(databas).setVisible(true);
+                //new AgentFonster(databas).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoggaUtAgent;
     private javax.swing.JButton btnOkAgent;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

@@ -17,11 +17,14 @@ import oru.inf.InfException;
 public class AgentInloggning extends javax.swing.JFrame {
 
     private static InfDB databas;
+    //Sparar ID för inloggad agent
+    private String id = null;
 
     /**
      * Creates new form HuvudFonster
      */
-    public AgentInloggning() {
+    public AgentInloggning() 
+    {
         try {
             databas = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         } catch (InfException ex) {
@@ -30,7 +33,13 @@ public class AgentInloggning extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
         initComponents();
-    }
+    }  
+        
+        public String getId() 
+        {
+        return id;
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,7 +134,7 @@ public class AgentInloggning extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-            String id = txtIDNr.getText();
+            id = txtIDNr.getText();
             String rattLosen = "SELECT losenord FROM agent where agent_id=" + id;
             String svarLosen = databas.fetchSingle(rattLosen);
             //Dekryptering av JPassword
@@ -133,25 +142,30 @@ public class AgentInloggning extends javax.swing.JFrame {
             String losenOkrypt = new String(losenKrypt);
             String fraga = "SELECT administrator FROM agent where agent_id=" + id;
             String svarFraga = databas.fetchSingle(fraga);
-
-            if (losenOkrypt.equals(svarLosen)) {
-                //Till nytt fönster
+           
+            //Till nytt fönster
+            if (losenOkrypt.equals(svarLosen)) 
+            {
+                //Om Agenten har adminrättigheter
                 if(svarFraga.equals("J"))
-                        {
-                            new AdminFonster(databas).setVisible(true);
-                        }
+                    {
+                        new AdminFonster(databas).setVisible(true);
+                    }
+                //Om Agent inte har adminrättigheter
                 else//Admin=N
-                {
-                    new AgentFonster(databas).setVisible(true);
-                }
+                    {
+                        new AgentFonster(databas, id).setVisible(true);
+                    }
                 
-            } else {
+            }
+            else {
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
             }
-        } catch (InfException ex1) {
+        } 
+        catch (InfException ex1) 
+        {
             JOptionPane.showMessageDialog(null, "Inget resultat hittades");
             System.out.println("Internt felmeddelande" + ex1.getMessage());
-
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
