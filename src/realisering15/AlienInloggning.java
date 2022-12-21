@@ -134,7 +134,7 @@ public class AlienInloggning extends javax.swing.JFrame {
             String losenOkrypt = new String(losenKrypt);
 
             if (losenOkrypt.equals(svarLosen)){
-                //new
+                //new och så testar vi
             } 
             else{
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
