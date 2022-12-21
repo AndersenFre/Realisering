@@ -4,6 +4,9 @@
  */
 package realisering15;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -103,11 +106,16 @@ public class AlienFonster extends javax.swing.JFrame {
 
     private void btnVisaOCInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaOCInfoActionPerformed
 
-        //("SELECT agent.`Namn`, agent.`Telefon` FROM agent
-        //join omradeschef on agent.`Agent_ID` = omradeschef.`Agent_ID` 
-        //join omrade on omradeschef.`Omrade` = omrade.`Omrades_ID` 
-        //join alien on omrade.`Omrades_ID` = alien.`Plats` 
-        //where alien.`Alien_ID` =" + id);
+        try {
+            String sqlSvarNamn = "SELECT agent.`Namn` FROM agent join omradeschef on agent.`Agent_ID` = omradeschef.`Agent_ID` join omrade on omradeschef.`Omrade` = omrade.`Omrades_ID` join alien on omrade.`Omrades_ID` = alien.`Plats` where alien.`Alien_ID` =" + id;
+            String sqlSvarTelefon = "SELECT agent.`Telefon` FROM agent join omradeschef on agent.`Agent_ID` = omradeschef.`Agent_ID` join omrade on omradeschef.`Omrade` = omrade.`Omrades_ID` join alien on omrade.`Omrades_ID` = alien.`Plats` where alien.`Alien_ID` =" + id;
+            String svarNamn = databas.fetchSingle(sqlSvarNamn);
+            String svarTelefon = databas.fetchSingle(sqlSvarTelefon);
+            
+            JOptionPane.showMessageDialog(null, "Din områdeschef är: " +svarNamn+ ", telefonnummer " +svarTelefon);
+        } catch (InfException ex) {
+            Logger.getLogger(AlienFonster.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnVisaOCInfoActionPerformed
 
     private void btnLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLosenordActionPerformed
