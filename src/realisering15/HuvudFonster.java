@@ -12,7 +12,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author Grupp15
+ * @author Grupp15ArBast
  */
 public class HuvudFonster extends javax.swing.JFrame {
     private static InfDB databas;
