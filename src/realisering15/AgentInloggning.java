@@ -23,6 +23,16 @@ public class AgentInloggning extends javax.swing.JFrame {
      */
     public AgentInloggning() 
     {
+                try 
+        {
+            databas = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch (InfException ex)
+        {
+            Logger.getLogger(AgentInloggning.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Kontakt med databas misslyckades");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
         initComponents();
     }
     /**
@@ -189,16 +199,6 @@ public class AgentInloggning extends javax.swing.JFrame {
                 new AgentInloggning().setVisible(true);
             }
         });
-        try 
-        {
-            databas = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        }
-        catch (InfException ex)
-        {
-            Logger.getLogger(AgentInloggning.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Kontakt med databas misslyckades");
-            System.out.println("Internt felmeddelande" + ex.getMessage());
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
