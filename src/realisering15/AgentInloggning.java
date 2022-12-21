@@ -14,14 +14,14 @@ import oru.inf.InfException;
  *
  * @author Grupp15
  */
-public class HuvudFonster extends javax.swing.JFrame {
+public class AgentInloggning extends javax.swing.JFrame {
     private static InfDB databas;
 
 
     /**
      * Creates new form HuvudFonster
      */
-    public HuvudFonster() 
+    public AgentInloggning() 
     {
         initComponents();
     }
@@ -171,21 +171,22 @@ public class HuvudFonster extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HuvudFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HuvudFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HuvudFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HuvudFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentInloggning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
-                new HuvudFonster().setVisible(true);
+                new AgentInloggning().setVisible(true);
             }
         });
         try 
@@ -194,7 +195,7 @@ public class HuvudFonster extends javax.swing.JFrame {
         }
         catch (InfException ex)
         {
-            Logger.getLogger(HuvudFonster.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgentInloggning.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Kontakt med databas misslyckades");
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
