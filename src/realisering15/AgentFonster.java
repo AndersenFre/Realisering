@@ -91,10 +91,7 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
         // Metoder en agent kan välja
-        String agentMetoder[] ={"Ändra lösenord"};
-        JComboBox metod = new JComboBox(agentMetoder);
-   
-     
+
     }//GEN-LAST:event_listaMetoderAgentActionPerformed
 
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
