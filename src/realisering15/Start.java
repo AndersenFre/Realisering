@@ -90,6 +90,7 @@ public class Start extends javax.swing.JFrame {
 
     private void btnAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentActionPerformed
         new AgentInloggning().setVisible(true);
+        Start.this.dispose();
     }//GEN-LAST:event_btnAgentActionPerformed
 
     private void btnAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlienActionPerformed

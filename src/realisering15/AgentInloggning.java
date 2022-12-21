@@ -34,12 +34,6 @@ public class AgentInloggning extends javax.swing.JFrame {
         }
         initComponents();
     }  
-        
-        public String getId() 
-        {
-        return id;
-        }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,11 +144,13 @@ public class AgentInloggning extends javax.swing.JFrame {
                 if(svarFraga.equals("J"))
                     {
                         new AdminFonster(databas).setVisible(true);
+                        AgentInloggning.this.dispose();
                     }
                 //Om Agent inte har adminrättigheter
                 else//Admin=N
                     {
                         new AgentFonster(databas, id).setVisible(true);
+                        AgentInloggning.this.dispose();
                     }
                 
             }
