@@ -4,6 +4,7 @@
  */
 package realisering15;
 
+import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -29,21 +30,76 @@ public class AgentFonster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        lblValkommenAgent = new javax.swing.JLabel();
+        listaMetoderAgent = new javax.swing.JComboBox<>();
+        btnOkAgent = new javax.swing.JButton();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblValkommenAgent.setText("Hej Agent!");
+
+        listaMetoderAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Val", "Ändra Lösenord", "Nyregistrera Alien", "Ändra information om Alien", "Lista alla Alien på en plats", "Lista alla Alien av en ras", "Lista alla Aliens registrerade mellan datum", "Registrera ny Utrustning", "Visa information om en Alien", "Visa områdeschef för ett område", " " }));
+        listaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaMetoderAgentActionPerformed(evt);
+            }
+        });
+
+        btnOkAgent.setText("Ok!");
+        btnOkAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkAgentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(lblValkommenAgent))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnOkAgent)
+                            .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lblValkommenAgent)
+                .addGap(18, 18, 18)
+                .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btnOkAgent)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
+        // Metoder en agent kan välja
+        String agentMetoder[] ={"Ändra lösenord"};
+        JComboBox metod = new JComboBox(agentMetoder);
+   
+     
+    }//GEN-LAST:event_listaMetoderAgentActionPerformed
+
+    private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOkAgentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +137,11 @@ public class AgentFonster extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOkAgent;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel lblValkommenAgent;
+    private javax.swing.JComboBox<String> listaMetoderAgent;
     // End of variables declaration//GEN-END:variables
+   
 }

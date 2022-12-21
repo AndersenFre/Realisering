@@ -3,17 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
-
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author ander
  */
 public class AdminFonster extends javax.swing.JFrame {
+    private static InfDB databas;
 
     /**
      * Creates new form AdminFonster
      */
-    public AdminFonster() {
+    public AdminFonster(InfDB enDatabas) {
         initComponents();
     }
 
@@ -26,17 +28,27 @@ public class AdminFonster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblValkommenAdmin = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblValkommenAdmin.setText("Hej Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(170, Short.MAX_VALUE)
+                .addComponent(lblValkommenAdmin)
+                .addGap(174, 174, 174))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(lblValkommenAdmin)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,11 +84,12 @@ public class AdminFonster extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminFonster().setVisible(true);
+                new AdminFonster(databas).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblValkommenAdmin;
     // End of variables declaration//GEN-END:variables
 }

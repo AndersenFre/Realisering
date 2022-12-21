@@ -129,10 +129,19 @@ public class AgentInloggning extends javax.swing.JFrame {
             //Dekryptering av JPassword
             char[] losenKrypt = txtPLosen.getPassword();
             String losenOkrypt = new String(losenKrypt);
+            String fraga = "SELECT administrator FROM agent where agent_id=" + id;
+            String svarFraga = databas.fetchSingle(fraga);
 
             if (losenOkrypt.equals(svarLosen)) {
                 //Till nytt fönster
-                new AgentFonster(databas).setVisible(true);
+                if(svarFraga.equals("J"))
+                        {
+                            new AdminFonster(databas).setVisible(true);
+                        }
+                else//Admin=N
+                {
+                    new AgentFonster(databas).setVisible(true);
+                }
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
