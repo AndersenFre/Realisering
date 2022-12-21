@@ -6,6 +6,7 @@ package realisering15;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author olive
@@ -13,14 +14,17 @@ import oru.inf.InfException;
 public class AlienFonster extends javax.swing.JFrame {
 
     private static InfDB databas;
-    
+    private String id;
+
     /**
      * Creates new form AlienFonster
      */
-    public AlienFonster(InfDB databas) {
+    public AlienFonster(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,21 +34,90 @@ public class AlienFonster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblAlienFonsterText = new javax.swing.JLabel();
+        btnVisaOCInfo = new javax.swing.JButton();
+        btnLosenord = new javax.swing.JButton();
+        btnLoggaUt = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblAlienFonsterText.setText("Vad vill du göra?");
+
+        btnVisaOCInfo.setText("Visa info om min områdeschef");
+        btnVisaOCInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaOCInfoActionPerformed(evt);
+            }
+        });
+
+        btnLosenord.setText("Ändra lösenord");
+        btnLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLosenordActionPerformed(evt);
+            }
+        });
+
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(lblAlienFonsterText))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(btnLosenord))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(btnVisaOCInfo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnLoggaUt)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblAlienFonsterText)
+                .addGap(57, 57, 57)
+                .addComponent(btnVisaOCInfo)
+                .addGap(18, 18, 18)
+                .addComponent(btnLosenord)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(btnLoggaUt)
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVisaOCInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaOCInfoActionPerformed
+
+        //("SELECT agent.`Namn`, agent.`Telefon` FROM agent
+        //join omradeschef on agent.`Agent_ID` = omradeschef.`Agent_ID` 
+        //join omrade on omradeschef.`Omrade` = omrade.`Omrades_ID` 
+        //join alien on omrade.`Omrades_ID` = alien.`Plats` 
+        //where alien.`Alien_ID` =" + id);
+    }//GEN-LAST:event_btnVisaOCInfoActionPerformed
+
+    private void btnLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLosenordActionPerformed
+        //här
+    }//GEN-LAST:event_btnLosenordActionPerformed
+
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        new Start().setVisible(true);
+        AlienFonster.this.dispose();
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,11 +149,15 @@ public class AlienFonster extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlienFonster(databas).setVisible(true);
+                //new AlienFonster(databas).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoggaUt;
+    private javax.swing.JButton btnLosenord;
+    private javax.swing.JButton btnVisaOCInfo;
+    private javax.swing.JLabel lblAlienFonsterText;
     // End of variables declaration//GEN-END:variables
 }

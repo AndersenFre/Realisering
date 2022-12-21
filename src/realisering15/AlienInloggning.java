@@ -17,6 +17,7 @@ import oru.inf.InfException;
 public class AlienInloggning extends javax.swing.JFrame {
 
     private static InfDB databas;
+    private String id = null;
 
     /**
      * Creates new form AlienInloggning
@@ -30,6 +31,10 @@ public class AlienInloggning extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
         initComponents();
+    }
+
+    public String getId() {
+        return id;
     }
 
     /**
@@ -126,21 +131,20 @@ public class AlienInloggning extends javax.swing.JFrame {
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
         try {
-            String id = txtIDNr.getText();
+            id = txtIDNr.getText();
             String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;
             String svarLosen = databas.fetchSingle(rattLosen);
             //Dekryptering av JPassword
             char[] losenKrypt = txtPLosen.getPassword();
             String losenOkrypt = new String(losenKrypt);
 
-            if (losenOkrypt.equals(svarLosen)){
-                new AlienFonster(databas).setVisible(true);
-            } 
-            else{
+            if (losenOkrypt.equals(svarLosen)) {
+                new AlienFonster(databas, id).setVisible(true);
+                AlienInloggning.this.dispose();
+            } else {
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
             }
-        } 
-        catch (InfException ex1){
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Inget resultat hittades");
             System.out.println("Internt felmeddelande" + ex1.getMessage());
         }

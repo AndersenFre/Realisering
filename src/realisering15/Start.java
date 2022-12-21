@@ -94,6 +94,7 @@ public class Start extends javax.swing.JFrame {
 
     private void btnAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlienActionPerformed
         new AlienInloggning().setVisible(true);
+        Start.this.dispose();
     }//GEN-LAST:event_btnAlienActionPerformed
 
     /**
