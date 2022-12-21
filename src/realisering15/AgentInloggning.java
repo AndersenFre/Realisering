@@ -132,6 +132,7 @@ public class AgentInloggning extends javax.swing.JFrame {
 
             if (losenOkrypt.equals(svarLosen)) {
                 //new nästa fönster
+                //Testar
             } else {
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
             }
