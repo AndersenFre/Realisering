@@ -45,8 +45,8 @@ public class AgentInloggning extends javax.swing.JFrame {
         lblLösenord = new javax.swing.JLabel();
         txtIDNr = new javax.swing.JTextField();
         lblIDNr = new javax.swing.JLabel();
-        lblNamn = new javax.swing.JLabel();
         txtPLosen = new javax.swing.JPasswordField();
+        lblValkommenAgent = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,13 +67,13 @@ public class AgentInloggning extends javax.swing.JFrame {
 
         lblIDNr.setText("ID-nummer");
 
-        lblNamn.setText("lblNamn");
-
         txtPLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPLosenActionPerformed(evt);
             }
         });
+
+        lblValkommenAgent.setText("Välkommen Agent!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,15 +92,18 @@ public class AgentInloggning extends javax.swing.JFrame {
                             .addComponent(txtPLosen)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLoggaIn)
-                            .addComponent(lblNamn))))
+                        .addComponent(btnLoggaIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(lblValkommenAgent)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(47, 47, 47)
+                .addComponent(lblValkommenAgent)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIDNr)
                     .addComponent(txtIDNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -110,9 +113,7 @@ public class AgentInloggning extends javax.swing.JFrame {
                     .addComponent(txtPLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn)
-                .addGap(18, 18, 18)
-                .addComponent(lblNamn)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,18 +124,14 @@ public class AgentInloggning extends javax.swing.JFrame {
 
         try {
             String id = txtIDNr.getText();
-            //Enbart för test
-            String namn = "SELECT namn FROM agent where agent_id=" + id;
             String rattLosen = "SELECT losenord FROM agent where agent_id=" + id;
             String svarLosen = databas.fetchSingle(rattLosen);
-            //Enbart för test
-            String svarNamn = databas.fetchSingle(namn);
             //Dekryptering av JPassword
             char[] losenKrypt = txtPLosen.getPassword();
             String losenOkrypt = new String(losenKrypt);
 
             if (losenOkrypt.equals(svarLosen)) {
-                lblNamn.setText("Hej " + svarNamn);
+                //new nästa fönster
             } else {
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
             }
@@ -193,7 +190,7 @@ public class AgentInloggning extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JLabel lblIDNr;
     private javax.swing.JLabel lblLösenord;
-    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblValkommenAgent;
     private javax.swing.JTextField txtIDNr;
     private javax.swing.JPasswordField txtPLosen;
     // End of variables declaration//GEN-END:variables
