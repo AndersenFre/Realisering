@@ -12,7 +12,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author olive
+ * @author Grupp15
  */
 public class AlienInloggning extends javax.swing.JFrame {
 
@@ -124,6 +124,10 @@ public class AlienInloggning extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDNrActionPerformed
 
+     /**
+     * Metod som kontrollerar om inloggningsuppgifterna är korrekta och om de stämmer
+     * sedan loggar in användaren och för användaren till ett nytt fönster med val
+     */
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
         try {

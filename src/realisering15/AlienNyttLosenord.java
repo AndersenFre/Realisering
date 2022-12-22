@@ -4,30 +4,27 @@
  */
 package realisering15;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
- * @author olive
+ * @author Grupp15
  */
 public class AlienNyttLosenord extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
-    private String nyttLosen;
-    private String nuvarandeLosen;
-    private String bekraftaLosen;
-
+    
     /**
      * Creates new form AlienNyttLosenord
      */
     public AlienNyttLosenord(InfDB databas, String id) {
         this.id = id;
         this.databas = databas;
-        nyttLosen = null;
-        nuvarandeLosen = null;
-        bekraftaLosen = null;
         initComponents();
     }
 
@@ -160,28 +157,43 @@ public class AlienNyttLosenord extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBekraftaLosenActionPerformed
 
+     /**
+     * Metod som kontrollerar att "rätt" användare är den som försöker ändra lösenord genom att först
+     * kräva ett korrekt nuvarande lösen och som sedan kontrollerar att det nya lösenordet är korrekt inskrivet genom
+     * att nyttLosen kontrolleras mot bekraftaLosen, om informationen är korrekt så förändras lösenordet till det önskade
+     */
     private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
-        
-        
-        //txtNyttLosen;
-        //txtNuvarandeLosen;
-        //txtBekraftaLosen;
-        
-        //id = txtIDNr.getText();
-        //String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;
-        //String svarLosen = databas.fetchSingle(rattLosen);
-        //Dekryptering av JPassword
-        //char[] losenKrypt = txtPLosen.getPassword();
-        //String losenOkrypt = new String(losenKrypt);
-
-        //if (losenOkrypt.equals(svarLosen)) {
-        //    new AlienFonster(databas, id).setVisible(true);
-        //    AlienInloggning.this.dispose();
-        //} else {
-        //    JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
-        //}
+        try {
+            char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
+            String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
+            
+            char[] nyttLosenKrypt = txtNyttLosen.getPassword();
+            String nyttLosenOkrypt = new String(nyttLosenKrypt);
+            
+            char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
+            String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
+            
+            String aliensLosenSql = "SELECT losenord FROM alien where alien_id=" +id;
+            String aliensLosen = databas.fetchSingle(aliensLosenSql);
+            
+            String sqlUppdateraLosen = "UPDATE alien set losenord ='" +nyttLosenOkrypt+ "' where alien_id =" +id;
+            
+            if(nuvarandeLosenOkrypt.equals(aliensLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)){
+                databas.update(sqlUppdateraLosen);
+                JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
+            }
+        } 
+        catch (InfException ex) {
+            Logger.getLogger(AlienNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBekraftaActionPerformed
 
+     /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AlienNyttLosenord.this.dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed

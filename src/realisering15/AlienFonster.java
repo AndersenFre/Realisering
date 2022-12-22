@@ -12,7 +12,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author olive
+ * @author Grupp15
  */
 public class AlienFonster extends javax.swing.JFrame {
 
@@ -104,6 +104,9 @@ public class AlienFonster extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     /**
+     * Metod som visar upp information om områdeschefen för det område som alien befinner sig i
+     */
     private void btnVisaOCInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaOCInfoActionPerformed
 
         try {
@@ -118,10 +121,17 @@ public class AlienFonster extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVisaOCInfoActionPerformed
 
+     /**
+     * Metod som för användaren till ett nytt fönster för att ändra sitt lösenord
+     */
     private void btnLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLosenordActionPerformed
         new AlienNyttLosenord(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLosenordActionPerformed
 
+     /**
+     * Metod som loggar ut användaren och laddar om startfönstret (och rensar (genom att ej skicka med)
+     * information om databasuppkoppling och användaren)
+     */
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         new Start().setVisible(true);
         AlienFonster.this.dispose();

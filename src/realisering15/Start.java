@@ -6,7 +6,7 @@ package realisering15;
 
 /**
  *
- * @author olive
+ * @author Grupp15
  */
 public class Start extends javax.swing.JFrame {
 
@@ -88,11 +88,17 @@ public class Start extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     /**
+     * Metod som för användaren till inloggningssidan för agenter
+     */
     private void btnAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentActionPerformed
         new AgentInloggning().setVisible(true);
         Start.this.dispose();
     }//GEN-LAST:event_btnAgentActionPerformed
 
+    /**
+     * Metod som för användaren till inloggningssidan för aliens
+     */
     private void btnAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlienActionPerformed
         new AlienInloggning().setVisible(true);
         Start.this.dispose();
