@@ -7,7 +7,6 @@ package realisering15;
 import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
 public class AgentFonster extends javax.swing.JFrame {
     private static InfDB databas;
     private String id;
-    private ArrayList<String> allaMetoder;
+    private String[] allaMetoder;
     
     /**
      * Creates new form AgentFonster
@@ -25,7 +24,7 @@ public class AgentFonster extends javax.swing.JFrame {
     public AgentFonster(InfDB databas, String id) {
         this.id=id;
         this.databas=databas;
-        allaMetoder = new ArrayList<String>();
+        allaMetoder = new String[9];
         initComponents();
         
     }
@@ -55,7 +54,7 @@ public class AgentFonster extends javax.swing.JFrame {
 
         lblValkommenAgent.setText("Hej Agent!");
 
-        listaMetoderAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        listaMetoderAgent.setSelectedItem(listaMetoderAgent);
         listaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaMetoderAgentActionPerformed(evt);
@@ -94,16 +93,17 @@ public class AgentFonster extends javax.swing.JFrame {
                         .addComponent(lblValkommenAgent))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnOkAgent)
-                            .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnOkAgent))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(btnLoggaUtAgent)))
                 .addContainerGap(226, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnFul)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(listaMetoderAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnFul)))
                 .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
@@ -127,23 +127,17 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
         // Metoder en agent kan välja
-         
-             
-        String metod1 = "Ändra lösenord";
-        String metod2 = "Registrera Alien";
-        String metod3 = "Ändra aliens information";
-        String metod4 = "Lista alla aliens för en plats";
-        String metod5 = "Lista alla aliens för en ras";
-        String metod6 = "Lista över aliens registrerade mellan två datum";
-        String metod7 = "Registrera ny utrustning";
-        String metod8 = "Visa info om en alien";
-        String metod9 = "Visa områdeschef över utvalt område";
         
-        
-        allaMetoder.add(metod1+metod2+metod3+metod4+metod5+metod6+metod7+metod8+metod9);
+         String[] allaMetoder = {"Ändra lösenord","Registrera alien","Ändra aliens information",
+        "Lista alla aliens för en plats","Lista alla aliens för en plats",
+        "Lista över aliens registrerade mellan två datum","Registrera ny utrustning",
+        "Visa info om en alien","Visa områdeschef över utvalt område"};   
+       
             
-            for(String namn : allaMetoder)
+            for(int i = 0; i<allaMetoder.length; i++)
             {
+        
+                String namn = allaMetoder[i];
                 listaMetoderAgent.addItem(namn);
             }
       
