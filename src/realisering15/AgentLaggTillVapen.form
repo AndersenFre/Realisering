@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLaggTillVapenTillbaka" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnVapenReg" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblVapenRubrik" max="32767" attributes="0"/>
+                  <Component id="lblVapenNamn" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="txtVapenUtrID" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblVapenUtrID" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txtVapenNamn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtVapenKal" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                  <Component id="lblVapenKal" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblVapenRubrik" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="lblVapenUtrID" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtVapenUtrID" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblVapenNamn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtVapenNamn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblVapenKal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtVapenKal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLaggTillVapenTillbaka" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVapenReg" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnLaggTillVapenTillbaka">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillVapenTillbakaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVapenRubrik">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till vapen"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVapenUtrID">
+      <Properties>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVapenNamn">
+      <Properties>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVapenNamnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVapenKal">
+      <Properties>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVapenReg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrera"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVapenRegActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVapenUtrID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Utrustnings ID"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVapenNamn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVapenKal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kaliber"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

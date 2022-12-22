@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,27 +27,40 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTelefonNyAlien" min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="txtRegDatNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLosenNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtLosenNyAlien" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                           <Component id="txtNamnNyAlien" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="txtPlatsNyAlien" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="lblNamnNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtIDNyAlien" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lblIDNyAlien" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPlatsNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegDatNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAnsvarigAgentNyAlien" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblAnsvarigAgentNyAlien" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegDatNyAlien" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPlatsNyAlien" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtIDNyAlien" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtTelefonNyAlien" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="lblTelefonNyAlien" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtAnsvarigAgentNyAlien" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace pref="97" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="btnTillbakaNyAlien" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnActionRegistreraNyAlien" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -54,10 +68,10 @@
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblNyAlien" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+              <Component id="lblRubrikNyAlien" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,28 +79,45 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblNyAlien" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnActionRegistreraNyAlien" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnTillbakaNyAlien" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+              <Component id="lblRubrikNyAlien" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblIDNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="txtIDNyAlien" min="-2" pref="22" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtRegDatNyAlien" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblLosenNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtLosenNyAlien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblNamnNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtNamnNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblRegDatNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtRegDatNyAlien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtTelefonNyAlien" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblPlatsNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="txtPlatsNyAlien" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAnsvarigAgentNyAlien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtAnsvarigAgentNyAlien" min="-2" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="lblTelefonNyAlien" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtTelefonNyAlien" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnActionRegistreraNyAlien" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaNyAlien" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -95,42 +126,31 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtIDNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID-nummer"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDNyAlienActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRegDatNyAlien">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Registreringsdatum"/>
+        <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegDatNyAlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLosenNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamnNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Namn"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefonNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Telefon"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPlatsNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Plats"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPlatsNyAlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnsvarigAgentNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ansvarig Agent"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnActionRegistreraNyAlien">
       <Properties>
@@ -140,11 +160,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActionRegistreraNyAlienActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNyAlien">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xe4;gg till en ny Alien"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnTillbakaNyAlien">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tillbaka"/>
@@ -152,6 +167,49 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaNyAlienActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIDNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID-nummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRegDatNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registreringsdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLosenNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNamnNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Namn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelefonNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefon"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPlatsNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Plats"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAnsvarigAgentNyAlien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ansvarig Agent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRubrikNyAlien">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Registrera Alien"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

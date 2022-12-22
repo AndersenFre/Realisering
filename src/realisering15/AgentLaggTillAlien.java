@@ -42,29 +42,38 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
         txtPlatsNyAlien = new javax.swing.JTextField();
         txtAnsvarigAgentNyAlien = new javax.swing.JTextField();
         btnActionRegistreraNyAlien = new javax.swing.JButton();
-        lblNyAlien = new javax.swing.JLabel();
         btnTillbakaNyAlien = new javax.swing.JButton();
+        lblIDNyAlien = new javax.swing.JLabel();
+        lblRegDatNyAlien = new javax.swing.JLabel();
+        lblLosenNyAlien = new javax.swing.JLabel();
+        lblNamnNyAlien = new javax.swing.JLabel();
+        lblTelefonNyAlien = new javax.swing.JLabel();
+        lblPlatsNyAlien = new javax.swing.JLabel();
+        lblAnsvarigAgentNyAlien = new javax.swing.JLabel();
+        lblRubrikNyAlien = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        txtIDNyAlien.setText("ID-nummer");
         txtIDNyAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDNyAlienActionPerformed(evt);
             }
         });
 
-        txtRegDatNyAlien.setText("Registreringsdatum");
+        txtRegDatNyAlien.setText("YYYY-MM-DD");
+        txtRegDatNyAlien.setToolTipText("");
+        txtRegDatNyAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegDatNyAlienActionPerformed(evt);
+            }
+        });
 
-        txtLosenNyAlien.setText("Lösenord");
-
-        txtNamnNyAlien.setText("Namn");
-
-        txtTelefonNyAlien.setText("Telefon");
-
-        txtPlatsNyAlien.setText("Plats");
-
-        txtAnsvarigAgentNyAlien.setText("Ansvarig Agent");
+        txtPlatsNyAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPlatsNyAlienActionPerformed(evt);
+            }
+        });
 
         btnActionRegistreraNyAlien.setText("Registrera");
         btnActionRegistreraNyAlien.addActionListener(new java.awt.event.ActionListener() {
@@ -73,14 +82,29 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
             }
         });
 
-        lblNyAlien.setText("Lägg till en ny Alien");
-
         btnTillbakaNyAlien.setText("Tillbaka");
         btnTillbakaNyAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTillbakaNyAlienActionPerformed(evt);
             }
         });
+
+        lblIDNyAlien.setText("ID-nummer");
+
+        lblRegDatNyAlien.setText("Registreringsdatum");
+
+        lblLosenNyAlien.setText("Lösenord");
+
+        lblNamnNyAlien.setText("Namn");
+
+        lblTelefonNyAlien.setText("Telefon");
+
+        lblPlatsNyAlien.setText("Plats");
+
+        lblAnsvarigAgentNyAlien.setText("Ansvarig Agent");
+
+        lblRubrikNyAlien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblRubrikNyAlien.setText("Registrera Alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,53 +115,79 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRegDatNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLosenNyAlien)
                             .addComponent(txtLosenNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNamnNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPlatsNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lblNamnNyAlien)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtIDNyAlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(lblIDNyAlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(142, 142, 142)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlatsNyAlien)
+                            .addComponent(lblRegDatNyAlien)
+                            .addComponent(txtAnsvarigAgentNyAlien)
+                            .addComponent(lblAnsvarigAgentNyAlien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtRegDatNyAlien)
+                            .addComponent(txtPlatsNyAlien))
+                        .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtIDNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTelefonNyAlien))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtAnsvarigAgentNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                                 .addComponent(btnTillbakaNyAlien)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnActionRegistreraNyAlien)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblNyAlien)
-                .addGap(146, 146, 146))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(lblRubrikNyAlien)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNyAlien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnActionRegistreraNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTillbakaNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addComponent(lblRubrikNyAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblIDNyAlien)
+                        .addGap(3, 3, 3)
                         .addComponent(txtIDNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtRegDatNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(lblLosenNyAlien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLosenNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(lblNamnNyAlien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNamnNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblRegDatNyAlien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRegDatNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(lblPlatsNyAlien)
+                        .addGap(3, 3, 3)
                         .addComponent(txtPlatsNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAnsvarigAgentNyAlien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAnsvarigAgentNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(lblTelefonNyAlien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActionRegistreraNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTillbakaNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -185,6 +235,14 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnActionRegistreraNyAlienActionPerformed
 
+    private void txtPlatsNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlatsNyAlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPlatsNyAlienActionPerformed
+
+    private void txtRegDatNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegDatNyAlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRegDatNyAlienActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,7 +282,14 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActionRegistreraNyAlien;
     private javax.swing.JButton btnTillbakaNyAlien;
-    private javax.swing.JLabel lblNyAlien;
+    private javax.swing.JLabel lblAnsvarigAgentNyAlien;
+    private javax.swing.JLabel lblIDNyAlien;
+    private javax.swing.JLabel lblLosenNyAlien;
+    private javax.swing.JLabel lblNamnNyAlien;
+    private javax.swing.JLabel lblPlatsNyAlien;
+    private javax.swing.JLabel lblRegDatNyAlien;
+    private javax.swing.JLabel lblRubrikNyAlien;
+    private javax.swing.JLabel lblTelefonNyAlien;
     private javax.swing.JTextField txtAnsvarigAgentNyAlien;
     private javax.swing.JTextField txtIDNyAlien;
     private javax.swing.JTextField txtLosenNyAlien;
