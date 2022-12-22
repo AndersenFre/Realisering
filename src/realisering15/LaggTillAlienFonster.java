@@ -67,10 +67,20 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
         txtAnsvarigAgentNyAlien.setText("Ansvarig Agent");
 
         btnActionRegistreraNyAlien.setText("Registrera");
+        btnActionRegistreraNyAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActionRegistreraNyAlienActionPerformed(evt);
+            }
+        });
 
         lblNyAlien.setText("Lägg till en ny Alien");
 
         btnTillbakaNyAlien.setText("Tillbaka");
+        btnTillbakaNyAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaNyAlienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,44 +145,53 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIDNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNyAlienActionPerformed
-        // Upptäckte problem här och tog kväll
+        // Lägger till ny alien
         
-        try {
-            Int alienID = txtIDNyAlien.getText();
-            String laggTillAlien = "SELECT losenord FROM agent where agent_id=" + id;
-            String svarLosen = databas.fetchSingle(rattLosen);
-            //Dekryptering av JPassword
-            char[] losenKrypt = txtPLosen.getPassword();
-            String losenOkrypt = new String(losenKrypt);
-            String fraga = "SELECT administrator FROM agent where agent_id=" + id;
-            String svarFraga = databas.fetchSingle(fraga);
+        //try {
+            //Ska vara int
+            //String alienID = txtIDNyAlien.getText();
+            //Ska vara string
+            //String regDat = txtRegDatNyAlien.getText();
+            //Ska vara String
+            //String losen = txtLosenNyAlien.getText();
+            //Ska vara String
+            //String namn = txtNamnNyAlien.getText();
+            //Ska vara String
+            //String tele = txtTelefonNyAlien.getText();
+            //Ska vara int
+            //String plats = txtPlatsNyAlien.getText();
+            //Ska vara int
+            //String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
+            
+            
+            //String tillLagg = "insert into alien values(" + alienID +"," + regDat + "," + losen + "," + namn + "," + tele + "," + plats + "," + ansvarAgent + ")";
+            //databas.insert(tillLagg);
            
             //Till nytt fönster
-            if (losenOkrypt.equals(svarLosen)) 
-            {
-                //Om Agenten har adminrättigheter
-                if(svarFraga.equals("J"))
-                    {
-                        new AdminFonster(databas).setVisible(true);
-                        AgentInloggning.this.dispose();
-                    }
-                //Om Agent inte har adminrättigheter
-                else//Admin=N
-                    {
-                        new AgentFonster(databas, id).setVisible(true);
-                        AgentInloggning.this.dispose();
-                    }
+            //if () 
+            //{
+            
                 
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
-            }
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            //}
+            //else {
+               // JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
+            //}
+        //} 
+        //catch (InfException ex1) 
+        //{
+            //JOptionPane.showMessageDialog(null, "Inget resultat hittades");
+            //System.out.println("Internt felmeddelande" + ex1.getMessage());
+        //}
+       //}
     }//GEN-LAST:event_txtIDNyAlienActionPerformed
+
+    private void btnTillbakaNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaNyAlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTillbakaNyAlienActionPerformed
+
+    private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActionRegistreraNyAlienActionPerformed
 
     /**
      * @param args the command line arguments

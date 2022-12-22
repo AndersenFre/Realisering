@@ -136,6 +136,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrera"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActionRegistreraNyAlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNyAlien">
       <Properties>
@@ -146,6 +149,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tillbaka"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaNyAlienActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
