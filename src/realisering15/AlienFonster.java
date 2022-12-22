@@ -119,7 +119,7 @@ public class AlienFonster extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVisaOCInfoActionPerformed
 
     private void btnLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLosenordActionPerformed
-        //här
+        new AlienNyttLosenord(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLosenordActionPerformed
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
