@@ -146,43 +146,6 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
 
     private void txtIDNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNyAlienActionPerformed
         // Lägger till ny alien
-        
-        //try {
-            //Ska vara int
-            //String alienID = txtIDNyAlien.getText();
-            //Ska vara string
-            //String regDat = txtRegDatNyAlien.getText();
-            //Ska vara String
-            //String losen = txtLosenNyAlien.getText();
-            //Ska vara String
-            //String namn = txtNamnNyAlien.getText();
-            //Ska vara String
-            //String tele = txtTelefonNyAlien.getText();
-            //Ska vara int
-            //String plats = txtPlatsNyAlien.getText();
-            //Ska vara int
-            //String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
-            
-            
-            //String tillLagg = "insert into alien values(" + alienID +"," + regDat + "," + losen + "," + namn + "," + tele + "," + plats + "," + ansvarAgent + ")";
-            //databas.insert(tillLagg);
-           
-            //Till nytt fönster
-            //if () 
-            //{
-            
-                
-            //}
-            //else {
-               // JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
-            //}
-        //} 
-        //catch (InfException ex1) 
-        //{
-            //JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-            //System.out.println("Internt felmeddelande" + ex1.getMessage());
-        //}
-       //}
     }//GEN-LAST:event_txtIDNyAlienActionPerformed
 
     private void btnTillbakaNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaNyAlienActionPerformed
@@ -191,6 +154,34 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
 
     private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
         // TODO add your handling code here:
+          try 
+        {
+            //Ska vara int
+            String alienID = txtIDNyAlien.getText();
+            //Ska vara string
+            String regDat = txtRegDatNyAlien.getText();
+            //Ska vara String
+            String losen = txtLosenNyAlien.getText();
+            //Ska vara String
+            String namn = txtNamnNyAlien.getText();
+            //Ska vara String
+            String tele = txtTelefonNyAlien.getText();
+            //Ska vara int
+            String plats = txtPlatsNyAlien.getText();
+            //Ska vara int
+            String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
+            //Insert into alien
+            String tillLagg = "insert into alien values(" + alienID +",'" + regDat + "','" + losen + "','" + namn + "','" + tele + "'," + plats + "," + ansvarAgent + ")";
+            
+            databas.insert(tillLagg);
+           
+        } 
+        catch (InfException ex1) 
+        {
+            JOptionPane.showMessageDialog(null, "Fungerar inte");
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
+       
     }//GEN-LAST:event_btnActionRegistreraNyAlienActionPerformed
 
     /**
