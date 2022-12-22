@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -7,6 +7,7 @@ package realisering15;
 import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,7 @@ import oru.inf.InfException;
 public class AgentFonster extends javax.swing.JFrame {
     private static InfDB databas;
     private String id;
+    private ArrayList<String> allaMetoder;
     /**
      * Creates new form AgentFonster
      */
@@ -107,6 +109,21 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
         // Metoder en agent kan välja
+        String metod1 = "Ändra lösenord";
+        String metod2 = "Registrera Alien";
+        String metod3 = "Ändra aliens information";
+        String metod4 = "Lista alla aliens för en plats";
+        String metod5 = "Lista alla aliens för en ras";
+        String metod6 = "Lista över aliens registrerade mellan två datum";
+        String metod7 = "Registrera ny utrustning";
+        String metod8 = "Visa info om en alien";
+        String metod9 = "Visa områdeschef över utvalt område";
+        
+        
+        allaMetoder.add(metod1+metod2+metod3+metod4+metod5+metod6+metod7+metod8+metod9);
+        
+        
+        
 
     }//GEN-LAST:event_listaMetoderAgentActionPerformed
 
