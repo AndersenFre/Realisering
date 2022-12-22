@@ -61,7 +61,12 @@
                       <Component id="btnLoggaUtAgent" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="112" max="32767" attributes="0"/>
+              <EmptySpace pref="226" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="btnFul" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,7 +77,9 @@
               <Component id="lblValkommenAgent" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="listaMetoderAgent" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="btnFul" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="btnOkAgent" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="89" max="32767" attributes="0"/>
               <Component id="btnLoggaUtAgent" min="-2" max="-2" attributes="0"/>
@@ -90,18 +97,8 @@
     <Component class="javax.swing.JComboBox" name="listaMetoderAgent">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="11">
-            <StringItem index="0" value="Val"/>
-            <StringItem index="1" value="&#xc4;ndra L&#xf6;senord"/>
-            <StringItem index="2" value="Nyregistrera Alien"/>
-            <StringItem index="3" value="&#xc4;ndra information om Alien"/>
-            <StringItem index="4" value="Lista alla Alien p&#xe5; en plats"/>
-            <StringItem index="5" value="Lista alla Alien av en ras"/>
-            <StringItem index="6" value="Lista alla Aliens registrerade mellan datum"/>
-            <StringItem index="7" value="Registrera ny Utrustning"/>
-            <StringItem index="8" value="Visa information om en Alien"/>
-            <StringItem index="9" value="Visa omr&#xe5;deschef f&#xf6;r ett omr&#xe5;de"/>
-            <StringItem index="10" value=" "/>
+          <StringArray count="1">
+            <StringItem index="0" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -126,6 +123,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaUtAgentActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFul">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FulKnapp"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFulActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

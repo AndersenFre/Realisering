@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +18,16 @@ public class AgentFonster extends javax.swing.JFrame {
     private static InfDB databas;
     private String id;
     private ArrayList<String> allaMetoder;
+    
     /**
      * Creates new form AgentFonster
      */
     public AgentFonster(InfDB databas, String id) {
         this.id=id;
         this.databas=databas;
+        allaMetoder = new ArrayList<String>();
         initComponents();
+        
     }
 
     /**
@@ -41,6 +45,7 @@ public class AgentFonster extends javax.swing.JFrame {
         listaMetoderAgent = new javax.swing.JComboBox<>();
         btnOkAgent = new javax.swing.JButton();
         btnLoggaUtAgent = new javax.swing.JButton();
+        btnFul = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -50,7 +55,7 @@ public class AgentFonster extends javax.swing.JFrame {
 
         lblValkommenAgent.setText("Hej Agent!");
 
-        listaMetoderAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Val", "Ändra Lösenord", "Nyregistrera Alien", "Ändra information om Alien", "Lista alla Alien på en plats", "Lista alla Alien av en ras", "Lista alla Aliens registrerade mellan datum", "Registrera ny Utrustning", "Visa information om en Alien", "Visa områdeschef för ett område", " " }));
+        listaMetoderAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         listaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaMetoderAgentActionPerformed(evt);
@@ -71,6 +76,13 @@ public class AgentFonster extends javax.swing.JFrame {
             }
         });
 
+        btnFul.setText("FulKnapp");
+        btnFul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFulActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,7 +100,11 @@ public class AgentFonster extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(btnLoggaUtAgent)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnFul)
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +113,9 @@ public class AgentFonster extends javax.swing.JFrame {
                 .addComponent(lblValkommenAgent)
                 .addGap(18, 18, 18)
                 .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(1, 1, 1)
+                .addComponent(btnFul)
+                .addGap(4, 4, 4)
                 .addComponent(btnOkAgent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(btnLoggaUtAgent)
@@ -109,6 +127,8 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
         // Metoder en agent kan välja
+         
+             
         String metod1 = "Ändra lösenord";
         String metod2 = "Registrera Alien";
         String metod3 = "Ändra aliens information";
@@ -121,14 +141,19 @@ public class AgentFonster extends javax.swing.JFrame {
         
         
         allaMetoder.add(metod1+metod2+metod3+metod4+metod5+metod6+metod7+metod8+metod9);
-        
-        
-        
-
+            
+            for(String namn : allaMetoder)
+            {
+                listaMetoderAgent.addItem(namn);
+            }
+      
     }//GEN-LAST:event_listaMetoderAgentActionPerformed
 
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
-        // Funktion för ok-knapp
+        
+        
+            
+        
         
     }//GEN-LAST:event_btnOkAgentActionPerformed
 
@@ -136,6 +161,11 @@ public class AgentFonster extends javax.swing.JFrame {
         new Start().setVisible(true);
         AgentFonster.this.dispose();
     }//GEN-LAST:event_btnLoggaUtAgentActionPerformed
+
+    private void btnFulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFulActionPerformed
+        // TODO add your handling code here:
+        new LaggTillAlienFonster(databas, id).setVisible(true);
+    }//GEN-LAST:event_btnFulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +203,7 @@ public class AgentFonster extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFul;
     private javax.swing.JButton btnLoggaUtAgent;
     private javax.swing.JButton btnOkAgent;
     private javax.swing.JMenu jMenu1;
