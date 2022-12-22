@@ -164,7 +164,7 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void btnFulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFulActionPerformed
         // TODO add your handling code here:
-        new LaggTillAlienFonster(databas, id).setVisible(true);
+        new AgentLaggTillAlien(databas, id).setVisible(true);
     }//GEN-LAST:event_btnFulActionPerformed
 
     /**

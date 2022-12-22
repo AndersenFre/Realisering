@@ -11,14 +11,14 @@ import oru.inf.InfException;
  *
  * @author ander
  */
-public class LaggTillAlienFonster extends javax.swing.JFrame {
+public class AgentLaggTillAlien extends javax.swing.JFrame {
     private static InfDB databas;
     //Sparar ID för inloggad agent
     private String id = null;
     /**
      * Creates new form LaggTillAlienFonster
      */
-    public LaggTillAlienFonster(InfDB databas, String id) 
+    public AgentLaggTillAlien(InfDB databas, String id) 
     {
         this.id=id;
         this.databas=databas;
@@ -150,6 +150,7 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
 
     private void btnTillbakaNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaNyAlienActionPerformed
         // TODO add your handling code here:
+        AgentLaggTillAlien.this.dispose();
     }//GEN-LAST:event_btnTillbakaNyAlienActionPerformed
 
     private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
@@ -174,11 +175,11 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
             String tillLagg = "insert into alien values(" + alienID +",'" + regDat + "','" + losen + "','" + namn + "','" + tele + "'," + plats + "," + ansvarAgent + ")";
             
             databas.insert(tillLagg);
-           
+           JOptionPane.showMessageDialog(null, "En ny Alien har registrerats");
         } 
         catch (InfException ex1) 
         {
-            JOptionPane.showMessageDialog(null, "Fungerar inte");
+            JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
             System.out.println("Internt felmeddelande" + ex1.getMessage());
         }
        
@@ -201,14 +202,15 @@ public class LaggTillAlienFonster extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LaggTillAlienFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentLaggTillAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LaggTillAlienFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentLaggTillAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LaggTillAlienFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentLaggTillAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LaggTillAlienFonster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgentLaggTillAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
