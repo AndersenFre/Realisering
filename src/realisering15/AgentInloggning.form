@@ -32,21 +32,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                              <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblLösenord" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblIDNr" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtIDNr" pref="82" max="32767" attributes="0"/>
-                                  <Component id="txtPLosen" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="lblLösenord" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIDNr" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTillbaka" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnLoggaIn" max="32767" attributes="0"/>
+                          <Component id="txtIDNr" pref="82" max="32767" attributes="0"/>
+                          <Component id="txtPLosen" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -69,9 +63,12 @@
                   <Component id="lblLösenord" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="txtPLosen" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLoggaIn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbaka" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,6 +106,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="V&#xe4;lkommen Agent!"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbaka">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
