@@ -9,7 +9,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentLaggTillAlien extends javax.swing.JFrame {
     private static InfDB databas;

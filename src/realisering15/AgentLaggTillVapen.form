@@ -35,10 +35,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblVapenRubrik" max="32767" attributes="0"/>
                   <Component id="lblVapenNamn" alignment="0" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="txtVapenUtrID" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblVapenUtrID" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="txtVapenUtrID" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblVapenUtrID" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtVapenNamn" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtVapenKal" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                   <Component id="lblVapenKal" alignment="0" min="-2" max="-2" attributes="0"/>

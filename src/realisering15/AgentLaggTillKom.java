@@ -3,13 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentLaggTillKom extends javax.swing.JFrame {
         private static InfDB databas;
