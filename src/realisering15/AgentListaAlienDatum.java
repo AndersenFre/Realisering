@@ -4,16 +4,28 @@
  */
 package realisering15;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentListaAlienDatum extends javax.swing.JFrame {
 
+    private static InfDB databas;
+    private String id;
+    
     /**
      * Creates new form AgentListaAlienDatum
      */
-    public AgentListaAlienDatum() {
+    public AgentListaAlienDatum(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -26,21 +38,137 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblValkommen = new javax.swing.JLabel();
+        txtFranDatum = new javax.swing.JTextField();
+        txtTillDatum = new javax.swing.JTextField();
+        lblFranDatum = new javax.swing.JLabel();
+        lblTillDatum = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
+        btnBekrafta = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblValkommen.setText("Fyll i datum nedan för att lista aliens");
+
+        txtFranDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFranDatumActionPerformed(evt);
+            }
+        });
+
+        txtTillDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTillDatumActionPerformed(evt);
+            }
+        });
+
+        lblFranDatum.setText("Från datum:");
+
+        lblTillDatum.setText("Till datum:");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
+        btnBekrafta.setText("Bekräfta");
+        btnBekrafta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBekraftaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblFranDatum)
+                            .addComponent(btnTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFranDatum))
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBekrafta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTillDatum)
+                            .addComponent(txtTillDatum)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(lblValkommen)))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(lblValkommen)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFranDatum)
+                    .addComponent(lblTillDatum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFranDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTillbaka)
+                    .addComponent(btnBekrafta))
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFranDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFranDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFranDatumActionPerformed
+
+    private void txtTillDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTillDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTillDatumActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        AgentListaAlienDatum.this.dispose();
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
+        try {
+            String franDatum = txtFranDatum.getText();
+            String tillDatum = txtTillDatum.getText();
+            
+            String sqlFraga = "SELECT alien_id from alien WHERE registreringsdatum >= '" +franDatum+ "' and registreringsdatum <= '" +tillDatum+ "'";
+            ArrayList<String> aliensIOmrade = databas.fetchColumn(sqlFraga);
+            
+            //String[] delarFranDatum = franDatum.split("-");
+            //String[] delarTillDatum = franDatum.split("-");
+            
+            //int franAr = Integer.parseInt(delarFranDatum[0]);
+            //int franManad = Integer.parseInt(delarFranDatum[1]);
+            //int franDag = Integer.parseInt(delarFranDatum[2]);
+            
+            //int tillAr = Integer.parseInt(delarTillDatum[0]);
+            //int tillManad = Integer.parseInt(delarTillDatum[1]);
+            //int tillDag = Integer.parseInt(delarTillDatum[2]);
+            
+            //int intFranDatum = Integer.parseInt(franDatum);
+            //int intTillDatum = Integer.parseInt(tillDatum);
+            
+            //if(franAr>0 && franAr<10000 && franManad>0 && franManad<13 && franDag>0 && franDag<32 && tillAr>0 && tillAr<10000 && tillManad>0 && tillManad<13 && tillDag>0 && tillDag<32)
+            JOptionPane.showMessageDialog(null, "De aliens som registrerats mellan " +franDatum+ " och " +tillDatum+ " har ID: " +aliensIOmrade);    
+        } 
+        catch (InfException ex) {
+            Logger.getLogger(AgentListaAlienDatum.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Inkorrekt datum, skriv enligt följande: YYYY-MM-DD");    
+
+        }
+        
+    }//GEN-LAST:event_btnBekraftaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +200,18 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentListaAlienDatum().setVisible(true);
+                //new AgentListaAlienDatum().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBekrafta;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel lblFranDatum;
+    private javax.swing.JLabel lblTillDatum;
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JTextField txtFranDatum;
+    private javax.swing.JTextField txtTillDatum;
     // End of variables declaration//GEN-END:variables
 }
