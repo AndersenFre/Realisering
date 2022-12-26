@@ -158,7 +158,7 @@ public class AgentFonster extends javax.swing.JFrame {
 
     private void btnFulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFulActionPerformed
         // TODO add your handling code here:
-        new AgentListaAlienDatum(databas, id).setVisible(true);
+        new AgentVisaOmrC(databas, id).setVisible(true);
     }//GEN-LAST:event_btnFulActionPerformed
 
     /**
