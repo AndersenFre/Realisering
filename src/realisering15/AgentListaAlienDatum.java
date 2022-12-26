@@ -50,12 +50,14 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
 
         lblValkommen.setText("Fyll i datum nedan för att lista aliens");
 
+        txtFranDatum.setText("YYYY-MM-DD");
         txtFranDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFranDatumActionPerformed(evt);
             }
         });
 
+        txtTillDatum.setText("YYYY-MM-DD");
         txtTillDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTillDatumActionPerformed(evt);
@@ -100,7 +102,7 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(lblValkommen)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
