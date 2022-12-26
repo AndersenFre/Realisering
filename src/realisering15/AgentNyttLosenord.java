@@ -4,16 +4,27 @@
  */
 package realisering15;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentNyttLosenord extends javax.swing.JFrame {
 
+    private static InfDB databas;
+    private String id;
+    
     /**
      * Creates new form AgentNyttLosenord
      */
-    public AgentNyttLosenord() {
+    public AgentNyttLosenord(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -26,21 +37,123 @@ public class AgentNyttLosenord extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblValkommen = new javax.swing.JLabel();
+        lblNuvarandeLosen = new javax.swing.JLabel();
+        lblNyttLosen = new javax.swing.JLabel();
+        lblBekraftaLosen = new javax.swing.JLabel();
+        txtNuvarandeLosen = new javax.swing.JPasswordField();
+        txtNyttLosen = new javax.swing.JPasswordField();
+        txtBekraftaLosen = new javax.swing.JPasswordField();
+        btnTillbaka = new javax.swing.JButton();
+        btnBekrafta = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblValkommen.setText("Fyll i uppgifterna nedan för att ändra ditt lösenord");
+
+        lblNuvarandeLosen.setText("Nuvarande lösenord");
+
+        lblNyttLosen.setText("Nytt lösenord");
+
+        lblBekraftaLosen.setText("Bekräfta lösenord");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
+        btnBekrafta.setText("Bekräfta");
+        btnBekrafta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBekraftaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNyttLosen)
+                            .addComponent(lblNuvarandeLosen)
+                            .addComponent(lblBekraftaLosen)
+                            .addComponent(btnTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNuvarandeLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBekraftaLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBekrafta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(lblValkommen)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(lblValkommen)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNuvarandeLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNuvarandeLosen))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNyttLosen)
+                    .addComponent(txtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBekraftaLosen)
+                    .addComponent(txtBekraftaLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBekrafta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        AgentNyttLosenord.this.dispose();
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
+        try {
+            char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
+            String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
+            
+            char[] nyttLosenKrypt = txtNyttLosen.getPassword();
+            String nyttLosenOkrypt = new String(nyttLosenKrypt);
+            
+            char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
+            String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
+            
+            String agentsLosenSql = "SELECT losenord FROM agent where agent_id=" +id;
+            String agentsLosen = databas.fetchSingle(agentsLosenSql);
+            
+            String sqlUppdateraLosen = "UPDATE agent set losenord ='" +nyttLosenOkrypt+ "' where agent_id =" +id;
+            
+            if(nuvarandeLosenOkrypt.equals(agentsLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)){
+                databas.update(sqlUppdateraLosen);
+                JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
+            }
+        } 
+        catch (InfException ex) {
+            Logger.getLogger(AgentNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBekraftaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +185,20 @@ public class AgentNyttLosenord extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentNyttLosenord().setVisible(true);
+                //new AgentNyttLosenord().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBekrafta;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel lblBekraftaLosen;
+    private javax.swing.JLabel lblNuvarandeLosen;
+    private javax.swing.JLabel lblNyttLosen;
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JPasswordField txtBekraftaLosen;
+    private javax.swing.JPasswordField txtNuvarandeLosen;
+    private javax.swing.JPasswordField txtNyttLosen;
     // End of variables declaration//GEN-END:variables
 }
