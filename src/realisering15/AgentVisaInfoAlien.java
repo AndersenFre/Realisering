@@ -20,7 +20,7 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
-    
+
     /**
      * Creates new form AgentVisaInfoAlien
      */
@@ -145,32 +145,64 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         txtAreaResultat1.setText("");
-        txtAreaResultat2.setText("");   
+        txtAreaResultat2.setText("");
+
         try {
             ArrayList<HashMap<String, String>> arraylistan;
-            
+
             String ettAlienID = txtAlienID.getText();
-            String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" +ettAlienID;
-            
+            String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" + ettAlienID;
+
+            ArrayList<String> bogloditer = databas.fetchColumn("SELECT alien_id FROM boglodite");
+            ArrayList<String> worms = databas.fetchColumn("SELECT alien_id FROM worm");
+            ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
+
+            String ras = "";
+
+            for (String enBoglodite : bogloditer) {
+                if (enBoglodite.equals(ettAlienID)) {
+                    ras = "Boglodite";
+                }
+            }
+            for (String enWorm : worms) {
+                if (enWorm.equals(ettAlienID)) {
+                    ras = "Worm";
+                }
+            }
+            for (String enSquid : squids) {
+                if (enSquid.equals(ettAlienID)) {
+                    ras = "Squid";
+                }
+            }
+
+            ArrayList<String> aliens = databas.fetchColumn("SELECT alien_id FROM alien");
+            boolean alienHittad = false;
+            for (String enAlien : aliens) {
+                if (enAlien.equals(ettAlienID)) {
+                    alienHittad = true;
+                }
+            }
+            if (alienHittad == false) {
+                JOptionPane.showMessageDialog(null, "Det finns ingen alien registrerad med ID: " + ettAlienID);
+            }
+
             arraylistan = databas.fetchRows(sqlHelaRaden);
-            
-            txtAreaResultat1.append("ID"+"\t");
-            txtAreaResultat1.append("Registreringsdatum"+"\t");
-            txtAreaResultat1.append("Namn"+"\t");
-            txtAreaResultat1.append("Telefon"+"\n");
-            txtAreaResultat2.append("Plats"+"\t");
-            txtAreaResultat2.append("Ansvarig agent"+"\n");
-            //txtAreaResultat2.append("Ras"+"\n");
-            
-            for(HashMap<String, String> enAlien : arraylistan){
-                
-                txtAreaResultat1.append(enAlien.get("Alien_ID")+"\t");
-                txtAreaResultat1.append(enAlien.get("Registreringsdatum")+"\t"+"\t");
-                txtAreaResultat1.append(enAlien.get("Namn")+"\t");
-                txtAreaResultat1.append(enAlien.get("Telefon")+"\n");
-                txtAreaResultat2.append(enAlien.get("Plats")+"\t");
-                txtAreaResultat2.append(enAlien.get("Ansvarig_Agent")+"\n");
-                //txtAreaResultat2.append("Ras"+"\n");
+            txtAreaResultat1.append("ID" + "\t");
+            txtAreaResultat1.append("Registreringsdatum" + "\t");
+            txtAreaResultat1.append("Namn" + "\t");
+            txtAreaResultat1.append("Telefon" + "\n");
+            txtAreaResultat2.append("Plats" + "\t");
+            txtAreaResultat2.append("Ansvarig agent" + "\t");
+            txtAreaResultat2.append("Ras" + "\n");
+
+            for (HashMap<String, String> enAlienRad : arraylistan) {
+                txtAreaResultat1.append(enAlienRad.get("Alien_ID") + "\t");
+                txtAreaResultat1.append(enAlienRad.get("Registreringsdatum") + "\t" + "\t");
+                txtAreaResultat1.append(enAlienRad.get("Namn") + "\t");
+                txtAreaResultat1.append(enAlienRad.get("Telefon") + "\n");
+                txtAreaResultat2.append(enAlienRad.get("Plats") + "\t");
+                txtAreaResultat2.append(enAlienRad.get("Ansvarig_Agent") + "\t" + "\t");
+                txtAreaResultat2.append(ras + "\n");
             }
         } catch (InfException ex) {
             Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
