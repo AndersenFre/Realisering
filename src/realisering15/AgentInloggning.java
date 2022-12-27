@@ -154,7 +154,7 @@ public class AgentInloggning extends javax.swing.JFrame {
                 //Om Agenten har adminrättigheter
                 if(svarFraga.equals("J"))
                     {
-                        new AdminFonster(databas, id).setVisible(true);
+                        new AdminFonster(databas).setVisible(true);
                         AgentInloggning.this.dispose();
                     }
                 //Om Agent inte har adminrättigheter

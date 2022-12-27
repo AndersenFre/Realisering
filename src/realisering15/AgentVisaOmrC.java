@@ -15,7 +15,7 @@ import oru.inf.InfException;
  */
 public class AgentVisaOmrC extends javax.swing.JFrame {
             private static InfDB databas;
-            private String id;
+            private String id = null;
     /**
      * Creates new form AgentVisaOmrC
      */
