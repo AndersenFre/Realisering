@@ -4,19 +4,21 @@
  */
 package realisering15;
 
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentFonster extends javax.swing.JFrame {
     private static InfDB databas;
     private String id;
-    private String[] allaMetoder;
+ 
     
     /**
      * Creates new form AgentFonster
@@ -24,8 +26,8 @@ public class AgentFonster extends javax.swing.JFrame {
     public AgentFonster(InfDB databas, String id) {
         this.id=id;
         this.databas=databas;
-        allaMetoder = new String[9];
         initComponents();
+        fyllCbValjMetod();
         
     }
 
@@ -41,10 +43,10 @@ public class AgentFonster extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         lblValkommenAgent = new javax.swing.JLabel();
-        listaMetoderAgent = new javax.swing.JComboBox<>();
+        cblistaMetoderAgent = new javax.swing.JComboBox<>();
         btnOkAgent = new javax.swing.JButton();
         btnLoggaUtAgent = new javax.swing.JButton();
-        btnFul = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -52,16 +54,17 @@ public class AgentFonster extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblValkommenAgent.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblValkommenAgent.setText("Hej Agent!");
 
-        listaMetoderAgent.setSelectedItem(listaMetoderAgent);
-        listaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
+        cblistaMetoderAgent.setSelectedItem(cblistaMetoderAgent);
+        cblistaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaMetoderAgentActionPerformed(evt);
+                cblistaMetoderAgentActionPerformed(evt);
             }
         });
 
-        btnOkAgent.setText("Ok!");
+        btnOkAgent.setText("OK");
         btnOkAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkAgentActionPerformed(evt);
@@ -75,90 +78,111 @@ public class AgentFonster extends javax.swing.JFrame {
             }
         });
 
-        btnFul.setText("FulKnapp");
-        btnFul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFulActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Välj en åtgärd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(lblValkommenAgent))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addComponent(btnLoggaUtAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                         .addComponent(btnOkAgent)
-                        .addGap(115, 115, 115)
-                        .addComponent(btnFul))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnLoggaUtAgent)))
-                .addContainerGap(121, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(listaMetoderAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(138, 138, 138))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblValkommenAgent)
+                        .addGap(181, 181, 181))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(lblValkommenAgent)
-                .addGap(18, 18, 18)
-                .addComponent(listaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOkAgent)
-                    .addComponent(btnFul))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(btnLoggaUtAgent)
-                .addGap(53, 53, 53))
+                    .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoggaUtAgent)
+                    .addComponent(btnOkAgent))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void listaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMetoderAgentActionPerformed
-        // Metoder en agent kan välja
+    //Fyller comboBoxen med olika val en agent kan göra
+    private void fyllCbValjMetod()
+    {
+        ArrayList<String> metoder = new ArrayList<String>();
+        metoder.add("Ändra lösenord");
+        metoder.add("Registrera alien");
+        metoder.add("Ändra aliens information");
+        metoder.add("Lista alla aliens för en plats");
+        metoder.add("Lista över aliens registrerade mellan två datum");
+        metoder.add("Registrera ny utrustning");
+        metoder.add("Visa info om en alien");
+        metoder.add("Visa områdeschef över utvalt område");
+        for(String enMetod : metoder)
+        {
+            cblistaMetoderAgent.addItem(enMetod);
+        }
+    }
+    private void cblistaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblistaMetoderAgentActionPerformed
         
-         String[] allaMetoder = {"Ändra lösenord","Registrera alien","Ändra aliens information",
-        "Lista alla aliens för en plats","Lista alla aliens för en plats",
-        "Lista över aliens registrerade mellan två datum","Registrera ny utrustning",
-        "Visa info om en alien","Visa områdeschef över utvalt område"};   
-       
-            
-            for(int i = 0; i<allaMetoder.length; i++)
-            {
-        
-                String namn = allaMetoder[i];
-                listaMetoderAgent.addItem(namn);
-            }
-      
-    }//GEN-LAST:event_listaMetoderAgentActionPerformed
+    }//GEN-LAST:event_cblistaMetoderAgentActionPerformed
 
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
-        
-        //switch()
-        
-            
-        
-        
+    //Kontrollerar vilken åtgärd som valts
+    String valdMetod = cblistaMetoderAgent.getSelectedItem().toString();
+    if(valdMetod.equals("Ändra lösenord"))
+    {
+        new AgentNyttLosenord(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Registrera alien"))
+    {
+        new AgentLaggTillAlien(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Ändra aliens information"))
+    {
+        new AgentUppdateraAlien(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Lista alla aliens för en plats"))
+    {
+        new AgentListaAlienPlats(databas,id).setVisible(true);
+    }  
+    if(valdMetod.equals("Lista över aliens registrerade mellan två datum"))
+    {
+        new AgentListaAlienDatum(databas,id).setVisible(true);
+    }            
+    if(valdMetod.equals("Registrera ny utrustning"))
+    {
+        new AgentLaggTillUtr(databas,id).setVisible(true);
+    }         
+    if(valdMetod.equals("Visa info om en alien"))
+    {
+        new AgentVisaInfoAlien(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Visa områdeschef över utvalt område"))
+    {
+        new AgentVisaOmrC(databas,id).setVisible(true);
+    }    
     }//GEN-LAST:event_btnOkAgentActionPerformed
 
     private void btnLoggaUtAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtAgentActionPerformed
         new Start().setVisible(true);
         AgentFonster.this.dispose();
     }//GEN-LAST:event_btnLoggaUtAgentActionPerformed
-
-    private void btnFulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFulActionPerformed
-        // TODO add your handling code here:
-        new AgentLaggTillAlien(databas, id).setVisible(true);
-    }//GEN-LAST:event_btnFulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,13 +220,13 @@ public class AgentFonster extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFul;
     private javax.swing.JButton btnLoggaUtAgent;
     private javax.swing.JButton btnOkAgent;
+    private javax.swing.JComboBox<String> cblistaMetoderAgent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lblValkommenAgent;
-    private javax.swing.JComboBox<String> listaMetoderAgent;
     // End of variables declaration//GEN-END:variables
    
 }
