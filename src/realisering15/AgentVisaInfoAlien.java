@@ -144,9 +144,10 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAlienIDActionPerformed
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
+        txtAreaResultat1.setText("");
+        txtAreaResultat2.setText("");   
         try {
             ArrayList<HashMap<String, String>> arraylistan;
-            
             
             String ettAlienID = txtAlienID.getText();
             String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" +ettAlienID;
@@ -159,9 +160,7 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
             txtAreaResultat1.append("Telefon"+"\n");
             txtAreaResultat2.append("Plats"+"\t");
             txtAreaResultat2.append("Ansvarig agent"+"\n");
-            
             //txtAreaResultat2.append("Ras"+"\n");
-            
             
             for(HashMap<String, String> enAlien : arraylistan){
                 
@@ -171,35 +170,11 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
                 txtAreaResultat1.append(enAlien.get("Telefon")+"\n");
                 txtAreaResultat2.append(enAlien.get("Plats")+"\t");
                 txtAreaResultat2.append(enAlien.get("Ansvarig_Agent")+"\n");
-                
-                
                 //txtAreaResultat2.append("Ras"+"\n");
-                
-                
-                //ID, Registreringsdatum, Namn, Telefon, Plats, Ansvarig agent, Ras
-                
-                //String valtOmrade = cbValjOmrade.getSelectedItem().toString();
-                //    String fragaChef = "SELECT * FROM agent where agent_id=(select agent_id from omradeschef where omrade =(select omrades_id from omrade where benamning = '"+valtOmrade+"'))";
-                //    soktaChefer = databas.fetchRows(fragaChef);
-                //    txtAreaVisaInfo.append("ID"+"\t");
-                //    txtAreaVisaInfo.append("Namn"+"\t");
-                //    txtAreaVisaInfo.append("Telefon"+"\n");
-                //    for(HashMap<String, String> alien : soktaChefer)
-                //        txtAreaVisaInfo.append(alien.get("Agent_ID")+"\t");
-                //        txtAreaVisaInfo.append(alien.get("Namn")+"\t");
-                //        txtAreaVisaInfo.append(alien.get("Telefon")+"\n");
-
             }
         } catch (InfException ex) {
             Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_btnSokActionPerformed
 
     /**
