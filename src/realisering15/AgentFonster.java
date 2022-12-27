@@ -46,7 +46,7 @@ public class AgentFonster extends javax.swing.JFrame {
         cblistaMetoderAgent = new javax.swing.JComboBox<>();
         btnOkAgent = new javax.swing.JButton();
         btnLoggaUtAgent = new javax.swing.JButton();
-        lblValjAtgardAgent = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -78,7 +78,7 @@ public class AgentFonster extends javax.swing.JFrame {
             }
         });
 
-        lblValjAtgardAgent.setText("Välj en åtgärd");
+        jLabel1.setText("Välj en åtgärd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +93,6 @@ public class AgentFonster extends javax.swing.JFrame {
                         .addComponent(btnOkAgent)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-<<<<<<< Updated upstream
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblValkommenAgent)
                         .addGap(181, 181, 181))
@@ -103,13 +102,6 @@ public class AgentFonster extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-=======
-                        .addGap(0, 97, Short.MAX_VALUE)
-                        .addComponent(lblValjAtgardAgent)
-                        .addGap(18, 18, 18)
-                        .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(181, 181, 181))))
->>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +111,7 @@ public class AgentFonster extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblValjAtgardAgent))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoggaUtAgent)
@@ -231,9 +223,9 @@ public class AgentFonster extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaUtAgent;
     private javax.swing.JButton btnOkAgent;
     private javax.swing.JComboBox<String> cblistaMetoderAgent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JLabel lblValjAtgardAgent;
     private javax.swing.JLabel lblValkommenAgent;
     // End of variables declaration//GEN-END:variables
    
