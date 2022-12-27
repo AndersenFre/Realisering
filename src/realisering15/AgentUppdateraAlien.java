@@ -3,17 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
-
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ander
  */
 public class AgentUppdateraAlien extends javax.swing.JFrame {
-
+    private static InfDB databas;
+    private String id;
     /**
      * Creates new form AgentUppdateraAlien
      */
-    public AgentUppdateraAlien() {
+    public AgentUppdateraAlien(InfDB databas, String id) {
+        this.id=id;
+        this.databas=databas;
         initComponents();
     }
 
@@ -72,7 +79,7 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentUppdateraAlien().setVisible(true);
+                //new AgentUppdateraAlien().setVisible(true);
             }
         });
     }
