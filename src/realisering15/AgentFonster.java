@@ -139,7 +139,7 @@ public class AgentFonster extends javax.swing.JFrame {
         }
     }
     private void cblistaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblistaMetoderAgentActionPerformed
-        // Metoder en agent kan välja 
+        
     }//GEN-LAST:event_cblistaMetoderAgentActionPerformed
 
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed

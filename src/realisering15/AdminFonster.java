@@ -56,6 +56,11 @@ public class AdminFonster extends javax.swing.JFrame {
         });
 
         btnLoggaUtAdmin.setText("Logga ut");
+        btnLoggaUtAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtAdminActionPerformed(evt);
+            }
+        });
 
         btnOkAdmin.setText("OK");
         btnOkAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -134,39 +139,61 @@ public class AdminFonster extends javax.swing.JFrame {
     {
         new AgentNyttLosenord(databas,id).setVisible(true);
     }
-    if(valdMetod.equals("Registrera alien"))
+    if(valdMetod.equals("Registrera Alien"))
     {
         new AgentLaggTillAlien(databas,id).setVisible(true);
     }
-    if(valdMetod.equals("Ändra aliens information"))
+    if(valdMetod.equals("Ändra information om en Alien"))
     {
         new AgentUppdateraAlien(databas,id).setVisible(true);
     }
-    if(valdMetod.equals("Lista alla aliens för en plats"))
+    if(valdMetod.equals("Ta bort Alien"))
     {
-        new AgentListaAlienPlats(databas,id).setVisible(true);
+        new AdminTaBortAlien(databas,id).setVisible(true);
     }  
-    if(valdMetod.equals("Lista över aliens registrerade mellan två datum"))
+    if(valdMetod.equals("Ta bort utrustning"))
     {
-        new AgentListaAlienDatum(databas,id).setVisible(true);
+        new AdminTaBortUtr(databas,id).setVisible(true);
     }            
-    if(valdMetod.equals("Registrera ny utrustning"))
+    if(valdMetod.equals("Registrera Agent"))
     {
-        new AgentLaggTillUtr(databas,id).setVisible(true);
+        new AdminLaggTillAgent(databas,id).setVisible(true);
     }         
-    if(valdMetod.equals("Visa info om en alien"))
+    if(valdMetod.equals("Visa information om en Agent"))
     {
-        new AgentVisaInfoAlien(databas,id).setVisible(true);
+        new AdminVisaInfoAgent(databas,id).setVisible(true);
     }
-    if(valdMetod.equals("Visa områdeschef över utvalt område"))
+    if(valdMetod.equals("Ändra administratörsstatus på Agent"))
     {
-        new AgentVisaOmrC(databas,id).setVisible(true);
+        new AdminAndraAdminStatus(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Ändra information om Agent"))
+    {
+        new AdminUppdateraAgent(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Ta bort Agent"))
+    {
+        new AdminTaBortAgent(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Ändra Områdeschef"))
+    {
+        new AdminAndraOmrC(databas,id).setVisible(true);
+    }
+    if(valdMetod.equals("Ändra Kontorschef"))
+    {
+        new AdminAndraKontorC(databas,id).setVisible(true);
     }
     }//GEN-LAST:event_btnOkAdminActionPerformed
 
     private void cblistaMetoderAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblistaMetoderAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cblistaMetoderAdminActionPerformed
+
+    private void btnLoggaUtAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtAdminActionPerformed
+        // Knapp för att admin ska kunna logga ut.
+        new Start().setVisible(true);
+        AdminFonster.this.dispose();
+    }//GEN-LAST:event_btnLoggaUtAdminActionPerformed
 
     /**
      * @param args the command line arguments
