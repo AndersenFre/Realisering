@@ -4,6 +4,8 @@
  */
 package realisering15;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -37,38 +39,168 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblValkommen = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         txtAlienID = new javax.swing.JTextField();
+        lblAlienID = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
+        btnSok = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaResultat2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaResultat1 = new javax.swing.JTextArea();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblValkommen.setText("Fyll i alienID");
+        txtAlienID.setMinimumSize(new java.awt.Dimension(100, 22));
+        txtAlienID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlienIDActionPerformed(evt);
+            }
+        });
 
-        txtAlienID.setText("jTextField1");
+        lblAlienID.setText("AlienID");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
+        btnSok.setText("Sök");
+        btnSok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokActionPerformed(evt);
+            }
+        });
+
+        txtAreaResultat2.setEditable(false);
+        txtAreaResultat2.setColumns(20);
+        txtAreaResultat2.setRows(5);
+        jScrollPane1.setViewportView(txtAreaResultat2);
+
+        txtAreaResultat1.setEditable(false);
+        txtAreaResultat1.setColumns(20);
+        txtAreaResultat1.setRows(5);
+        jScrollPane3.setViewportView(txtAreaResultat1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addContainerGap()
+                .addComponent(btnTillbaka)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSok)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblValkommen))
-                .addContainerGap(242, Short.MAX_VALUE))
+                    .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lblAlienID)))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(lblValkommen)
-                .addGap(31, 31, 31)
-                .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(lblAlienID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTillbaka)
+                    .addComponent(btnSok))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        AgentVisaInfoAlien.this.dispose();
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void txtAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlienIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlienIDActionPerformed
+
+    private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
+        try {
+            ArrayList<HashMap<String, String>> arraylistan;
+            
+            
+            String ettAlienID = txtAlienID.getText();
+            String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" +ettAlienID;
+            
+            arraylistan = databas.fetchRows(sqlHelaRaden);
+            
+            txtAreaResultat1.append("ID"+"\t");
+            txtAreaResultat1.append("Registreringsdatum"+"\t");
+            txtAreaResultat1.append("Namn"+"\t");
+            txtAreaResultat1.append("Telefon"+"\n");
+            txtAreaResultat2.append("Plats"+"\t");
+            txtAreaResultat2.append("Ansvarig agent"+"\n");
+            
+            //txtAreaResultat2.append("Ras"+"\n");
+            
+            
+            for(HashMap<String, String> enAlien : arraylistan){
+                
+                txtAreaResultat1.append(enAlien.get("Alien_ID")+"\t");
+                txtAreaResultat1.append(enAlien.get("Registreringsdatum")+"\t"+"\t");
+                txtAreaResultat1.append(enAlien.get("Namn")+"\t");
+                txtAreaResultat1.append(enAlien.get("Telefon")+"\n");
+                txtAreaResultat2.append(enAlien.get("Plats")+"\t");
+                txtAreaResultat2.append(enAlien.get("Ansvarig_Agent")+"\n");
+                
+                
+                //txtAreaResultat2.append("Ras"+"\n");
+                
+                
+                //ID, Registreringsdatum, Namn, Telefon, Plats, Ansvarig agent, Ras
+                
+                //String valtOmrade = cbValjOmrade.getSelectedItem().toString();
+                //    String fragaChef = "SELECT * FROM agent where agent_id=(select agent_id from omradeschef where omrade =(select omrades_id from omrade where benamning = '"+valtOmrade+"'))";
+                //    soktaChefer = databas.fetchRows(fragaChef);
+                //    txtAreaVisaInfo.append("ID"+"\t");
+                //    txtAreaVisaInfo.append("Namn"+"\t");
+                //    txtAreaVisaInfo.append("Telefon"+"\n");
+                //    for(HashMap<String, String> alien : soktaChefer)
+                //        txtAreaVisaInfo.append(alien.get("Agent_ID")+"\t");
+                //        txtAreaVisaInfo.append(alien.get("Namn")+"\t");
+                //        txtAreaVisaInfo.append(alien.get("Telefon")+"\n");
+
+            }
+        } catch (InfException ex) {
+            Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnSokActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +238,15 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JButton btnSok;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblAlienID;
     private javax.swing.JTextField txtAlienID;
+    private javax.swing.JTextArea txtAreaResultat1;
+    private javax.swing.JTextArea txtAreaResultat2;
     // End of variables declaration//GEN-END:variables
 }
