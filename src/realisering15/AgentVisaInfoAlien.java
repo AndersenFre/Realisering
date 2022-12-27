@@ -4,16 +4,27 @@
  */
 package realisering15;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AgentVisaInfoAlien extends javax.swing.JFrame {
 
+    private static InfDB databas;
+    private String id;
+    
     /**
      * Creates new form AgentVisaInfoAlien
      */
-    public AgentVisaInfoAlien() {
+    public AgentVisaInfoAlien(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -26,17 +37,34 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblValkommen = new javax.swing.JLabel();
+        txtAlienID = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblValkommen.setText("Fyll i alienID");
+
+        txtAlienID.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValkommen))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(lblValkommen)
+                .addGap(31, 31, 31)
+                .addComponent(txtAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,11 +100,13 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentVisaInfoAlien().setVisible(true);
+                //new AgentVisaInfoAlien().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JTextField txtAlienID;
     // End of variables declaration//GEN-END:variables
 }
