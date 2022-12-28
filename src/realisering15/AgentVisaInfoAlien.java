@@ -158,6 +158,7 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
             ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
 
             String ras = "";
+
             for (String enBoglodite : bogloditer) {
                 if (enBoglodite.equals(ettAlienID)) {
                     ras = "Boglodite";
