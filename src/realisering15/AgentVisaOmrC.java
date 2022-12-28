@@ -126,18 +126,18 @@ public class AgentVisaOmrC extends javax.swing.JFrame {
             txtAreaVisaInfo.append("ID"+"\t");
             txtAreaVisaInfo.append("Namn"+"\t");
             txtAreaVisaInfo.append("Telefon"+"\n"); 
-            for(HashMap<String, String> alien : soktaChefer)
+            for(HashMap<String, String> enChef : soktaChefer)
                 {
-                txtAreaVisaInfo.append(alien.get("Agent_ID")+"\t");
-                txtAreaVisaInfo.append(alien.get("Namn")+"\t");
-                txtAreaVisaInfo.append(alien.get("Telefon")+"\n");
+                txtAreaVisaInfo.append(enChef.get("Agent_ID")+"\t");
+                txtAreaVisaInfo.append(enChef.get("Namn")+"\t");
+                txtAreaVisaInfo.append(enChef.get("Telefon")+"\n");
                 }
             }
         catch(InfException ex1)
             {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }        // TODO add your handling code here:
+            }
     }//GEN-LAST:event_cbValjOmradeActionPerformed
     private void fyllCbValjOmrade()
     {

@@ -64,6 +64,7 @@ public class AgentListaAlienRas extends javax.swing.JFrame {
             }
         });
 
+        txtAreaAliens.setEditable(false);
         txtAreaAliens.setColumns(20);
         txtAreaAliens.setRows(5);
         jScrollPane1.setViewportView(txtAreaAliens);
