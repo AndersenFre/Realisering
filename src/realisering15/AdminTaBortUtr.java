@@ -167,13 +167,8 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
         arTek = databas.fetchColumn(fragaTek);
         arVapen = databas.fetchColumn(fragaVapen);
         arKom = databas.fetchColumn(fragaKom);
-        
-        String tek = "Teknik";
-        String vapen = "Vapen";
-        String kom = "Kommunikation";
-        
-        
-            for(String idTek : arTek)
+    
+        for(String idTek : arTek)
             {
               if(valtUtrID.equals(idTek))
               {
@@ -205,9 +200,6 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex1.getMessage());     
             }
-            
-        
-        
     }//GEN-LAST:event_btnRaderaUtrIDActionPerformed
 
     private void cbUtrIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUtrIDActionPerformed

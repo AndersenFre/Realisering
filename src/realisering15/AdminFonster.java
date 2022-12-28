@@ -119,7 +119,7 @@ public class AdminFonster extends javax.swing.JFrame {
         metoder.add("Registrera Alien");
         metoder.add("Ändra information om en Alien");
         metoder.add("Ta bort Alien");
-        metoder.add("Ta bort utrustning");
+        metoder.add("Ta bort Utrustning");
         metoder.add("Registrera Agent");
         metoder.add("Visa information om en Agent");
         metoder.add("Ändra administratörsstatus på Agent");

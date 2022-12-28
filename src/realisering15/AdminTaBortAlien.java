@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -24,6 +25,7 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
         initComponents();
         this.databas = databas;
         this.id=id;
+        fyllCbValjAlienID();
     }
 
     /**
@@ -37,6 +39,11 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
 
         lblTaBortAlienRubrik = new javax.swing.JLabel();
         btnTaBortAlienTillbaka = new javax.swing.JButton();
+        lblValjAlienID = new javax.swing.JLabel();
+        btnTaBortAlienRader = new javax.swing.JButton();
+        cbValjAlienID = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaAlienInfo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +56,25 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             }
         });
 
+        lblValjAlienID.setText("Välj Alien ID");
+
+        btnTaBortAlienRader.setText("Radera");
+        btnTaBortAlienRader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAlienRaderActionPerformed(evt);
+            }
+        });
+
+        cbValjAlienID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjAlienIDActionPerformed(evt);
+            }
+        });
+
+        txtAreaAlienInfo.setColumns(20);
+        txtAreaAlienInfo.setRows(5);
+        jScrollPane1.setViewportView(txtAreaAlienInfo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,30 +82,184 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(lblTaBortAlienRubrik))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnTaBortAlienTillbaka)))
-                .addContainerGap(186, Short.MAX_VALUE))
+                        .addComponent(btnTaBortAlienTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTaBortAlienRader))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(lblTaBortAlienRubrik)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblValjAlienID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addContainerGap()
                 .addComponent(lblTaBortAlienRubrik)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(btnTaBortAlienTillbaka)
-                .addContainerGap())
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValjAlienID)
+                    .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTaBortAlienTillbaka)
+                    .addComponent(btnTaBortAlienRader))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void fyllCbValjAlienID()
+    {
+        String fraga = "SELECT alien_id FROM alien";
+        
+        ArrayList<String> allaAlienID;
+        try
+            {
+            allaAlienID = databas.fetchColumn(fraga);
+            for(String benamning : allaAlienID)
+                {
+                cbValjAlienID.addItem(benamning);
+                }
+            }
+       catch(InfException ex1)
+            {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex1.getMessage());                    
+            }
+    }
     private void btnTaBortAlienTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienTillbakaActionPerformed
         // TODO add your handling code here:
         AdminTaBortAlien.this.dispose();
     }//GEN-LAST:event_btnTaBortAlienTillbakaActionPerformed
+
+    private void cbValjAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAlienIDActionPerformed
+        // TODO add your handling code here:
+        txtAreaAlienInfo.setText("");
+       
+        try
+            {
+            HashMap<String, String> soktAlien;
+            String tillhorRas = "";
+            String squid = "Squid";
+            String worm = "Worm";
+            String bog = "Boglodite";
+            ArrayList<String> arSquid = new ArrayList<String>();
+            ArrayList<String> arWorm = new ArrayList<String>();
+            ArrayList<String> arBog = new ArrayList<String>();
+            String fragaWorm = "SELECT alien_id FROM worm";
+            String fragaSquid = "SELECT alien_id FROM squid";
+            String fragaBog = "SELECT alien_id FROM boglodite";
+            arSquid = databas.fetchColumn(fragaWorm);
+            arWorm = databas.fetchColumn(fragaSquid);
+            arBog = databas.fetchColumn(fragaBog);
+            String valtAlienID = cbValjAlienID.getSelectedItem().toString();
+            String fragaAlien = "SELECT * FROM alien where alien_id="+valtAlienID;
+            soktAlien = databas.fetchRow(fragaAlien);
+            
+            for(String idSquid : arSquid)
+            {
+              if(valtAlienID.equals(idSquid))
+              {
+                  tillhorRas = squid;
+              }
+            }
+            for(String idWorm : arWorm)
+            {
+              if(valtAlienID.equals(idWorm))
+              {
+                  tillhorRas = worm;
+              }
+            }
+            for(String idBog : arBog)
+            {
+              if(valtAlienID.equals(idBog))
+              {
+                  tillhorRas = bog;
+              }
+            }
+            
+            txtAreaAlienInfo.append("Alien_ID"+"\t");
+            txtAreaAlienInfo.append("Namn"+"\t");
+            txtAreaAlienInfo.append("Ras"+"\n");
+            txtAreaAlienInfo.append(soktAlien.get("Alien_ID")+"\t");
+            txtAreaAlienInfo.append(soktAlien.get("Namn")+"\t");
+            txtAreaAlienInfo.append(tillhorRas);
+
+            
+            }
+        catch(InfException ex1)
+            {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex1.getMessage());     
+            }
+    }//GEN-LAST:event_cbValjAlienIDActionPerformed
+
+    private void btnTaBortAlienRaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienRaderActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+        
+        String valtAlienID = cbValjAlienID.getSelectedItem().toString();
+        String raderaAlien = "delete from alien where alien_id=" + valtAlienID;
+        
+        String raderaSub = "";
+        
+        ArrayList<String> arWorm = new ArrayList<String>();
+        ArrayList<String> arSquid = new ArrayList<String>();
+        ArrayList<String> arBog = new ArrayList<String>();
+        String fragaWorm = "SELECT alien_id FROM worm";
+        String fragaSquid = "SELECT alien_id FROM squid";
+        String fragaBog = "SELECT alien_id FROM boglodite";
+        arWorm = databas.fetchColumn(fragaWorm);
+        arSquid = databas.fetchColumn(fragaSquid);
+        arBog = databas.fetchColumn(fragaBog);
+        
+        for(String idWorm : arWorm)
+            {
+              if(valtAlienID.equals(idWorm))
+              {
+                  raderaSub = "delete from worm where alien_id=" +valtAlienID;
+              }
+            }
+            for(String idSquid : arSquid)
+            {
+              if(valtAlienID.equals(idSquid))
+              {
+                  raderaSub = "delete from squid where alien_id=" +valtAlienID;
+              }
+            }
+            for(String idBog : arBog)
+            {
+              if(valtAlienID.equals(idBog))
+              {
+                  raderaSub = "delete from boglodite where alien_ID=" +valtAlienID;
+              }
+            }
+            databas.delete(raderaAlien);
+            databas.delete(raderaSub);
+            JOptionPane.showMessageDialog(null, "Alien har raderats");
+            AdminTaBortAlien.this.dispose();
+            
+        }
+        catch(InfException ex1)
+            {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex1.getMessage());     
+            }
+    }//GEN-LAST:event_btnTaBortAlienRaderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +297,12 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTaBortAlienRader;
     private javax.swing.JButton btnTaBortAlienTillbaka;
+    private javax.swing.JComboBox<String> cbValjAlienID;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTaBortAlienRubrik;
+    private javax.swing.JLabel lblValjAlienID;
+    private javax.swing.JTextArea txtAreaAlienInfo;
     // End of variables declaration//GEN-END:variables
 }
