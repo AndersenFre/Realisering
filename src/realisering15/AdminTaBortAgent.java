@@ -210,7 +210,7 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRaderaActionPerformed
 
     /**
-     * Metod som fyller scrollistan med de agenter som finns registrerade
+     * Metod som fyller textrutan med information om den valda agenten
      */
     private void cbAgentListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAgentListaActionPerformed
         txtAreaEnAgent.setText("");
