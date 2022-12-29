@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class AgentUppdateraAlien extends javax.swing.JFrame {
     private static InfDB databas;
     private String id;
+    private String alienId = null;
     /**
      * Creates new form AgentUppdateraAlien
      */
@@ -113,13 +114,14 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
  
         try{
         String ettAlienID = txtAlienID.getText();
+        alienId = ettAlienID;
        
         ArrayList<String> aliens = databas.fetchColumn("SELECT alien_id FROM alien");
             boolean alienHittad = false;
             for (String enAlien : aliens) {
                 if (enAlien.equals(ettAlienID)) {
                     alienHittad = true;
-                    new AgentAndraInfoOmAlien(databas,id).setVisible(true);
+                    new AgentAndraInfoOmAlien(databas,id,alienId).setVisible(true);
                     AgentUppdateraAlien.this.dispose();
                 }
         }

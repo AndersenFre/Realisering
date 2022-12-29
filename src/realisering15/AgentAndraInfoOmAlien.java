@@ -16,13 +16,15 @@ import javax.swing.JOptionPane;
 public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
      private static InfDB databas;
     private String id;
+    private String alienId;
 
     /**
      * Creates new form AgentAndraInfoOmAlien
      */
-    public AgentAndraInfoOmAlien(InfDB databas,String id) {
+    public AgentAndraInfoOmAlien(InfDB databas,String id,String alienId) {
         this.id=id;
         this.databas=databas;
+        this.alienId=alienId;
         initComponents();
     }
 
@@ -49,6 +51,9 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
         txtNyAnsvarigAgent = new javax.swing.JTextField();
         lblRegDatum = new javax.swing.JLabel();
         txtNyttDatum = new javax.swing.JTextField();
+        lblRas = new javax.swing.JLabel();
+        txtNyRas = new javax.swing.JTextField();
+        btnAndraUppgifter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,9 +61,27 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
 
         lblIDtForAlien.setText("ID:");
 
+        txtNyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNyIDActionPerformed(evt);
+            }
+        });
+
         lblNamnForAlien.setText("Namn:");
 
+        txtNyNamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNyNamnActionPerformed(evt);
+            }
+        });
+
         lblTelNrForAlien.setText("Telefon:");
+
+        txtNyTelNr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNyTelNrActionPerformed(evt);
+            }
+        });
 
         lblPlatsForAlien.setText("Plats:");
 
@@ -84,6 +107,21 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
             }
         });
 
+        lblRas.setText("Ras:");
+
+        txtNyRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNyRasActionPerformed(evt);
+            }
+        });
+
+        btnAndraUppgifter.setText("Ändra");
+        btnAndraUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraUppgifterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,54 +129,64 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(lblAndraInfo))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTelNrForAlien)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNyTelNr))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNamnForAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNyNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblPlatsForAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNyttDatum))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAnsvarigAgent)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNyPlats))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblRegDatum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNyAnsvarigAgent))))
+                                .addComponent(txtNyAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAnsvarigAgent)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNyPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTelNrForAlien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNyTelNr, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNamnForAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblRas, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIDtForAlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtNyID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(82, 82, 82)
+                                        .addComponent(lblAndraInfo))
+                                    .addComponent(txtNyNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNyRas, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(btnAndraUppgifter))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(jLabel1)))
-                .addContainerGap(163, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblIDtForAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNyID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(298, 298, 298))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblAndraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblAndraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 25, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIDtForAlien)
+                            .addComponent(txtNyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIDtForAlien)
-                    .addComponent(txtNyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblRas)
+                    .addComponent(txtNyRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNamnForAlien)
                     .addComponent(txtNyNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,19 +194,20 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelNrForAlien)
                     .addComponent(txtNyTelNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAnsvarigAgent)
                     .addComponent(txtNyPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRegDatum)
-                    .addComponent(txtNyAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNyAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAndraUppgifter))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlatsForAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNyttDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +215,8 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
 
     private void txtNyPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyPlatsActionPerformed
         // TODO add your handling code here:
+        String gammalPlats = "Select Benamning from Plats Join Alien on Plats_ID=Plats where alien_id="+alienId;
+        txtNyPlats.setText(gammalPlats);
     }//GEN-LAST:event_txtNyPlatsActionPerformed
 
     private void txtNyAnsvarigAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyAnsvarigAgentActionPerformed
@@ -175,6 +226,26 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
     private void txtNyttDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyttDatumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNyttDatumActionPerformed
+
+    private void txtNyTelNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyTelNrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNyTelNrActionPerformed
+
+    private void btnAndraUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraUppgifterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAndraUppgifterActionPerformed
+
+    private void txtNyNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNyNamnActionPerformed
+
+    private void txtNyRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyRasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNyRasActionPerformed
+
+    private void txtNyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNyIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,18 +283,21 @@ public class AgentAndraInfoOmAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAndraUppgifter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAndraInfo;
     private javax.swing.JLabel lblAnsvarigAgent;
     private javax.swing.JLabel lblIDtForAlien;
     private javax.swing.JLabel lblNamnForAlien;
     private javax.swing.JLabel lblPlatsForAlien;
+    private javax.swing.JLabel lblRas;
     private javax.swing.JLabel lblRegDatum;
     private javax.swing.JLabel lblTelNrForAlien;
     private javax.swing.JTextField txtNyAnsvarigAgent;
     private javax.swing.JTextField txtNyID;
     private javax.swing.JTextField txtNyNamn;
     private javax.swing.JTextField txtNyPlats;
+    private javax.swing.JTextField txtNyRas;
     private javax.swing.JTextField txtNyTelNr;
     private javax.swing.JTextField txtNyttDatum;
     // End of variables declaration//GEN-END:variables
