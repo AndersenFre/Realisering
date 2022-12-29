@@ -68,6 +68,7 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
             }
         });
 
+        txtAreaEnAgent.setEditable(false);
         txtAreaEnAgent.setColumns(20);
         txtAreaEnAgent.setRows(5);
         jScrollPane1.setViewportView(txtAreaEnAgent);
