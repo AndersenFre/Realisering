@@ -151,7 +151,7 @@ public class AdminFonster extends javax.swing.JFrame {
     {
         new AdminTaBortAlien(databas,id).setVisible(true);
     }  
-    if(valdMetod.equals("Ta bort utrustning"))
+    if(valdMetod.equals("Ta bort Utrustning"))
     {
         new AdminTaBortUtr(databas,id).setVisible(true);
     }            

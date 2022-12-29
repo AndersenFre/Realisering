@@ -162,8 +162,8 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             String fragaWorm = "SELECT alien_id FROM worm";
             String fragaSquid = "SELECT alien_id FROM squid";
             String fragaBog = "SELECT alien_id FROM boglodite";
-            arSquid = databas.fetchColumn(fragaWorm);
-            arWorm = databas.fetchColumn(fragaSquid);
+            arSquid = databas.fetchColumn(fragaSquid);
+            arWorm = databas.fetchColumn(fragaWorm);
             arBog = databas.fetchColumn(fragaBog);
             String valtAlienID = cbValjAlienID.getSelectedItem().toString();
             String fragaAlien = "SELECT * FROM alien where alien_id="+valtAlienID;
