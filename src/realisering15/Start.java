@@ -4,17 +4,21 @@
  */
 package realisering15;
 
+import oru.inf.InfDB;
+
 /**
  *
  * @author Grupp15
  */
 public class Start extends javax.swing.JFrame {
-
+    private InfDB databas;
+    
     /**
      * Creates new form Start
      */
-    public Start() {
+    public Start(InfDB databas) {
         initComponents();
+        this.databas = databas;
     }
 
     /**
@@ -92,7 +96,7 @@ public class Start extends javax.swing.JFrame {
      * Metod som för användaren till inloggningssidan för agenter
      */
     private void btnAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentActionPerformed
-        new AgentInloggning().setVisible(true);
+        new AgentInloggning(databas).setVisible(true);
         Start.this.dispose();
     }//GEN-LAST:event_btnAgentActionPerformed
 
@@ -100,45 +104,9 @@ public class Start extends javax.swing.JFrame {
      * Metod som för användaren till inloggningssidan för aliens
      */
     private void btnAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlienActionPerformed
-        new AlienInloggning().setVisible(true);
+        new AlienInloggning(databas).setVisible(true);
         Start.this.dispose();
     }//GEN-LAST:event_btnAlienActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Start().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgent;
     private javax.swing.JButton btnAlien;
