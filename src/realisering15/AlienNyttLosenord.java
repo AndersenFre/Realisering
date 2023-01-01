@@ -18,7 +18,7 @@ public class AlienNyttLosenord extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
-    
+
     /**
      * Creates new form AlienNyttLosenord
      */
@@ -56,24 +56,6 @@ public class AlienNyttLosenord extends javax.swing.JFrame {
         lblValkommen.setText("Fyll i uppgifterna nedan för att ändra ditt lösenord");
 
         lblBekraftaLosen.setText("Bekräfta lösenord");
-
-        txtNuvarandeLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNuvarandeLosenActionPerformed(evt);
-            }
-        });
-
-        txtNyttLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNyttLosenActionPerformed(evt);
-            }
-        });
-
-        txtBekraftaLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBekraftaLosenActionPerformed(evt);
-            }
-        });
 
         btnBekrafta.setText("Bekräfta");
         btnBekrafta.addActionListener(new java.awt.event.ActionListener() {
@@ -145,53 +127,45 @@ public class AlienNyttLosenord extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNuvarandeLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuvarandeLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNuvarandeLosenActionPerformed
-
-    private void txtNyttLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNyttLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNyttLosenActionPerformed
-
-    private void txtBekraftaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBekraftaLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBekraftaLosenActionPerformed
-
-     /**
-     * Metod som kontrollerar att "rätt" användare är den som försöker ändra lösenord genom att först
-     * kräva ett korrekt nuvarande lösen och som sedan kontrollerar att det nya lösenordet är korrekt inskrivet genom
-     * att nyttLosen kontrolleras mot bekraftaLosen, om informationen är korrekt så förändras lösenordet till det önskade
+    /**
+     * Metod som kontrollerar att "rätt" användare är den som försöker ändra
+     * lösenord genom att först kräva ett korrekt nuvarande lösen och som sedan
+     * kontrollerar att det nya lösenordet är korrekt inskrivet genom att
+     * nyttLosen kontrolleras mot bekraftaLosen, om informationen är korrekt så
+     * förändras lösenordet till det önskade
      */
     private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
-        try {
-            char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
-            String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
-            
-            char[] nyttLosenKrypt = txtNyttLosen.getPassword();
-            String nyttLosenOkrypt = new String(nyttLosenKrypt);
-            
-            char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
-            String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
-            
-            String aliensLosenSql = "SELECT losenord FROM alien where alien_id=" +id;
-            String aliensLosen = databas.fetchSingle(aliensLosenSql);
-            
-            String sqlUppdateraLosen = "UPDATE alien set losenord ='" +nyttLosenOkrypt+ "' where alien_id =" +id;
-            
-            if(nuvarandeLosenOkrypt.equals(aliensLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)){
-                databas.update(sqlUppdateraLosen);
-                JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+
+        if (Validering.textFaltHarVarde(txtNuvarandeLosen) && Validering.textFaltHarVarde(txtNyttLosen) && Validering.textFaltHarVarde(txtBekraftaLosen)) {
+
+            try {
+                char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
+                String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
+
+                char[] nyttLosenKrypt = txtNyttLosen.getPassword();
+                String nyttLosenOkrypt = new String(nyttLosenKrypt);
+
+                char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
+                String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
+
+                String aliensLosenSql = "SELECT losenord FROM alien where alien_id=" + id;
+                String aliensLosen = databas.fetchSingle(aliensLosenSql);
+
+                String sqlUppdateraLosen = "UPDATE alien set losenord ='" + nyttLosenOkrypt + "' where alien_id =" + id;
+
+                if (nuvarandeLosenOkrypt.equals(aliensLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)) {
+                    databas.update(sqlUppdateraLosen);
+                    JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
+                }
+            } catch (InfException ex) {
+                Logger.getLogger(AlienNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
-            }
-        } 
-        catch (InfException ex) {
-            Logger.getLogger(AlienNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBekraftaActionPerformed
 
-     /**
+    /**
      * Metod som tar användaren tillbaka till föregående fönster
      */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed

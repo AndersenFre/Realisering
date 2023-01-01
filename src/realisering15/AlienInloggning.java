@@ -117,7 +117,7 @@ public class AlienInloggning extends javax.swing.JFrame {
      * fönster med val
      */
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-        if (Validering.textFaltHarVarde(txtIDNr) && Validering.textFaltHarVarde(txtPLosen)) {
+        if (Validering.textFaltHarVarde(txtIDNr) && Validering.textFaltHarVarde(txtPLosen) && Validering.isHeltal(txtIDNr)) {
             try {
                 id = txtIDNr.getText();
                 String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;

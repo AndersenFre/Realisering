@@ -110,19 +110,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtNuvarandeLosen">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNuvarandeLosenActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtNyttLosen">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNyttLosenActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtBekraftaLosen">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBekraftaLosenActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBekrafta">
       <Properties>
