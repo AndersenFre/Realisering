@@ -24,7 +24,7 @@ public class AlienInloggning extends javax.swing.JFrame {
      */
     public AlienInloggning(InfDB databas) {
         initComponents();
-        this.databas=databas;
+        this.databas = databas;
     }
 
     /**
@@ -51,18 +51,6 @@ public class AlienInloggning extends javax.swing.JFrame {
         lblIDNr.setText("ID-nummer");
 
         lblLösenord.setText("Lösenord");
-
-        txtIDNr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDNrActionPerformed(evt);
-            }
-        });
-
-        txtPLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPLosenActionPerformed(evt);
-            }
-        });
 
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
@@ -123,43 +111,37 @@ public class AlienInloggning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIDNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDNrActionPerformed
-
-     /**
-     * Metod som kontrollerar om inloggningsuppgifterna är korrekta och om de stämmer
-     * sedan loggar in användaren och för användaren till ett nytt fönster med val
+    /**
+     * Metod som kontrollerar om inloggningsuppgifterna är korrekta och om de
+     * stämmer sedan loggar in användaren och för användaren till ett nytt
+     * fönster med val
      */
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-        // TODO add your handling code here:
-        try {
-            id = txtIDNr.getText();
-            String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;
-            String svarLosen = databas.fetchSingle(rattLosen);
-            //Dekryptering av JPassword
-            char[] losenKrypt = txtPLosen.getPassword();
-            String losenOkrypt = new String(losenKrypt);
+        if (Validering.textFaltHarVarde(txtIDNr) && Validering.textFaltHarVarde(txtPLosen)) {
+            try {
+                id = txtIDNr.getText();
+                String rattLosen = "SELECT losenord FROM alien where alien_id=" + id;
+                String svarLosen = databas.fetchSingle(rattLosen);
+                //Dekryptering av JPassword
+                char[] losenKrypt = txtPLosen.getPassword();
+                String losenOkrypt = new String(losenKrypt);
 
-            if (losenOkrypt.equals(svarLosen)) {
-                new AlienFonster(databas, id).setVisible(true);
-                AlienInloggning.this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
+                if (losenOkrypt.equals(svarLosen)) {
+                    new AlienFonster(databas, id).setVisible(true);
+                    AlienInloggning.this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
+                }
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Inget resultat hittades");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
             }
-        } catch (InfException ex1) {
-            JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
-    private void txtPLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPLosenActionPerformed
-
     /**
-    * Metod som tar användaren tillbaka till startsidan
-    */
+     * Metod som tar användaren tillbaka till startsidan
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AlienInloggning.this.dispose();
         new Start(databas).setVisible(true);
