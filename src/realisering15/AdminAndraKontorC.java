@@ -5,10 +5,12 @@
 package realisering15;
 
 import java.util.ArrayList;
-import javax.swing.JComboBox;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Grupp15
@@ -16,14 +18,17 @@ import javax.swing.JOptionPane;
 public class AdminAndraKontorC extends javax.swing.JFrame {
 
     private static InfDB databas;
-    private String id; 
+    private String id;
+
     /**
      * Creates new form AdminAndraKontorC
      */
     public AdminAndraKontorC(InfDB databas, String id) {
         initComponents();
         this.databas = databas;
-        this.id=id; 
+        this.id = id;
+        fyllTxtFieldKontorsC();
+        fyllCbNyKontorsC();
     }
 
     /**
@@ -35,12 +40,18 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
         btnAndraKontCTillbaka = new javax.swing.JButton();
+        lblNuvarandeKontorsC = new javax.swing.JLabel();
+        lblNyKontorsC = new javax.swing.JLabel();
+        btnAndraKontorsC = new javax.swing.JButton();
+        cbNyKontorsC = new javax.swing.JComboBox<>();
+        txtFieldNuvarandeKontorsC = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("AdminAndraKontorC");
+        lblRubrik.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblRubrik.setText("Ändra kontorschef");
 
         btnAndraKontCTillbaka.setText("Tillbaka");
         btnAndraKontCTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -49,38 +60,135 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
             }
         });
 
+        lblNuvarandeKontorsC.setText("Nuvarande kontorschef (ID)");
+
+        lblNyKontorsC.setText("Ny kontorschef (ID)");
+
+        btnAndraKontorsC.setText("Ändra kontorschef");
+        btnAndraKontorsC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraKontorsCActionPerformed(evt);
+            }
+        });
+
+        txtFieldNuvarandeKontorsC.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAndraKontCTillbaka)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAndraKontCTillbaka))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNuvarandeKontorsC)
+                            .addComponent(lblNyKontorsC))))
+                .addGap(59, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAndraKontorsC)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtFieldNuvarandeKontorsC, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cbNyKontorsC, javax.swing.GroupLayout.Alignment.LEADING, 0, 82, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(lblRubrik)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(107, 107, 107)
-                .addComponent(btnAndraKontCTillbaka)
+                .addContainerGap()
+                .addComponent(lblRubrik)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNuvarandeKontorsC)
+                    .addComponent(txtFieldNuvarandeKontorsC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNyKontorsC)
+                    .addComponent(cbNyKontorsC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAndraKontCTillbaka)
+                    .addComponent(btnAndraKontorsC))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som stänger detta fönster och tar användaren tillbaka till
+     * adminfönstret
+     */
     private void btnAndraKontCTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraKontCTillbakaActionPerformed
-        // TODO add your handling code here:
         AdminAndraKontorC.this.dispose();
     }//GEN-LAST:event_btnAndraKontCTillbakaActionPerformed
+
+    /**
+     * Metod som uppdaterar vilken agent som är kontorschef
+     */
+    private void btnAndraKontorsCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraKontorsCActionPerformed
+        try {
+            String gammalKontorsChefID = txtFieldNuvarandeKontorsC.getText();
+            String nyKontorsChefID = cbNyKontorsC.getSelectedItem().toString();
+
+            databas.update("UPDATE kontorschef SET agent_id=" + nyKontorsChefID + " WHERE agent_id=" + gammalKontorsChefID);
+
+            JOptionPane.showMessageDialog(null, ("En ny kontorschef har registrerats med agentID " + nyKontorsChefID));
+            txtFieldNuvarandeKontorsC.setText(nyKontorsChefID);
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+            Logger.getLogger(AdminAndraOmrC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAndraKontorsCActionPerformed
+
+    /**
+     * Metod som visar den nuvarande kontorschefen
+     */
+    private void fyllTxtFieldKontorsC() {
+        try {
+            ArrayList<String> kontorsChefer = databas.fetchColumn("SELECT agent_ID FROM kontorschef");
+            for (String enKontorsChef : kontorsChefer) {
+                txtFieldNuvarandeKontorsC.setText(enKontorsChef);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            Logger.getLogger(AdminAndraKontorC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Metod som körs när konstruktorn anropas för att fylla comboboxen
+     * "NyKontorsC" med val
+     */
+    private void fyllCbNyKontorsC() {
+        try {
+            ArrayList<String> allaAgentID = databas.fetchColumn("SELECT agent_ID FROM agent");
+            for (String ettAgentID : allaAgentID) {
+                cbNyKontorsC.addItem(ettAgentID);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraKontCTillbaka;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAndraKontorsC;
+    private javax.swing.JComboBox<String> cbNyKontorsC;
+    private javax.swing.JLabel lblNuvarandeKontorsC;
+    private javax.swing.JLabel lblNyKontorsC;
+    private javax.swing.JLabel lblRubrik;
+    private javax.swing.JTextField txtFieldNuvarandeKontorsC;
     // End of variables declaration//GEN-END:variables
 }

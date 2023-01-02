@@ -74,21 +74,10 @@ public class AdminAndraOmrC extends javax.swing.JFrame {
         });
 
         txtFieldNuvarandeOmradeschef.setEditable(false);
-        txtFieldNuvarandeOmradeschef.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldNuvarandeOmradeschefActionPerformed(evt);
-            }
-        });
 
         lblNuvarandeOmradeschef.setText("Nuvarande områdeschef (ID)");
 
         lblNyOmradeschef.setText("Ny områdeschef (ID)");
-
-        cbNyOmradeschef.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbNyOmradeschefActionPerformed(evt);
-            }
-        });
 
         btnAndraOmradeschef.setText("Ändra områdeschef");
         btnAndraOmradeschef.addActionListener(new java.awt.event.ActionListener() {
@@ -210,10 +199,6 @@ public class AdminAndraOmrC extends javax.swing.JFrame {
         AdminAndraOmrC.this.dispose();
     }//GEN-LAST:event_btnAndraOmrCTillbakaActionPerformed
 
-    private void txtFieldNuvarandeOmradeschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNuvarandeOmradeschefActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldNuvarandeOmradeschefActionPerformed
-
     /**
      * Metod som visar den nuvarande områdeschefen för det valda området i
      * textrutan
@@ -235,10 +220,6 @@ public class AdminAndraOmrC extends javax.swing.JFrame {
             Logger.getLogger(AdminAndraOmrC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cbValjOmradeActionPerformed
-
-    private void cbNyOmradeschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNyOmradeschefActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbNyOmradeschefActionPerformed
 
     /**
      * Metod som uppdaterar vilken agent som är områdeschef över valt område
