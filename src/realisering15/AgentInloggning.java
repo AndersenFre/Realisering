@@ -17,15 +17,15 @@ import oru.inf.InfException;
 public class AgentInloggning extends javax.swing.JFrame {
 
     private static InfDB databas;
-      private String id = null;
+    private String id = null;
 
     /**
      * Creates new form HuvudFonster
      */
     public AgentInloggning(InfDB databas) {
         initComponents();
-        this.databas=databas;
-    }  
+        this.databas = databas;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,19 +55,7 @@ public class AgentInloggning extends javax.swing.JFrame {
 
         lblLösenord.setText("Lösenord");
 
-        txtIDNr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDNrActionPerformed(evt);
-            }
-        });
-
         lblIDNr.setText("ID-nummer");
-
-        txtPLosen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPLosenActionPerformed(evt);
-            }
-        });
 
         lblValkommenAgent.setText("Välkommen Agent!");
 
@@ -124,61 +112,49 @@ public class AgentInloggning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-    * Metod som kontrollerar om inloggningsuppgifterna är korrekta och om de stämmer
-    * sedan loggar in användaren och för användaren till ett nytt fönster med val
-    */
+     * Metod som kontrollerar om inloggningsuppgifterna är korrekta och om de
+     * stämmer sedan loggar in användaren och för användaren till ett nytt
+     * fönster med val
+     */
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-        // TODO add your handling code here:
+        if (Validering.textFaltHarVarde(txtIDNr) && Validering.textFaltHarVarde(txtPLosen) && Validering.isHeltal(txtIDNr)) {
 
-        try {
-            id = txtIDNr.getText();
-            String rattLosen = "SELECT losenord FROM agent where agent_id=" + id;
-            String svarLosen = databas.fetchSingle(rattLosen);
-            //Dekryptering av JPassword
-            char[] losenKrypt = txtPLosen.getPassword();
-            String losenOkrypt = new String(losenKrypt);
-            String fraga = "SELECT administrator FROM agent where agent_id=" + id;
-            String svarFraga = databas.fetchSingle(fraga);
-           
-            //Till nytt fönster
-            if (losenOkrypt.equals(svarLosen)) 
-            {
-                //Om Agenten har adminrättigheter
-                if(svarFraga.equals("J"))
-                    {
+            try {
+                id = txtIDNr.getText();
+                String rattLosen = "SELECT losenord FROM agent where agent_id=" + id;
+                String svarLosen = databas.fetchSingle(rattLosen);
+                //Dekryptering av JPassword
+                char[] losenKrypt = txtPLosen.getPassword();
+                String losenOkrypt = new String(losenKrypt);
+                String fraga = "SELECT administrator FROM agent where agent_id=" + id;
+                String svarFraga = databas.fetchSingle(fraga);
+
+                //Till nytt fönster
+                if (losenOkrypt.equals(svarLosen)) {
+                    //Om Agenten har adminrättigheter
+                    if (svarFraga.equals("J")) {
                         new AdminFonster(databas, id).setVisible(true);
                         AgentInloggning.this.dispose();
-                    }
-                //Om Agent inte har adminrättigheter
-                else//Admin=N
+                    } //Om Agent inte har adminrättigheter
+                    else//Admin=N
                     {
                         new AgentFonster(databas, id).setVisible(true);
                         AgentInloggning.this.dispose();
                     }
-                
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
+                }
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Inget resultat hittades");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
             }
-            else {
-                JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
-            }
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
-    private void txtIDNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDNrActionPerformed
-
-    private void txtPLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPLosenActionPerformed
-
     /**
-    * Metod som tar användaren tillbaka till startsidan
-    */
+     * Metod som tar användaren tillbaka till startsidan
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AgentInloggning.this.dispose();
         new Start(databas).setVisible(true);

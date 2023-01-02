@@ -18,7 +18,7 @@ public class AgentNyttLosenord extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
-    
+
     /**
      * Creates new form AgentNyttLosenord
      */
@@ -122,36 +122,42 @@ public class AgentNyttLosenord extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AgentNyttLosenord.this.dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    /**
+     * Metod som ändrar agentens lösenord efter kontroll
+     */
     private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
-        try {
-            char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
-            String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
-            
-            char[] nyttLosenKrypt = txtNyttLosen.getPassword();
-            String nyttLosenOkrypt = new String(nyttLosenKrypt);
-            
-            char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
-            String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
-            
-            String agentsLosenSql = "SELECT losenord FROM agent where agent_id=" +id;
-            String agentsLosen = databas.fetchSingle(agentsLosenSql);
-            
-            String sqlUppdateraLosen = "UPDATE agent set losenord ='" +nyttLosenOkrypt+ "' where agent_id =" +id;
-            
-            if(nuvarandeLosenOkrypt.equals(agentsLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)){
-                databas.update(sqlUppdateraLosen);
-                JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+        if (Validering.textFaltHarVarde(txtNuvarandeLosen) && Validering.textFaltHarVarde(txtNyttLosen) && Validering.textFaltHarVarde(txtBekraftaLosen)) {
+            try {
+                char[] nuvarandeLosenKrypt = txtNuvarandeLosen.getPassword();
+                String nuvarandeLosenOkrypt = new String(nuvarandeLosenKrypt);
+
+                char[] nyttLosenKrypt = txtNyttLosen.getPassword();
+                String nyttLosenOkrypt = new String(nyttLosenKrypt);
+
+                char[] bekraftaLosenKrypt = txtBekraftaLosen.getPassword();
+                String bekraftaLosenOkrypt = new String(bekraftaLosenKrypt);
+
+                String agentsLosenSql = "SELECT losenord FROM agent where agent_id=" + id;
+                String agentsLosen = databas.fetchSingle(agentsLosenSql);
+
+                String sqlUppdateraLosen = "UPDATE agent set losenord ='" + nyttLosenOkrypt + "' where agent_id =" + id;
+
+                if (nuvarandeLosenOkrypt.equals(agentsLosen) && nyttLosenOkrypt.equals(bekraftaLosenOkrypt)) {
+                    databas.update(sqlUppdateraLosen);
+                    JOptionPane.showMessageDialog(null, "Ditt lösenord har ändrats!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
+                }
+            } catch (InfException ex) {
+                Logger.getLogger(AgentNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
-            }
-        } 
-        catch (InfException ex) {
-            Logger.getLogger(AgentNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBekraftaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,23 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
-import javax.swing.JComboBox;
+
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author Grupp15
  */
 public class AgentLaggTillTek extends javax.swing.JFrame {
-        private static InfDB databas;
-        private String id = null;
+
+    private static InfDB databas;
+    private String id = null;
+
     /**
      * Creates new form AgentLaggTillTek
      */
     public AgentLaggTillTek(InfDB databas, String id) {
-        this.id=id;
-        this.databas=databas;       
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -63,11 +66,6 @@ public class AgentLaggTillTek extends javax.swing.JFrame {
 
         txtTekKraft.setAlignmentX(0.0F);
         txtTekKraft.setAlignmentY(0.0F);
-        txtTekKraft.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTekKraftActionPerformed(evt);
-            }
-        });
 
         lblTekRubrik.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTekRubrik.setText("Lägg till tekniskutrustning");
@@ -138,40 +136,39 @@ public class AgentLaggTillTek extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som lägger till ett vapen med önskat ID, benämning och kraftkälla
+     */
     private void btnTekRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTekRegActionPerformed
-        // TODO add your handling code here:
-                          try 
-        {
-            //Ska vara int
-            String utrID = txtTekUtrID.getText();
-            //Ska vara string
-            String namn = txtTekNamn.getText();
-            //Ska vara Int
-            String kraft = txtTekKraft.getText();
-            //Insert into Utrustning och vapen
-            String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn +"')";
-            String tillLaggVapen = "insert into teknik values(" + utrID + ",'" + kraft + "')";
-            
-            databas.insert(tillLaggUtr);
-            databas.insert(tillLaggVapen);
-           JOptionPane.showMessageDialog(null, "Ny tekniskutrustning har registrerats");
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        if (Validering.textFaltHarVarde(txtTekUtrID) && Validering.textFaltHarVarde(txtTekNamn) && Validering.textFaltHarVarde(txtTekKraft) && Validering.isHeltal(txtTekUtrID)) {
+            try {
+                //Ska vara int
+                String utrID = txtTekUtrID.getText();
+                //Ska vara string
+                String namn = txtTekNamn.getText();
+                //Ska vara Int
+                String kraft = txtTekKraft.getText();
+                //Insert into Utrustning och vapen
+                String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn + "')";
+                String tillLaggVapen = "insert into teknik values(" + utrID + ",'" + kraft + "')";
+
+                databas.insert(tillLaggUtr);
+                databas.insert(tillLaggVapen);
+                JOptionPane.showMessageDialog(null, "Ny tekniskutrustning har registrerats");
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
+            }
         }
-        
     }//GEN-LAST:event_btnTekRegActionPerformed
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnLaggTillTekTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillTekTillbakaActionPerformed
-        // TODO add your handling code here:
         AgentLaggTillTek.this.dispose();
     }//GEN-LAST:event_btnLaggTillTekTillbakaActionPerformed
 
-    private void txtTekKraftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTekKraftActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTekKraftActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggTillTekTillbaka;
     private javax.swing.JButton btnTekReg;

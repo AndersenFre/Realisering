@@ -3,23 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
+
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author Grupp15
  */
 public class AgentLaggTillVapen extends javax.swing.JFrame {
-        private static InfDB databas;
-        private String id = null;
+
+    private static InfDB databas;
+    private String id = null;
+
     /**
      * Creates new form AgentLaggTillVapen
      */
     public AgentLaggTillVapen(InfDB databas, String id) {
-        this.id=id;
-        this.databas=databas;
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -58,11 +62,6 @@ public class AgentLaggTillVapen extends javax.swing.JFrame {
         txtVapenUtrID.setAlignmentY(0.0F);
 
         txtVapenNamn.setAlignmentY(0.0F);
-        txtVapenNamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVapenNamnActionPerformed(evt);
-            }
-        });
 
         txtVapenKal.setAlignmentY(0.0F);
 
@@ -97,9 +96,8 @@ public class AgentLaggTillVapen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblVapenRubrik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblVapenNamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtVapenUtrID, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblVapenUtrID, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtVapenUtrID)
+                    .addComponent(lblVapenUtrID)
                     .addComponent(txtVapenNamn)
                     .addComponent(txtVapenKal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVapenKal))
@@ -132,37 +130,36 @@ public class AgentLaggTillVapen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtVapenNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVapenNamnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVapenNamnActionPerformed
-
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnLaggTillVapenTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillVapenTillbakaActionPerformed
-        // TODO add your handling code here:
         AgentLaggTillVapen.this.dispose();
     }//GEN-LAST:event_btnLaggTillVapenTillbakaActionPerformed
 
+    /**
+     * Metod som lägger till ett vapen med önskat ID, namn och vapen
+     */
     private void btnVapenRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVapenRegActionPerformed
-        // TODO add your handling code here:
-                  try 
-        {
-            //Ska vara int
-            String utrID = txtVapenUtrID.getText();
-            //Ska vara string
-            String namn = txtVapenNamn.getText();
-            //Ska vara Int
-            String kal = txtVapenKal.getText();
-            //Insert into Utrustning och vapen
-            String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn +"')";
-            String tillLaggVapen = "insert into vapen values(" + utrID + "," + kal + ")";
-            
-            databas.insert(tillLaggUtr);
-            databas.insert(tillLaggVapen);
-           JOptionPane.showMessageDialog(null, "Ett nytt vapen har registrerats");
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        if (Validering.textFaltHarVarde(txtVapenUtrID) && Validering.textFaltHarVarde(txtVapenNamn) && Validering.textFaltHarVarde(txtVapenKal) && Validering.isHeltal(txtVapenUtrID)) {
+            try {
+                //Ska vara int
+                String utrID = txtVapenUtrID.getText();
+                //Ska vara string
+                String namn = txtVapenNamn.getText();
+                //Ska vara Int
+                String kal = txtVapenKal.getText();
+                //Insert into Utrustning och vapen
+                String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn + "')";
+                String tillLaggVapen = "insert into vapen values(" + utrID + "," + kal + ")";
+
+                databas.insert(tillLaggUtr);
+                databas.insert(tillLaggVapen);
+                JOptionPane.showMessageDialog(null, "Ett nytt vapen har registrerats");
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
+            }
         }
     }//GEN-LAST:event_btnVapenRegActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

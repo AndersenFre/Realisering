@@ -126,18 +126,12 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtIDNyAlien">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDNyAlienActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRegDatNyAlien">
       <Properties>
         <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegDatNyAlienActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLosenNyAlien">
     </Component>
@@ -146,9 +140,6 @@
     <Component class="javax.swing.JTextField" name="txtTelefonNyAlien">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPlatsNyAlien">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPlatsNyAlienActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnsvarigAgentNyAlien">
     </Component>

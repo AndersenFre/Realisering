@@ -3,23 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
+
 import oru.inf.InfDB;
-import oru.inf.InfException;
+
 /**
  *
  * @author Grupp15
  */
 public class AgentLaggTillUtr extends javax.swing.JFrame {
+
     private static InfDB databas;
     private String id = null;
 
     /**
      * Creates new form AgentLaggTillUtr
+     *
      * @param databas
      */
-    public AgentLaggTillUtr(InfDB databas,String id) {
-        this.id=id;
-        this.databas=databas;
+    public AgentLaggTillUtr(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -114,23 +117,33 @@ public class AgentLaggTillUtr extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnUtrTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtrTillbakaActionPerformed
-        // Tar användaren tillbaka till Agentfönster
         AgentLaggTillUtr.this.dispose();
     }//GEN-LAST:event_btnUtrTillbakaActionPerformed
 
+    /**
+     * Metod som tar användaren till ett nytt fönster för att lägga till vapen
+     */
     private void btnLaggTillVapenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillVapenActionPerformed
-        // TODO add your handling code here:
         new AgentLaggTillVapen(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLaggTillVapenActionPerformed
 
+    /**
+     * Metod som tar användaren till ett nytt fönster för att lägga till
+     * kommunikationsutrustning
+     */
     private void btnLaggTillKomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillKomActionPerformed
-        // TODO add your handling code here:
         new AgentLaggTillKom(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLaggTillKomActionPerformed
 
+    /**
+     * Metod som tar användaren till ett nytt fönster för att lägga till
+     * teknologi
+     */
     private void btnLaggTillTekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillTekActionPerformed
-        // TODO add your handling code here:
         new AgentLaggTillTek(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLaggTillTekActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

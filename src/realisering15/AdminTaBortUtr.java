@@ -6,25 +6,26 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Grupp15
  */
 public class AdminTaBortUtr extends javax.swing.JFrame {
-    
+
     private static InfDB databas;
     private String id;
+
     /**
      * Creates new form AdminTaBortUtr
      */
     public AdminTaBortUtr(InfDB databas, String id) {
         initComponents();
         this.databas = databas;
-        this.id=id;
+        this.id = id;
         fyllCbValjUtrID();
     }
 
@@ -123,91 +124,89 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void fyllCbValjUtrID()
-    {
+
+    /**
+     * Metod som fyller scrollistan med tillgänglig utrustning
+     */
+    private void fyllCbValjUtrID() {
         String fraga = "SELECT utrustnings_id FROM utrustning";
-        
+
         ArrayList<String> allaUtrID;
-        try
-            {
+        try {
             allaUtrID = databas.fetchColumn(fraga);
-            for(String benamning : allaUtrID)
-                {
+            for (String benamning : allaUtrID) {
                 cbUtrID.addItem(benamning);
-                }
             }
-       catch(InfException ex1)
-            {
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());                    
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }
+
+    /**
+     * Metod som för användaren tillbaka till föregående fönster och stänger
+     * nuvarande fönster
+     */
     private void btnTaBortUtrTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrTillbakaActionPerformed
-        // TODO add your handling code here:
         AdminTaBortUtr.this.dispose();
     }//GEN-LAST:event_btnTaBortUtrTillbakaActionPerformed
 
+    /**
+     * Metod som tar bord den valda utrustningen
+     */
     private void btnRaderaUtrIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaderaUtrIDActionPerformed
-        // TODO add your handling code here:
-        try{
-            
-        
-        String valtUtrID = cbUtrID.getSelectedItem().toString();
-        String kategori = "";
-        String raderaUtr = "delete from utrustning where utrustnings_id=" + valtUtrID;
-        
-        String raderaSub = "";
-        
-        ArrayList<String> arTek = new ArrayList<String>();
-        ArrayList<String> arVapen = new ArrayList<String>();
-        ArrayList<String> arKom = new ArrayList<String>();
-        String fragaTek = "SELECT utrustnings_id FROM teknik";
-        String fragaVapen = "SELECT utrustnings_id FROM vapen";
-        String fragaKom = "SELECT utrustnings_id FROM kommunikation";
-        arTek = databas.fetchColumn(fragaTek);
-        arVapen = databas.fetchColumn(fragaVapen);
-        arKom = databas.fetchColumn(fragaKom);
-    
-        for(String idTek : arTek)
-            {
-              if(valtUtrID.equals(idTek))
-              {
-                  raderaSub = "delete from teknik where Utrustnings_ID=" +valtUtrID;
-              }
+        try {
+
+            String valtUtrID = cbUtrID.getSelectedItem().toString();
+            String kategori = "";
+            String raderaUtr = "delete from utrustning where utrustnings_id=" + valtUtrID;
+
+            String raderaSub = "";
+
+            ArrayList<String> arTek = new ArrayList<String>();
+            ArrayList<String> arVapen = new ArrayList<String>();
+            ArrayList<String> arKom = new ArrayList<String>();
+            String fragaTek = "SELECT utrustnings_id FROM teknik";
+            String fragaVapen = "SELECT utrustnings_id FROM vapen";
+            String fragaKom = "SELECT utrustnings_id FROM kommunikation";
+            arTek = databas.fetchColumn(fragaTek);
+            arVapen = databas.fetchColumn(fragaVapen);
+            arKom = databas.fetchColumn(fragaKom);
+
+            for (String idTek : arTek) {
+                if (valtUtrID.equals(idTek)) {
+                    raderaSub = "delete from teknik where Utrustnings_ID=" + valtUtrID;
+                }
             }
-            for(String idVapen : arVapen)
-            {
-              if(valtUtrID.equals(idVapen))
-              {
-                  raderaSub = "delete from vapen where Utrustnings_ID=" +valtUtrID;
-              }
+            for (String idVapen : arVapen) {
+                if (valtUtrID.equals(idVapen)) {
+                    raderaSub = "delete from vapen where Utrustnings_ID=" + valtUtrID;
+                }
             }
-            for(String idKom : arKom)
-            {
-              if(valtUtrID.equals(idKom))
-              {
-                  raderaSub = "delete from kommunikation where Utrustnings_ID=" +valtUtrID;
-              }
+            for (String idKom : arKom) {
+                if (valtUtrID.equals(idKom)) {
+                    raderaSub = "delete from kommunikation where Utrustnings_ID=" + valtUtrID;
+                }
             }
             databas.delete(raderaUtr);
             databas.delete(raderaSub);
             JOptionPane.showMessageDialog(null, "Utrustningen har raderats");
             AdminTaBortUtr.this.dispose();
-            
-        }
-        catch(InfException ex1)
-            {
+
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }//GEN-LAST:event_btnRaderaUtrIDActionPerformed
 
+    /**
+     * Metod som tar fram information om den valda utrustningen
+     */
     private void cbUtrIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUtrIDActionPerformed
         // TODO add your handling code here:
         txtAreaVisaInfoUtr.setText("");
-       
-        try
-            {
+
+        try {
             HashMap<String, String> soktUtr;
             String tillhorKategori = "";
             String tek = "Teknik";
@@ -223,45 +222,36 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
             arVapen = databas.fetchColumn(fragaVapen);
             arKom = databas.fetchColumn(fragaKom);
             String valtUtrID = cbUtrID.getSelectedItem().toString();
-            String fragaUtr = "SELECT * FROM utrustning where utrustnings_id="+valtUtrID;
+            String fragaUtr = "SELECT * FROM utrustning where utrustnings_id=" + valtUtrID;
             soktUtr = databas.fetchRow(fragaUtr);
-            
-            for(String idTek : arTek)
-            {
-              if(valtUtrID.equals(idTek))
-              {
-                  tillhorKategori = tek;
-              }
+
+            for (String idTek : arTek) {
+                if (valtUtrID.equals(idTek)) {
+                    tillhorKategori = tek;
+                }
             }
-            for(String idVapen : arVapen)
-            {
-              if(valtUtrID.equals(idVapen))
-              {
-                  tillhorKategori = vapen;
-              }
+            for (String idVapen : arVapen) {
+                if (valtUtrID.equals(idVapen)) {
+                    tillhorKategori = vapen;
+                }
             }
-            for(String idKom : arKom)
-            {
-              if(valtUtrID.equals(idKom))
-              {
-                  tillhorKategori = kom;
-              }
+            for (String idKom : arKom) {
+                if (valtUtrID.equals(idKom)) {
+                    tillhorKategori = kom;
+                }
             }
-            
-            txtAreaVisaInfoUtr.append("ID"+"\t"+"\t");
-            txtAreaVisaInfoUtr.append("Benämning"+"\n");
-            txtAreaVisaInfoUtr.append(soktUtr.get("Utrustnings_ID")+"\t"+"\t");
-            txtAreaVisaInfoUtr.append(soktUtr.get("Benamning")+"\n");
-            txtAreaVisaInfoUtr.append("Kategori"+"\n");
+
+            txtAreaVisaInfoUtr.append("ID" + "\t" + "\t");
+            txtAreaVisaInfoUtr.append("Benämning" + "\n");
+            txtAreaVisaInfoUtr.append(soktUtr.get("Utrustnings_ID") + "\t" + "\t");
+            txtAreaVisaInfoUtr.append(soktUtr.get("Benamning") + "\n");
+            txtAreaVisaInfoUtr.append("Kategori" + "\n");
             txtAreaVisaInfoUtr.append(tillhorKategori);
 
-            
-            }
-        catch(InfException ex1)
-            {
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }//GEN-LAST:event_cbUtrIDActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRaderaUtrID;

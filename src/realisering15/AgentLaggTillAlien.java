@@ -3,25 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
-import javax.swing.JComboBox;
+
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author Grupp15
  */
 public class AgentLaggTillAlien extends javax.swing.JFrame {
+
     private static InfDB databas;
     //Sparar ID för inloggad agent
     private String id = null;
+
     /**
      * Creates new form LaggTillAlienFonster
      */
-    public AgentLaggTillAlien(InfDB databas, String id) 
-    {
-        this.id=id;
-        this.databas=databas;
+    public AgentLaggTillAlien(InfDB databas, String id) {
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -55,25 +57,8 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        txtIDNyAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDNyAlienActionPerformed(evt);
-            }
-        });
-
         txtRegDatNyAlien.setText("YYYY-MM-DD");
         txtRegDatNyAlien.setToolTipText("");
-        txtRegDatNyAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRegDatNyAlienActionPerformed(evt);
-            }
-        });
-
-        txtPlatsNyAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPlatsNyAlienActionPerformed(evt);
-            }
-        });
 
         btnActionRegistreraNyAlien.setText("Registrera");
         btnActionRegistreraNyAlien.addActionListener(new java.awt.event.ActionListener() {
@@ -194,54 +179,45 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIDNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDNyAlienActionPerformed
-        // Lägger till ny alien
-    }//GEN-LAST:event_txtIDNyAlienActionPerformed
-
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnTillbakaNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaNyAlienActionPerformed
-        // TODO add your handling code here:
         AgentLaggTillAlien.this.dispose();
     }//GEN-LAST:event_btnTillbakaNyAlienActionPerformed
 
+    /**
+     * Metod som lägger till en ny alien med önskade attribut/önskad data
+     */
     private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
-        // TODO add your handling code here:
-          try 
-        {
-            //Ska vara int
-            String alienID = txtIDNyAlien.getText();
-            //Ska vara string
-            String regDat = txtRegDatNyAlien.getText();
-            //Ska vara String
-            String losen = txtLosenNyAlien.getText();
-            //Ska vara String
-            String namn = txtNamnNyAlien.getText();
-            //Ska vara String
-            String tele = txtTelefonNyAlien.getText();
-            //Ska vara int
-            String plats = txtPlatsNyAlien.getText();
-            //Ska vara int
-            String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
-            //Insert into alien
-            String tillLagg = "insert into alien values(" + alienID +",'" + regDat + "','" + losen + "','" + namn + "','" + tele + "'," + plats + "," + ansvarAgent + ")";
-            
-            databas.insert(tillLagg);
-           JOptionPane.showMessageDialog(null, "En ny Alien har registrerats");
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        if (Validering.textFaltHarVarde(txtIDNyAlien) && Validering.textFaltHarVarde(txtRegDatNyAlien) && Validering.textFaltHarVarde(txtLosenNyAlien) && Validering.textFaltHarVarde(txtNamnNyAlien) && Validering.textFaltHarVarde(txtTelefonNyAlien) && Validering.textFaltHarVarde(txtPlatsNyAlien) && Validering.textFaltHarVarde(txtAnsvarigAgentNyAlien)) {
+            try {
+                //Ska vara int
+                String alienID = txtIDNyAlien.getText();
+                //Ska vara string
+                String regDat = txtRegDatNyAlien.getText();
+                //Ska vara String
+                String losen = txtLosenNyAlien.getText();
+                //Ska vara String
+                String namn = txtNamnNyAlien.getText();
+                //Ska vara String
+                String tele = txtTelefonNyAlien.getText();
+                //Ska vara int
+                String plats = txtPlatsNyAlien.getText();
+                //Ska vara int
+                String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
+                //Insert into alien
+                String tillLagg = "insert into alien values(" + alienID + ",'" + regDat + "','" + losen + "','" + namn + "','" + tele + "'," + plats + "," + ansvarAgent + ")";
+
+                databas.insert(tillLagg);
+                JOptionPane.showMessageDialog(null, "En ny Alien har registrerats");
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
+            }
         }
-       
     }//GEN-LAST:event_btnActionRegistreraNyAlienActionPerformed
 
-    private void txtPlatsNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlatsNyAlienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPlatsNyAlienActionPerformed
-
-    private void txtRegDatNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegDatNyAlienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRegDatNyAlienActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActionRegistreraNyAlien;
     private javax.swing.JButton btnTillbakaNyAlien;

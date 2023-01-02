@@ -5,15 +5,14 @@
 package realisering15;
 
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
-import oru.inf.InfException;
-import javax.swing.JOptionPane;
+
 /**
  *
- * @author ander
+ * @author Grupp15
  */
 public class AdminFonster extends javax.swing.JFrame {
+
     private static InfDB databas;
     private String id;
 
@@ -22,7 +21,7 @@ public class AdminFonster extends javax.swing.JFrame {
      */
     public AdminFonster(InfDB databas, String id) {
         this.databas = databas;
-        this.id=id;
+        this.id = id;
         initComponents();
         fyllCbValjMetod();
     }
@@ -48,12 +47,6 @@ public class AdminFonster extends javax.swing.JFrame {
         lblValkommenAdmin.setText("Hej Admin!");
 
         lblValjAtgardAdmin.setText("Välj en åtgärd");
-
-        cblistaMetoderAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cblistaMetoderAdminActionPerformed(evt);
-            }
-        });
 
         btnLoggaUtAdmin.setText("Logga ut");
         btnLoggaUtAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +104,11 @@ public class AdminFonster extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //Fyller comboBoxen med olika val en admin kan göra
-    private void fyllCbValjMetod()
-    {
+
+    /**
+     * Metod som fyller scrollistan med olika val en admin kan göra
+     */
+    private void fyllCbValjMetod() {
         ArrayList<String> metoder = new ArrayList<String>();
         metoder.add("Ändra lösenord");
         metoder.add("Registrera Alien");
@@ -127,68 +122,58 @@ public class AdminFonster extends javax.swing.JFrame {
         metoder.add("Ta bort Agent");
         metoder.add("Ändra Kontorschef");
         metoder.add("Ändra Områdeschef");
-        for(String enMetod : metoder)
-        {
+        for (String enMetod : metoder) {
             cblistaMetoderAdmin.addItem(enMetod);
         }
     }
+
+    /**
+     * Metod som för användaren till aktuellt fönster beroende på val
+     */
     private void btnOkAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAdminActionPerformed
-    //Kontrollerar vilken åtgärd som valts
-    String valdMetod = cblistaMetoderAdmin.getSelectedItem().toString();
-    if(valdMetod.equals("Ändra lösenord"))
-    {
-        new AgentNyttLosenord(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Registrera Alien"))
-    {
-        new AgentLaggTillAlien(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ändra information om en Alien"))
-    {
-        new AgentUppdateraAlien(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ta bort Alien"))
-    {
-        new AdminTaBortAlien(databas,id).setVisible(true);
-    }  
-    if(valdMetod.equals("Ta bort Utrustning"))
-    {
-        new AdminTaBortUtr(databas,id).setVisible(true);
-    }            
-    if(valdMetod.equals("Registrera Agent"))
-    {
-        new AdminLaggTillAgent(databas,id).setVisible(true);
-    }         
-    if(valdMetod.equals("Visa information om en Agent"))
-    {
-        new AdminVisaInfoAgent(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ändra administratörsstatus på Agent"))
-    {
-        new AdminAndraAdminStatus(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ändra information om Agent"))
-    {
-        new AdminUppdateraAgent(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ta bort Agent"))
-    {
-        new AdminTaBortAgent(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ändra Områdeschef"))
-    {
-        new AdminAndraOmrC(databas,id).setVisible(true);
-    }
-    if(valdMetod.equals("Ändra Kontorschef"))
-    {
-        new AdminAndraKontorC(databas,id).setVisible(true);
-    }
+        //Kontrollerar vilken åtgärd som valts
+        String valdMetod = cblistaMetoderAdmin.getSelectedItem().toString();
+        if (valdMetod.equals("Ändra lösenord")) {
+            new AgentNyttLosenord(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Registrera Alien")) {
+            new AgentLaggTillAlien(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ändra information om en Alien")) {
+            new AgentUppdateraAlien(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ta bort Alien")) {
+            new AdminTaBortAlien(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ta bort Utrustning")) {
+            new AdminTaBortUtr(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Registrera Agent")) {
+            new AdminLaggTillAgent(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Visa information om en Agent")) {
+            new AdminVisaInfoAgent(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ändra administratörsstatus på Agent")) {
+            new AdminAndraAdminStatus(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ändra information om Agent")) {
+            new AdminUppdateraAgent(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ta bort Agent")) {
+            new AdminTaBortAgent(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ändra Områdeschef")) {
+            new AdminAndraOmrC(databas, id).setVisible(true);
+        }
+        if (valdMetod.equals("Ändra Kontorschef")) {
+            new AdminAndraKontorC(databas, id).setVisible(true);
+        }
     }//GEN-LAST:event_btnOkAdminActionPerformed
 
-    private void cblistaMetoderAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblistaMetoderAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cblistaMetoderAdminActionPerformed
-
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnLoggaUtAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtAdminActionPerformed
         // Knapp för att admin ska kunna logga ut.
         new Start(databas).setVisible(true);

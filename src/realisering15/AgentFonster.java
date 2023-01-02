@@ -5,10 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
-import oru.inf.InfException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,11 +54,6 @@ public class AgentFonster extends javax.swing.JFrame {
         lblValkommenAgent.setText("Hej Agent!");
 
         cblistaMetoderAgent.setSelectedItem(cblistaMetoderAgent);
-        cblistaMetoderAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cblistaMetoderAgentActionPerformed(evt);
-            }
-        });
 
         btnOkAgent.setText("OK");
         btnOkAgent.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +112,10 @@ public class AgentFonster extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //Fyller comboBoxen med olika val en agent kan göra
 
+    /**
+     * Metod som fyller comboBoxen med olika val en agent kan göra
+     */
     private void fyllCbValjMetod() {
         ArrayList<String> metoder = new ArrayList<String>();
         metoder.add("Ändra lösenord");
@@ -137,10 +131,10 @@ public class AgentFonster extends javax.swing.JFrame {
             cblistaMetoderAgent.addItem(enMetod);
         }
     }
-    private void cblistaMetoderAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblistaMetoderAgentActionPerformed
-
-    }//GEN-LAST:event_cblistaMetoderAgentActionPerformed
-
+    
+    /**
+     * Metod som fyller comboBoxen med olika val en agent kan göra
+     */
     private void btnOkAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkAgentActionPerformed
         //Kontrollerar vilken åtgärd som valts
         String valdMetod = cblistaMetoderAgent.getSelectedItem().toString();
@@ -174,6 +168,9 @@ public class AgentFonster extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnOkAgentActionPerformed
 
+    /**
+     * Metod som tar användaren tillbaka till startsidan
+     */
     private void btnLoggaUtAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtAgentActionPerformed
         new Start(databas).setVisible(true);
         AgentFonster.this.dispose();

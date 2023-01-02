@@ -135,6 +135,9 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AgentVisaInfoAlien.this.dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
@@ -143,68 +146,73 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlienIDActionPerformed
 
+    /**
+     * Metod som visar information om en alien baserat på valt alienID
+     */
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         txtAreaResultat1.setText("");
         txtAreaResultat2.setText("");
 
-        try {
-            ArrayList<HashMap<String, String>> arraylistan;
+        if (Validering.textFaltHarVarde(txtAlienID) && Validering.isHeltal(txtAlienID)) {
+            try {
+                ArrayList<HashMap<String, String>> arraylistan;
 
-            String ettAlienID = txtAlienID.getText();
-            String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" + ettAlienID;
+                String ettAlienID = txtAlienID.getText();
+                String sqlHelaRaden = "SELECT * FROM alien WHERE alien_id=" + ettAlienID;
 
-            ArrayList<String> bogloditer = databas.fetchColumn("SELECT alien_id FROM boglodite");
-            ArrayList<String> worms = databas.fetchColumn("SELECT alien_id FROM worm");
-            ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
+                ArrayList<String> bogloditer = databas.fetchColumn("SELECT alien_id FROM boglodite");
+                ArrayList<String> worms = databas.fetchColumn("SELECT alien_id FROM worm");
+                ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
 
-            String ras = "";
-            for (String enBoglodite : bogloditer) {
-                if (enBoglodite.equals(ettAlienID)) {
-                    ras = "Boglodite";
+                String ras = "";
+                for (String enBoglodite : bogloditer) {
+                    if (enBoglodite.equals(ettAlienID)) {
+                        ras = "Boglodite";
+                    }
                 }
-            }
-            for (String enWorm : worms) {
-                if (enWorm.equals(ettAlienID)) {
-                    ras = "Worm";
+                for (String enWorm : worms) {
+                    if (enWorm.equals(ettAlienID)) {
+                        ras = "Worm";
+                    }
                 }
-            }
-            for (String enSquid : squids) {
-                if (enSquid.equals(ettAlienID)) {
-                    ras = "Squid";
+                for (String enSquid : squids) {
+                    if (enSquid.equals(ettAlienID)) {
+                        ras = "Squid";
+                    }
                 }
-            }
 
-            ArrayList<String> aliens = databas.fetchColumn("SELECT alien_id FROM alien");
-            boolean alienHittad = false;
-            for (String enAlien : aliens) {
-                if (enAlien.equals(ettAlienID)) {
-                    alienHittad = true;
+                ArrayList<String> aliens = databas.fetchColumn("SELECT alien_id FROM alien");
+                boolean alienHittad = false;
+                for (String enAlien : aliens) {
+                    if (enAlien.equals(ettAlienID)) {
+                        alienHittad = true;
+                    }
                 }
-            }
-            if (alienHittad == false) {
-                JOptionPane.showMessageDialog(null, "Det finns ingen alien registrerad med ID: " + ettAlienID);
-            }
+                if (alienHittad == false) {
+                    JOptionPane.showMessageDialog(null, "Det finns ingen alien registrerad med ID: " + ettAlienID);
+                }
 
-            arraylistan = databas.fetchRows(sqlHelaRaden);
-            txtAreaResultat1.append("ID" + "\t");
-            txtAreaResultat1.append("Registreringsdatum" + "\t");
-            txtAreaResultat1.append("Namn" + "\t");
-            txtAreaResultat1.append("Telefon" + "\n");
-            txtAreaResultat2.append("Plats" + "\t");
-            txtAreaResultat2.append("Ansvarig agent" + "\t" + "\t");
-            txtAreaResultat2.append("Ras" + "\n");
+                arraylistan = databas.fetchRows(sqlHelaRaden);
+                txtAreaResultat1.append("ID" + "\t");
+                txtAreaResultat1.append("Registreringsdatum" + "\t");
+                txtAreaResultat1.append("Namn" + "\t");
+                txtAreaResultat1.append("Telefon" + "\n");
+                txtAreaResultat2.append("Plats" + "\t");
+                txtAreaResultat2.append("Ansvarig agent" + "\t" + "\t");
+                txtAreaResultat2.append("Ras" + "\n");
 
-            for (HashMap<String, String> enAlienRad : arraylistan) {
-                txtAreaResultat1.append(enAlienRad.get("Alien_ID") + "\t");
-                txtAreaResultat1.append(enAlienRad.get("Registreringsdatum") + "\t" + "\t");
-                txtAreaResultat1.append(enAlienRad.get("Namn") + "\t");
-                txtAreaResultat1.append(enAlienRad.get("Telefon") + "\n");
-                txtAreaResultat2.append(enAlienRad.get("Plats") + "\t");
-                txtAreaResultat2.append(enAlienRad.get("Ansvarig_Agent") + "\t" + "\t");
-                txtAreaResultat2.append(ras + "\n");
+                for (HashMap<String, String> enAlienRad : arraylistan) {
+                    txtAreaResultat1.append(enAlienRad.get("Alien_ID") + "\t");
+                    txtAreaResultat1.append(enAlienRad.get("Registreringsdatum") + "\t" + "\t");
+                    txtAreaResultat1.append(enAlienRad.get("Namn") + "\t");
+                    txtAreaResultat1.append(enAlienRad.get("Telefon") + "\n");
+                    txtAreaResultat2.append(enAlienRad.get("Plats") + "\t");
+                    txtAreaResultat2.append(enAlienRad.get("Ansvarig_Agent") + "\t" + "\t");
+                    txtAreaResultat2.append(ras + "\n");
+                }
+            } catch (InfException ex) {
+                Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (InfException ex) {
-            Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSokActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

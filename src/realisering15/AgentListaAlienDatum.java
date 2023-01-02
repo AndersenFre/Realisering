@@ -19,7 +19,7 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
-    
+
     /**
      * Creates new form AgentListaAlienDatum
      */
@@ -51,18 +51,8 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
         lblValkommen.setText("Fyll i datum nedan för att lista aliens");
 
         txtFranDatum.setText("YYYY-MM-DD");
-        txtFranDatum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFranDatumActionPerformed(evt);
-            }
-        });
 
         txtTillDatum.setText("YYYY-MM-DD");
-        txtTillDatum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTillDatumActionPerformed(evt);
-            }
-        });
 
         lblFranDatum.setText("Från datum:");
 
@@ -127,49 +117,32 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFranDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFranDatumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFranDatumActionPerformed
-
-    private void txtTillDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTillDatumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTillDatumActionPerformed
-
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         AgentListaAlienDatum.this.dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    /**
+     * Metod som tar fram information om aliens som registrerats mellan valda
+     * datum
+     */
     private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
-        try {
-            String franDatum = txtFranDatum.getText();
-            String tillDatum = txtTillDatum.getText();
-            
-            String sqlFraga = "SELECT alien_id from alien WHERE registreringsdatum >= '" +franDatum+ "' and registreringsdatum <= '" +tillDatum+ "'";
-            ArrayList<String> aliensIOmrade = databas.fetchColumn(sqlFraga);
-            
-            //String[] delarFranDatum = franDatum.split("-");
-            //String[] delarTillDatum = franDatum.split("-");
-            
-            //int franAr = Integer.parseInt(delarFranDatum[0]);
-            //int franManad = Integer.parseInt(delarFranDatum[1]);
-            //int franDag = Integer.parseInt(delarFranDatum[2]);
-            
-            //int tillAr = Integer.parseInt(delarTillDatum[0]);
-            //int tillManad = Integer.parseInt(delarTillDatum[1]);
-            //int tillDag = Integer.parseInt(delarTillDatum[2]);
-            
-            //int intFranDatum = Integer.parseInt(franDatum);
-            //int intTillDatum = Integer.parseInt(tillDatum);
-            
-            //if(franAr>0 && franAr<10000 && franManad>0 && franManad<13 && franDag>0 && franDag<32 && tillAr>0 && tillAr<10000 && tillManad>0 && tillManad<13 && tillDag>0 && tillDag<32)
-            JOptionPane.showMessageDialog(null, "De aliens som registrerats mellan " +franDatum+ " och " +tillDatum+ " har ID: " +aliensIOmrade);    
-        } 
-        catch (InfException ex) {
-            Logger.getLogger(AgentListaAlienDatum.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Inkorrekt datum, skriv enligt följande: YYYY-MM-DD");    
+        if (Validering.textFaltHarVarde(txtFranDatum) && Validering.textFaltHarVarde(txtTillDatum)) {
+            try {
+                String franDatum = txtFranDatum.getText();
+                String tillDatum = txtTillDatum.getText();
 
+                String sqlFraga = "SELECT alien_id from alien WHERE registreringsdatum >= '" + franDatum + "' and registreringsdatum <= '" + tillDatum + "'";
+                ArrayList<String> aliensIOmrade = databas.fetchColumn(sqlFraga);
+
+                JOptionPane.showMessageDialog(null, "De aliens som registrerats mellan " + franDatum + " och " + tillDatum + " har ID: " + aliensIOmrade);
+            } catch (InfException ex) {
+                Logger.getLogger(AgentListaAlienDatum.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Inkorrekt datum, skriv enligt följande: YYYY-MM-DD");
+            }
         }
-        
     }//GEN-LAST:event_btnBekraftaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBekrafta;

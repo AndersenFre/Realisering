@@ -83,17 +83,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFranDatumActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTillDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTillDatumActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFranDatum">
       <Properties>

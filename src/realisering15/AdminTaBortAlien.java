@@ -6,10 +6,10 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Grupp15
@@ -18,13 +18,14 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
+
     /**
      * Creates new form AdminTaBortAlien
      */
     public AdminTaBortAlien(InfDB databas, String id) {
         initComponents();
         this.databas = databas;
-        this.id=id;
+        this.id = id;
         fyllCbValjAlienID();
     }
 
@@ -121,36 +122,40 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void fyllCbValjAlienID()
-    {
+
+    /**
+     * Metod som fyller scrollistan med registrerade aliens
+     */
+    private void fyllCbValjAlienID() {
         String fraga = "SELECT alien_id FROM alien";
-        
+
         ArrayList<String> allaAlienID;
-        try
-            {
+        try {
             allaAlienID = databas.fetchColumn(fraga);
-            for(String benamning : allaAlienID)
-                {
+            for (String benamning : allaAlienID) {
                 cbValjAlienID.addItem(benamning);
-                }
             }
-       catch(InfException ex1)
-            {
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());                    
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }
+
+    /**
+     * Metod som för användaren tillbaka till föregående fönster och stänger
+     * nuvarande fönster
+     */
     private void btnTaBortAlienTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienTillbakaActionPerformed
-        // TODO add your handling code here:
         AdminTaBortAlien.this.dispose();
     }//GEN-LAST:event_btnTaBortAlienTillbakaActionPerformed
 
+    /**
+     * Metod som tar fram information om den valda alien
+     */
     private void cbValjAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAlienIDActionPerformed
-        // TODO add your handling code here:
         txtAreaAlienInfo.setText("");
-       
-        try
-            {
+
+        try {
             HashMap<String, String> soktAlien;
             String tillhorRas = "";
             String squid = "Squid";
@@ -166,99 +171,83 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             arWorm = databas.fetchColumn(fragaWorm);
             arBog = databas.fetchColumn(fragaBog);
             String valtAlienID = cbValjAlienID.getSelectedItem().toString();
-            String fragaAlien = "SELECT * FROM alien where alien_id="+valtAlienID;
+            String fragaAlien = "SELECT * FROM alien where alien_id=" + valtAlienID;
             soktAlien = databas.fetchRow(fragaAlien);
-            
-            for(String idSquid : arSquid)
-            {
-              if(valtAlienID.equals(idSquid))
-              {
-                  tillhorRas = squid;
-              }
+
+            for (String idSquid : arSquid) {
+                if (valtAlienID.equals(idSquid)) {
+                    tillhorRas = squid;
+                }
             }
-            for(String idWorm : arWorm)
-            {
-              if(valtAlienID.equals(idWorm))
-              {
-                  tillhorRas = worm;
-              }
+            for (String idWorm : arWorm) {
+                if (valtAlienID.equals(idWorm)) {
+                    tillhorRas = worm;
+                }
             }
-            for(String idBog : arBog)
-            {
-              if(valtAlienID.equals(idBog))
-              {
-                  tillhorRas = bog;
-              }
+            for (String idBog : arBog) {
+                if (valtAlienID.equals(idBog)) {
+                    tillhorRas = bog;
+                }
             }
-            
-            txtAreaAlienInfo.append("Alien_ID"+"\t");
-            txtAreaAlienInfo.append("Namn"+"\t");
-            txtAreaAlienInfo.append("Ras"+"\n");
-            txtAreaAlienInfo.append(soktAlien.get("Alien_ID")+"\t");
-            txtAreaAlienInfo.append(soktAlien.get("Namn")+"\t");
+
+            txtAreaAlienInfo.append("Alien_ID" + "\t");
+            txtAreaAlienInfo.append("Namn" + "\t");
+            txtAreaAlienInfo.append("Ras" + "\n");
+            txtAreaAlienInfo.append(soktAlien.get("Alien_ID") + "\t");
+            txtAreaAlienInfo.append(soktAlien.get("Namn") + "\t");
             txtAreaAlienInfo.append(tillhorRas);
 
-            
-            }
-        catch(InfException ex1)
-            {
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }//GEN-LAST:event_cbValjAlienIDActionPerformed
 
+    /**
+     * Metod som tar bord den valda alien
+     */
     private void btnTaBortAlienRaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienRaderActionPerformed
-        // TODO add your handling code here:
-        try{
-            
-        
-        String valtAlienID = cbValjAlienID.getSelectedItem().toString();
-        String raderaAlien = "delete from alien where alien_id=" + valtAlienID;
-        
-        String raderaSub = "";
-        
-        ArrayList<String> arWorm = new ArrayList<String>();
-        ArrayList<String> arSquid = new ArrayList<String>();
-        ArrayList<String> arBog = new ArrayList<String>();
-        String fragaWorm = "SELECT alien_id FROM worm";
-        String fragaSquid = "SELECT alien_id FROM squid";
-        String fragaBog = "SELECT alien_id FROM boglodite";
-        arWorm = databas.fetchColumn(fragaWorm);
-        arSquid = databas.fetchColumn(fragaSquid);
-        arBog = databas.fetchColumn(fragaBog);
-        
-        for(String idWorm : arWorm)
-            {
-              if(valtAlienID.equals(idWorm))
-              {
-                  raderaSub = "delete from worm where alien_id=" +valtAlienID;
-              }
+        try {
+
+            String valtAlienID = cbValjAlienID.getSelectedItem().toString();
+            String raderaAlien = "delete from alien where alien_id=" + valtAlienID;
+
+            String raderaSub = "";
+
+            ArrayList<String> arWorm = new ArrayList<String>();
+            ArrayList<String> arSquid = new ArrayList<String>();
+            ArrayList<String> arBog = new ArrayList<String>();
+            String fragaWorm = "SELECT alien_id FROM worm";
+            String fragaSquid = "SELECT alien_id FROM squid";
+            String fragaBog = "SELECT alien_id FROM boglodite";
+            arWorm = databas.fetchColumn(fragaWorm);
+            arSquid = databas.fetchColumn(fragaSquid);
+            arBog = databas.fetchColumn(fragaBog);
+
+            for (String idWorm : arWorm) {
+                if (valtAlienID.equals(idWorm)) {
+                    raderaSub = "delete from worm where alien_id=" + valtAlienID;
+                }
             }
-            for(String idSquid : arSquid)
-            {
-              if(valtAlienID.equals(idSquid))
-              {
-                  raderaSub = "delete from squid where alien_id=" +valtAlienID;
-              }
+            for (String idSquid : arSquid) {
+                if (valtAlienID.equals(idSquid)) {
+                    raderaSub = "delete from squid where alien_id=" + valtAlienID;
+                }
             }
-            for(String idBog : arBog)
-            {
-              if(valtAlienID.equals(idBog))
-              {
-                  raderaSub = "delete from boglodite where alien_ID=" +valtAlienID;
-              }
+            for (String idBog : arBog) {
+                if (valtAlienID.equals(idBog)) {
+                    raderaSub = "delete from boglodite where alien_ID=" + valtAlienID;
+                }
             }
             databas.delete(raderaAlien);
             databas.delete(raderaSub);
             JOptionPane.showMessageDialog(null, "Alien har raderats");
             AdminTaBortAlien.this.dispose();
-            
-        }
-        catch(InfException ex1)
-            {
+
+        } catch (InfException ex1) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }
+            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        }
     }//GEN-LAST:event_btnTaBortAlienRaderActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBortAlienRader;

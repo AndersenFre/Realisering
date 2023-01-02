@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -114,67 +113,69 @@ public class AdminVisaInfoAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     /**
-    * Metod som för användaren tillbaka till föregående fönster och stänger nuvarande fönster
-    */
+     * Metod som för användaren tillbaka till föregående fönster och stänger
+     * nuvarande fönster
+     */
     private void btnVisaInfoAgentTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaInfoAgentTillbakaActionPerformed
         AdminVisaInfoAgent.this.dispose();
     }//GEN-LAST:event_btnVisaInfoAgentTillbakaActionPerformed
 
     /**
-    * Metod som tar fram information om vald agent efter att ha utfört en kontroll på att
-    * invärdet (agentID) är giltigt
-    */
+     * Metod som tar fram information om vald agent efter att ha utfört en
+     * kontroll på att invärdet (agentID) är giltigt
+     */
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         txtAreaAgentInfo.setText("");
 
-        try {
-            String ettAgentID = txtAgentID.getText();
-            String sqlHelaRaden = "SELECT * FROM agent WHERE agent_id=" + ettAgentID;
-            HashMap<String, String> enAgentRad = databas.fetchRow(sqlHelaRaden);
-            ArrayList<String> antalAgenter = databas.fetchColumn("SELECT agent_id FROM agent");
-            int ettAgentIDInt = Integer.parseInt(ettAgentID);
+        if (Validering.textFaltHarVarde(txtAgentID) && Validering.isHeltal(txtAgentID)) {
+            try {
+                String ettAgentID = txtAgentID.getText();
+                String sqlHelaRaden = "SELECT * FROM agent WHERE agent_id=" + ettAgentID;
+                HashMap<String, String> enAgentRad = databas.fetchRow(sqlHelaRaden);
+                ArrayList<String> antalAgenter = databas.fetchColumn("SELECT agent_id FROM agent");
+                int ettAgentIDInt = Integer.parseInt(ettAgentID);
 
-            String kontorschef = "Nej";
-            String omradeschef = "Nej";
-            ArrayList<String> kontorschefer = databas.fetchColumn("SELECT agent_id FROM kontorschef");
-            ArrayList<String> omradeschefer = databas.fetchColumn("SELECT agent_id FROM omradeschef");
-            for (String enKontorschef : kontorschefer) {
-                if (ettAgentID.equals(enKontorschef)) {
-                    kontorschef = "Ja";
+                String kontorschef = "Nej";
+                String omradeschef = "Nej";
+                ArrayList<String> kontorschefer = databas.fetchColumn("SELECT agent_id FROM kontorschef");
+                ArrayList<String> omradeschefer = databas.fetchColumn("SELECT agent_id FROM omradeschef");
+                for (String enKontorschef : kontorschefer) {
+                    if (ettAgentID.equals(enKontorschef)) {
+                        kontorschef = "Ja";
+                    }
                 }
-            }
-            for (String enOmradeschef : omradeschefer) {
-                if (ettAgentID.equals(enOmradeschef)) {
-                    omradeschef = "Ja";
+                for (String enOmradeschef : omradeschefer) {
+                    if (ettAgentID.equals(enOmradeschef)) {
+                        omradeschef = "Ja";
+                    }
                 }
-            }
 
-            if (ettAgentIDInt <= antalAgenter.size() && ettAgentIDInt > 0) {
-                txtAreaAgentInfo.append("ID-nummer" + "\t" + "\t");
-                txtAreaAgentInfo.append("Namn" + "\t");
-                txtAreaAgentInfo.append("Telefon" + "\n");
-                txtAreaAgentInfo.append(ettAgentID + "\t" + "\t");
-                txtAreaAgentInfo.append(enAgentRad.get("Namn") + "\t");
-                txtAreaAgentInfo.append(enAgentRad.get("Telefon") + "\n" + "\n" + "\n");
-                txtAreaAgentInfo.append("Anställningsdatum" + "\t");
-                txtAreaAgentInfo.append("Admin" + "\t");
-                txtAreaAgentInfo.append("Lösenord" + "\n");
-                txtAreaAgentInfo.append(enAgentRad.get("Anstallningsdatum") + "\t" + "\t");
-                txtAreaAgentInfo.append(enAgentRad.get("Administrator") + "\t");
-                txtAreaAgentInfo.append(enAgentRad.get("Losenord") + "\n" + "\n" + "\n");
-                txtAreaAgentInfo.append("Område" + "\t");
-                txtAreaAgentInfo.append("Är områdeschef" + "\t");
-                txtAreaAgentInfo.append("Är kontorschef" + "\n");
-                txtAreaAgentInfo.append(enAgentRad.get("Omrade") + "\t");
-                txtAreaAgentInfo.append(omradeschef + "\t" + "\t");
-                txtAreaAgentInfo.append(kontorschef + "\n");
-            } else {
-                JOptionPane.showMessageDialog(null, "Det finns ingen agent registrerad med ID: " + ettAgentID);
+                if (ettAgentIDInt <= antalAgenter.size() && ettAgentIDInt > 0) {
+                    txtAreaAgentInfo.append("ID-nummer" + "\t" + "\t");
+                    txtAreaAgentInfo.append("Namn" + "\t");
+                    txtAreaAgentInfo.append("Telefon" + "\n");
+                    txtAreaAgentInfo.append(ettAgentID + "\t" + "\t");
+                    txtAreaAgentInfo.append(enAgentRad.get("Namn") + "\t");
+                    txtAreaAgentInfo.append(enAgentRad.get("Telefon") + "\n" + "\n" + "\n");
+                    txtAreaAgentInfo.append("Anställningsdatum" + "\t");
+                    txtAreaAgentInfo.append("Admin" + "\t");
+                    txtAreaAgentInfo.append("Lösenord" + "\n");
+                    txtAreaAgentInfo.append(enAgentRad.get("Anstallningsdatum") + "\t" + "\t");
+                    txtAreaAgentInfo.append(enAgentRad.get("Administrator") + "\t");
+                    txtAreaAgentInfo.append(enAgentRad.get("Losenord") + "\n" + "\n" + "\n");
+                    txtAreaAgentInfo.append("Område" + "\t");
+                    txtAreaAgentInfo.append("Är områdeschef" + "\t" + "\t");
+                    txtAreaAgentInfo.append("Är kontorschef" + "\n");
+                    txtAreaAgentInfo.append(enAgentRad.get("Omrade") + "\t");
+                    txtAreaAgentInfo.append(omradeschef + "\t" + "\t");
+                    txtAreaAgentInfo.append(kontorschef + "\n");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Det finns ingen agent registrerad med ID: " + ettAgentID);
+                }
+            } catch (InfException ex) {
+                Logger.getLogger(AdminVisaInfoAgent.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (InfException ex) {
-            Logger.getLogger(AdminVisaInfoAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSokActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

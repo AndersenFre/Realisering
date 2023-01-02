@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -17,7 +16,6 @@ import javax.swing.JOptionPane;
  * @author Grupp15
  */
 public class AdminAndraAdminStatus extends javax.swing.JFrame {
-
     private static InfDB databas;
     private String id;
 

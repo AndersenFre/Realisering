@@ -3,22 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
+
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author Grupp15
  */
 public class AgentLaggTillKom extends javax.swing.JFrame {
-        private static InfDB databas;
-        private String id = null;
+
+    private static InfDB databas;
+    private String id = null;
+
     /**
      * Creates new form AgentLaggTillKom
      */
     public AgentLaggTillKom(InfDB databas, String id) {
-        this.id=id;
-        this.databas=databas;       
+        this.id = id;
+        this.databas = databas;
         initComponents();
     }
 
@@ -78,11 +82,6 @@ public class AgentLaggTillKom extends javax.swing.JFrame {
 
         txtKomOverFor.setAlignmentX(0.0F);
         txtKomOverFor.setAlignmentY(0.0F);
-        txtKomOverFor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKomOverForActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,37 +142,37 @@ public class AgentLaggTillKom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtKomOverForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKomOverForActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKomOverForActionPerformed
-
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnKomTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKomTillbakaActionPerformed
-        // TODO add your handling code here:
         AgentLaggTillKom.this.dispose();
     }//GEN-LAST:event_btnKomTillbakaActionPerformed
 
+    /**
+     * Metod som lägger till ny kommunikationsutrustning med önskat ID,
+     * benämning och typ av överföringsteknik
+     */
     private void btnRegTekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegTekActionPerformed
-        // TODO add your handling code here:
-        try 
-        {
-            //Ska vara int
-            String utrID = txtKomUtrID.getText();
-            //Ska vara string
-            String namn = txtKomNamn.getText();
-            //Ska vara Int
-            String overFor = txtKomOverFor.getText();
-            //Insert into Utrustning och vapen
-            String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn +"')";
-            String tillLaggKom = "insert into kommunikation values(" + utrID + ",'" + overFor + "')";
-            
-            databas.insert(tillLaggUtr);
-            databas.insert(tillLaggKom);
-           JOptionPane.showMessageDialog(null, "Ny kommunikationsutrustning har registrerats");
-        } 
-        catch (InfException ex1) 
-        {
-            JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+        if (Validering.textFaltHarVarde(txtKomUtrID) && Validering.textFaltHarVarde(txtKomNamn) && Validering.textFaltHarVarde(txtKomOverFor) && Validering.isHeltal(txtKomUtrID)) {
+            try {
+                //Ska vara int
+                String utrID = txtKomUtrID.getText();
+                //Ska vara string
+                String namn = txtKomNamn.getText();
+                //Ska vara Int
+                String overFor = txtKomOverFor.getText();
+                //Insert into Utrustning och vapen
+                String tillLaggUtr = "insert into utrustning values(" + utrID + ",'" + namn + "')";
+                String tillLaggKom = "insert into kommunikation values(" + utrID + ",'" + overFor + "')";
+
+                databas.insert(tillLaggUtr);
+                databas.insert(tillLaggKom);
+                JOptionPane.showMessageDialog(null, "Ny kommunikationsutrustning har registrerats");
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
+            }
         }
     }//GEN-LAST:event_btnRegTekActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
