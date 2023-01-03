@@ -4,14 +4,11 @@
  */
 package realisering15;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AlienFonster extends javax.swing.JFrame {
@@ -27,7 +24,7 @@ public class AlienFonster extends javax.swing.JFrame {
         this.databas = databas;
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,8 +101,9 @@ public class AlienFonster extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     /**
-     * Metod som visar upp information om områdeschefen för det område som alien befinner sig i
+    /**
+     * Metod som visar upp information om områdeschefen för det område som alien
+     * befinner sig i
      */
     private void btnVisaOCInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaOCInfoActionPerformed
 
@@ -114,23 +112,26 @@ public class AlienFonster extends javax.swing.JFrame {
             String sqlSvarTelefon = "SELECT agent.`Telefon` FROM agent join omradeschef on agent.`Agent_ID` = omradeschef.`Agent_ID` join omrade on omradeschef.`Omrade` = omrade.`Omrades_ID` join alien on omrade.`Omrades_ID` = alien.`Plats` where alien.`Alien_ID` =" + id;
             String svarNamn = databas.fetchSingle(sqlSvarNamn);
             String svarTelefon = databas.fetchSingle(sqlSvarTelefon);
-            
-            JOptionPane.showMessageDialog(null, "Din områdeschef är: " +svarNamn+ ", telefonnummer " +svarTelefon);
+
+            JOptionPane.showMessageDialog(null, "Din områdeschef är: " + svarNamn + ", telefonnummer " + svarTelefon);
         } catch (InfException ex) {
-            Logger.getLogger(AlienFonster.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Ett fel har inträffat, försök igen");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }//GEN-LAST:event_btnVisaOCInfoActionPerformed
 
-     /**
-     * Metod som för användaren till ett nytt fönster för att ändra sitt lösenord
+    /**
+     * Metod som för användaren till ett nytt fönster för att ändra sitt
+     * lösenord
      */
     private void btnLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLosenordActionPerformed
         new AlienNyttLosenord(databas, id).setVisible(true);
     }//GEN-LAST:event_btnLosenordActionPerformed
 
-     /**
-     * Metod som loggar ut användaren och laddar om startfönstret (och rensar (genom att ej skicka med)
-     * information om databasuppkoppling och användaren)
+    /**
+     * Metod som loggar ut användaren och laddar om startfönstret (och rensar
+     * (genom att ej skicka med) information om databasuppkoppling och
+     * användaren)
      */
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         new Start(databas).setVisible(true);

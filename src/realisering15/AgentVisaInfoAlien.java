@@ -6,14 +6,11 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentVisaInfoAlien extends javax.swing.JFrame {
@@ -57,11 +54,6 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtAlienID.setMinimumSize(new java.awt.Dimension(100, 22));
-        txtAlienID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlienIDActionPerformed(evt);
-            }
-        });
 
         lblAlienID.setText("AlienID");
 
@@ -142,10 +134,6 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
         AgentVisaInfoAlien.this.dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    private void txtAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlienIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlienIDActionPerformed
-
     /**
      * Metod som visar information om en alien baserat på valt alienID
      */
@@ -211,7 +199,8 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
                     txtAreaResultat2.append(ras + "\n");
                 }
             } catch (InfException ex) {
-                Logger.getLogger(AgentVisaInfoAlien.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Ett fel har inträffat, försök igen");
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnSokActionPerformed

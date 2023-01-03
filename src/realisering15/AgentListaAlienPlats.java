@@ -3,27 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package realisering15;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
- *
  * @author Grupp15
  */
 public class AgentListaAlienPlats extends javax.swing.JFrame {
-            private static InfDB databas;
-            private String id;
+
+    private static InfDB databas;
+    private String id;
 
     /**
      * Creates new form AgentListaAlienPlats
      */
     public AgentListaAlienPlats(InfDB databas, String id) {
         initComponents();
-        this.id=id;
-        this.databas=databas;
+        this.id = id;
+        this.databas = databas;
         fyllCbValjOmrade();
     }
 
@@ -111,55 +112,54 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnListaAlienTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAlienTillbakaActionPerformed
-        // TODO add your handling code here:
         AgentListaAlienPlats.this.dispose();
     }//GEN-LAST:event_btnListaAlienTillbakaActionPerformed
-    private void fyllCbValjOmrade()
-    {
+
+    /**
+     * Metod som fyller scrollistan cbValjOmrade med tillgängliga områden
+     */
+    private void fyllCbValjOmrade() {
         String fraga = "SELECT benamning FROM OMRADE";
-        
+
         ArrayList<String> allaOmraden;
-        try
-            {
+        try {
             allaOmraden = databas.fetchColumn(fraga);
-            for(String benamning : allaOmraden)
-                {
+            for (String benamning : allaOmraden) {
                 cbValjOmrade.addItem(benamning);
-                }
             }
-       catch(InfException ex1)
-            {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());                    
-            }
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
     }
-    
+
+    /**
+     * Metod som visar vilka aliens som befinner sig inom valt område
+     */
     private void cbValjOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOmradeActionPerformed
-        // TODO add your handling code here:
         txtAreaVisaInfo.setText("");
         ArrayList<HashMap<String, String>> soktaAliens;
-       // 
-        try
-            {
+        // 
+        try {
             String valtOmrade = cbValjOmrade.getSelectedItem().toString();
-            String fragaAlien = "SELECT * FROM alien where plats in (select omrades_id from omrade where benamning ='" +valtOmrade + "') order by alien_id";
+            String fragaAlien = "SELECT * FROM alien where plats in (select omrades_id from omrade where benamning ='" + valtOmrade + "') order by alien_id";
             soktaAliens = databas.fetchRows(fragaAlien);
-            txtAreaVisaInfo.append("ID"+"\t");
-            txtAreaVisaInfo.append("Namn"+"\t");
-            txtAreaVisaInfo.append("Telefon"+"\n"); 
-            for(HashMap<String, String> alien : soktaAliens)
-                {
-                txtAreaVisaInfo.append(alien.get("Alien_ID")+"\t");
-                txtAreaVisaInfo.append(alien.get("Namn")+"\t");
-                txtAreaVisaInfo.append(alien.get("Telefon")+"\n");
-                }
+            txtAreaVisaInfo.append("ID" + "\t");
+            txtAreaVisaInfo.append("Namn" + "\t");
+            txtAreaVisaInfo.append("Telefon" + "\n");
+            for (HashMap<String, String> alien : soktaAliens) {
+                txtAreaVisaInfo.append(alien.get("Alien_ID") + "\t");
+                txtAreaVisaInfo.append(alien.get("Namn") + "\t");
+                txtAreaVisaInfo.append(alien.get("Telefon") + "\n");
             }
-        catch(InfException ex1)
-            {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
-            }
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
     }//GEN-LAST:event_cbValjOmradeActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListaAlienTillbaka;

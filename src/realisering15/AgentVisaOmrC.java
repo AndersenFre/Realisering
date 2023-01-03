@@ -6,7 +6,6 @@ package realisering15;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -133,10 +132,10 @@ public class AgentVisaOmrC extends javax.swing.JFrame {
                 txtAreaVisaInfo.append(enChef.get("Telefon")+"\n");
                 }
             }
-        catch(InfException ex1)
+        catch(InfException ex)
             {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());     
+            System.out.println("Internt felmeddelande" + ex.getMessage());     
             }
     }//GEN-LAST:event_cbValjOmradeActionPerformed
     private void fyllCbValjOmrade()

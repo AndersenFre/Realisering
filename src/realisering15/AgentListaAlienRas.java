@@ -7,12 +7,10 @@ package realisering15;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentListaAlienRas extends javax.swing.JFrame {
@@ -113,13 +111,17 @@ public class AgentListaAlienRas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metod som tar användaren tillbaka till föregående fönster
+     */
     private void btnVisaRasTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaRasTillbakaActionPerformed
-        // TODO add your handling code here:
         AgentListaAlienRas.this.dispose();
     }//GEN-LAST:event_btnVisaRasTillbakaActionPerformed
 
+    /**
+     * Metod som listar aliens av vald ras
+     */
     private void cbVisaRasRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaRasRaserActionPerformed
-        // TODO add your handling code here:
         txtAreaAliens.setText("");
         ArrayList<String> soktAlienID;
         ArrayList<HashMap<String, String>> soktaAliens;
@@ -143,13 +145,15 @@ public class AgentListaAlienRas extends javax.swing.JFrame {
                 txtAreaAliens.append(enAlienTelefon + "\n");
             }
 
-        } catch (InfException ex1) {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
-
     }//GEN-LAST:event_cbVisaRasRaserActionPerformed
-    
+
+    /**
+     * Metod som fyller scrollistan med tillgängliga raser
+     */
     private void fyllCbValjRas() {
         ArrayList<String> raser = new ArrayList<String>();
         raser.add("Boglodite");

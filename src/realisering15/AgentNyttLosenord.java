@@ -4,14 +4,11 @@
  */
 package realisering15;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentNyttLosenord extends javax.swing.JFrame {
@@ -156,7 +153,8 @@ public class AgentNyttLosenord extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Felaktiga lösenordsuppgifter, försök igen!");
                 }
             } catch (InfException ex) {
-                Logger.getLogger(AgentNyttLosenord.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Ett fel har inträffat, försök igen");
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnBekraftaActionPerformed
