@@ -232,7 +232,7 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
             txtAreaEnAgent.append("Namn" + "\n");
             txtAreaEnAgent.append(soktAgent.get("Agent_ID") + "\t" + "\t");
             txtAreaEnAgent.append(soktAgent.get("Namn") + "\n" + "\n");
-            txtAreaEnAgent.append("Är områdeschef" + "\t" + "\t");
+            txtAreaEnAgent.append("Är områdeschef" + "\t");
             txtAreaEnAgent.append("Är kontorschef" + "\n");
             txtAreaEnAgent.append(omradeschef + "\t" + "\t");
             txtAreaEnAgent.append(kontorschef);

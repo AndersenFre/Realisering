@@ -162,7 +162,7 @@ public class AdminVisaInfoAgent extends javax.swing.JFrame {
                     txtAreaAgentInfo.append(enAgentRad.get("Administrator") + "\t");
                     txtAreaAgentInfo.append(enAgentRad.get("Losenord") + "\n" + "\n" + "\n");
                     txtAreaAgentInfo.append("Område" + "\t");
-                    txtAreaAgentInfo.append("Är områdeschef" + "\t" + "\t");
+                    txtAreaAgentInfo.append("Är områdeschef" + "\t");
                     txtAreaAgentInfo.append("Är kontorschef" + "\n");
                     txtAreaAgentInfo.append(enAgentRad.get("Omrade") + "\t");
                     txtAreaAgentInfo.append(omradeschef + "\t" + "\t");

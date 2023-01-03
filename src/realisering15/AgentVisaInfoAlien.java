@@ -186,7 +186,7 @@ public class AgentVisaInfoAlien extends javax.swing.JFrame {
                 txtAreaResultat1.append("Namn" + "\t");
                 txtAreaResultat1.append("Telefon" + "\n");
                 txtAreaResultat2.append("Plats" + "\t");
-                txtAreaResultat2.append("Ansvarig agent" + "\t" + "\t");
+                txtAreaResultat2.append("Ansvarig agent" + "\t");
                 txtAreaResultat2.append("Ras" + "\n");
 
                 for (HashMap<String, String> enAlienRad : arraylistan) {
