@@ -4,19 +4,18 @@
  */
 package realisering15;
 
-
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminLaggTillAgent extends javax.swing.JFrame {
 
     private static InfDB databas;
     private String id;
+    
     /**
      * Creates new form AdminLaggTillAgent
      */
