@@ -192,6 +192,7 @@ public class AdminFonster extends javax.swing.JFrame {
 
     private void btnAgentMetoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentMetoderActionPerformed
         new AgentFonster(databas, id).setVisible(true);
+        AdminFonster.this.dispose();
     }//GEN-LAST:event_btnAgentMetoderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

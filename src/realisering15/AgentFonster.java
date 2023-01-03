@@ -192,6 +192,7 @@ public class AgentFonster extends javax.swing.JFrame {
      * Metod som tar användaren tillbaka till adminsidan
      */
     private void btnTillbakaTillAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaTillAdminActionPerformed
+        new AdminFonster(databas, id).setVisible(true);
         AgentFonster.this.dispose();
     }//GEN-LAST:event_btnTillbakaTillAdminActionPerformed
 
