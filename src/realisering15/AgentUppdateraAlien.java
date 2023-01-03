@@ -158,36 +158,36 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
      * Metod som ändrar den önskade datan
      */
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
-        try {
-            String valtAlienID = cbValjAlienID.getSelectedItem().toString();
-            String valtInfo = cbValjInfoDuVillAndra.getSelectedItem().toString();
-            //String nuvarandeID = databas.fetchSingle("Select alien_id from alien where alien_id=" +valtAlienID);
+        if (Validering.textFaltHarVarde(txtNyttVarde)) {
+            try {
+                String valtAlienID = cbValjAlienID.getSelectedItem().toString();
+                String valtInfo = cbValjInfoDuVillAndra.getSelectedItem().toString();
 
-            if (valtInfo.equals(0)) {
+                if (valtInfo.equals(0)) {
+                    String nyttRegDatum = txtNyttVarde.getText();
+                    databas.update("Update alien Set Registreringsdatum=" + nyttRegDatum + "where alien_Id =" + valtAlienID);
+                } else if (valtInfo.equals(1)) {
+                    String nyttLosenord = txtNyttVarde.getText();
+                    databas.update("Update alien Set Losenord=" + nyttLosenord + "where alien_id =" + valtAlienID);
+                } else if (valtInfo.equals(2)) {
+                    String nyttNamn = txtNyttVarde.getText();
+                    databas.update("Update alien set Namn=" + nyttNamn + "where alien_id=" + valtAlienID);
+                } else if (valtInfo.equals(3)) {
+                    String nyTelefon = txtNyttVarde.getText();
+                    databas.update("Update alien set Telefon=" + nyTelefon + "where alien_id" + valtAlienID);
+                } else if (valtInfo.equals(4)) {
+                    String nyPlats = txtNyttVarde.getText();
+                    databas.update("Update alien set Plats=" + nyPlats + "where alien_id" + valtAlienID);
+                } else if (valtInfo.equals(5)) {
+                    String nyAgent = txtNyttVarde.getText();
+                    databas.update("Update alien set ansvarig_agent=" + nyAgent + "where alien_id=" + valtAlienID);
+                }
+                JOptionPane.showMessageDialog(null, "Informationen för Alien med ID: " + valtAlienID + " har ändrats");
 
-                String nyttRegDatum = txtNyttVarde.getText();
-                databas.update("Update alien Set Registreringsdatum=" + nyttRegDatum + "where alien_Id =" + valtAlienID);
-            } else if (valtInfo.equals(1)) {
-                String nyttLosenord = txtNyttVarde.getText();
-                databas.update("Update alien Set Losenord=" + nyttLosenord + "where alien_id =" + valtAlienID);
-            } else if (valtInfo.equals(2)) {
-                String nyttNamn = txtNyttVarde.getText();
-                databas.update("Update alien set Namn=" + nyttNamn + "where alien_id=" + valtAlienID);
-            } else if (valtInfo.equals(3)) {
-                String nyTelefon = txtNyttVarde.getText();
-                databas.update("Update alien set Telefon=" + nyTelefon + "where alien_id" + valtAlienID);
-            } else if (valtInfo.equals(4)) {
-                String nyPlats = txtNyttVarde.getText();
-                databas.update("Update alien set Plats=" + nyPlats + "where alien_id" + valtAlienID);
-            } else if (valtInfo.equals(5)) {
-                String nyAgent = txtNyttVarde.getText();
-                databas.update("Update alien set ansvarig_agent=" + nyAgent + "where alien_id=" + valtAlienID);
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Något gick fel");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
             }
-            JOptionPane.showMessageDialog(null, "Informationen för Alien med ID: " + valtAlienID + " har ändrats");
-
-        } catch (InfException ex1) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
         }
     }//GEN-LAST:event_btnAndraActionPerformed
 
