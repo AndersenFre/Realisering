@@ -143,7 +143,7 @@ public class AdminAndraAdminStatus extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
     }
 
