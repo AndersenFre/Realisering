@@ -49,11 +49,12 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAndraInfo.setText("Ändra info om en Alien:");
+        lblAndraInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAndraInfo.setText("Ändra information om en Alien");
 
         lblGammaltAID.setText("Välj ett ID:");
 
-        lblValjInfo.setText("Välj info du vill ändra:");
+        lblValjInfo.setText("Vad vill du ändra?");
 
         lblNyttVarde.setText("Skriv in ditt nya värde:");
 
@@ -78,27 +79,32 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(lblGammaltAID))
+                        .addContainerGap()
+                        .addComponent(btnTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAndra))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAndraInfo)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblValjInfo)
-                                    .addComponent(cbValjInfoDuVillAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(90, 90, 90)
-                                .addComponent(btnAndra))
-                            .addComponent(lblNyttVarde, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnTillbaka)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                                .addGap(207, 207, 207)
+                                .addComponent(lblGammaltAID))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(199, 199, 199)
+                                .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbValjInfoDuVillAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addComponent(lblValjInfo))
+                                    .addComponent(lblNyttVarde, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(145, 145, 145)
+                                .addComponent(lblAndraInfo)))
+                        .addGap(0, 32, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,16 +118,20 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblValjInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbValjInfoDuVillAndra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAndra))
+                .addComponent(cbValjInfoDuVillAndra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
-                .addGap(15, 15, 15))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 61, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAndra)
+                            .addComponent(btnTillbaka))
+                        .addContainerGap())))
         );
 
         pack();
@@ -162,24 +172,24 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
                 String valtAlienID = cbValjAlienID.getSelectedItem().toString();
                 String valtInfo = cbValjInfoDuVillAndra.getSelectedItem().toString();
 
-                if (valtInfo.equals(0)) {
+                if (valtInfo.equals("Registreringsdatum")) {
                     String nyttRegDatum = txtNyttVarde.getText();
-                    databas.update("Update alien Set Registreringsdatum=" + nyttRegDatum + "where alien_Id =" + valtAlienID);
-                } else if (valtInfo.equals(1)) {
+                    databas.update("Update alien Set Registreringsdatum='" + nyttRegDatum + "' where alien_Id =" + valtAlienID);
+                } else if (valtInfo.equals("Lösenord")) {
                     String nyttLosenord = txtNyttVarde.getText();
-                    databas.update("Update alien Set Losenord=" + nyttLosenord + "where alien_id =" + valtAlienID);
-                } else if (valtInfo.equals(2)) {
+                    databas.update("Update alien Set Losenord='" + nyttLosenord + "' where alien_id =" + valtAlienID);
+                } else if (valtInfo.equals("Namn")) {
                     String nyttNamn = txtNyttVarde.getText();
-                    databas.update("Update alien set Namn=" + nyttNamn + "where alien_id=" + valtAlienID);
-                } else if (valtInfo.equals(3)) {
+                    databas.update("Update alien set Namn='" + nyttNamn + "' where alien_id=" + valtAlienID);
+                } else if (valtInfo.equals("Telefon")) {
                     String nyTelefon = txtNyttVarde.getText();
-                    databas.update("Update alien set Telefon=" + nyTelefon + "where alien_id" + valtAlienID);
-                } else if (valtInfo.equals(4)) {
+                    databas.update("Update alien set Telefon='" + nyTelefon + "' where alien_id=" + valtAlienID);
+                } else if (valtInfo.equals("Plats")) {
                     String nyPlats = txtNyttVarde.getText();
-                    databas.update("Update alien set Plats=" + nyPlats + "where alien_id" + valtAlienID);
-                } else if (valtInfo.equals(5)) {
+                    databas.update("Update alien set Plats=" + nyPlats + " where alien_id=" + valtAlienID);
+                } else if (valtInfo.equals("Ansvarig Agent")) {
                     String nyAgent = txtNyttVarde.getText();
-                    databas.update("Update alien set ansvarig_agent=" + nyAgent + "where alien_id=" + valtAlienID);
+                    databas.update("Update alien set ansvarig_agent=" + nyAgent + " where alien_id=" + valtAlienID);
                 }
                 JOptionPane.showMessageDialog(null, "Informationen för Alien med ID: " + valtAlienID + " har ändrats");
 

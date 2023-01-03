@@ -36,10 +36,18 @@ private String id;
 
         lblUppdateraAgentRubrik = new javax.swing.JLabel();
         btnUppdateraAgentTillbaka = new javax.swing.JButton();
+        lblUppdatAgentValjID = new javax.swing.JLabel();
+        cbUppdateraAgentID = new javax.swing.JComboBox<>();
+        lblUppdateraAgentValjInfo = new javax.swing.JLabel();
+        cbUppdateraAgentValjInfo = new javax.swing.JComboBox<>();
+        lblUppdateraAgentNyInfo = new javax.swing.JLabel();
+        txtUppdateraAgentNyttVarde = new javax.swing.JTextField();
+        btnUppdateraAgentAndra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblUppdateraAgentRubrik.setText("Uppdatera Agent");
+        lblUppdateraAgentRubrik.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUppdateraAgentRubrik.setText("Ändra information om en Agent");
 
         btnUppdateraAgentTillbaka.setText("Tillbaka");
         btnUppdateraAgentTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -48,26 +56,80 @@ private String id;
             }
         });
 
+        lblUppdatAgentValjID.setText("Välj ett ID:");
+
+        lblUppdateraAgentValjInfo.setText("Vad vill du ändra?");
+
+        cbUppdateraAgentValjInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUppdateraAgentValjInfoActionPerformed(evt);
+            }
+        });
+
+        lblUppdateraAgentNyInfo.setText("Skriv in det nya värdet:");
+
+        btnUppdateraAgentAndra.setText("Ändra");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addComponent(lblUppdateraAgentRubrik)
-                .addGap(173, 173, 173))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnUppdateraAgentTillbaka)
+                .addGap(139, 139, 139)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUppdateraAgentValjInfo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(cbUppdateraAgentValjInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnUppdateraAgentTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUppdateraAgentAndra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(lblUppdateraAgentRubrik))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(lblUppdatAgentValjID))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(cbUppdateraAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(lblUppdateraAgentNyInfo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(txtUppdateraAgentNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 72, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addContainerGap()
                 .addComponent(lblUppdateraAgentRubrik)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addComponent(btnUppdateraAgentTillbaka)
+                .addGap(18, 18, 18)
+                .addComponent(lblUppdatAgentValjID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbUppdateraAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblUppdateraAgentValjInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbUppdateraAgentValjInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblUppdateraAgentNyInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUppdateraAgentNyttVarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUppdateraAgentTillbaka)
+                    .addComponent(btnUppdateraAgentAndra))
                 .addContainerGap())
         );
 
@@ -78,8 +140,20 @@ private String id;
         // TODO add your handling code here:
         AdminUppdateraAgent.this.dispose();
     }//GEN-LAST:event_btnUppdateraAgentTillbakaActionPerformed
+
+    private void cbUppdateraAgentValjInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUppdateraAgentValjInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUppdateraAgentValjInfoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUppdateraAgentAndra;
     private javax.swing.JButton btnUppdateraAgentTillbaka;
+    private javax.swing.JComboBox<String> cbUppdateraAgentID;
+    private javax.swing.JComboBox<String> cbUppdateraAgentValjInfo;
+    private javax.swing.JLabel lblUppdatAgentValjID;
+    private javax.swing.JLabel lblUppdateraAgentNyInfo;
     private javax.swing.JLabel lblUppdateraAgentRubrik;
+    private javax.swing.JLabel lblUppdateraAgentValjInfo;
+    private javax.swing.JTextField txtUppdateraAgentNyttVarde;
     // End of variables declaration//GEN-END:variables
 }
