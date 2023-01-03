@@ -143,6 +143,7 @@ private String id;
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void fyllCbValjAgentID() {
+        // Metod som fyller combobox med ID och kolumner från Agent-tabellen
         try {
             ArrayList<String> allaAlienID = databas.fetchColumn("SELECT Agent_ID FROM Agent");
             for (String ettAlienID : allaAlienID) {
@@ -163,7 +164,7 @@ private String id;
    
     
     private void btnUppdateraAgentTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraAgentTillbakaActionPerformed
-        // TODO add your handling code here:
+        // Metod för att stänga detta fönster
         AdminUppdateraAgent.this.dispose();
     }//GEN-LAST:event_btnUppdateraAgentTillbakaActionPerformed
 
@@ -172,7 +173,7 @@ private String id;
     }//GEN-LAST:event_cbUppdateraAgentValjInfoActionPerformed
 
     private void btnUppdateraAgentAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraAgentAndraActionPerformed
-        // TODO add your handling code here:
+        // Metod som ändrar värden i Agent-tabellen beroende på vad som valts i comboboxen och skrivits in i txt-fältet.
                 if (Validering.textFaltHarVarde(txtUppdateraAgentNyttVarde)) {
             try {
                 String valtAgentID = cbUppdateraAgentID.getSelectedItem().toString();

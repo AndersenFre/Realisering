@@ -132,14 +132,14 @@ public class AgentFonster extends javax.swing.JFrame {
     private void fyllCbValjMetod() {
         ArrayList<String> metoder = new ArrayList<String>();
         metoder.add("Ändra lösenord");
-        metoder.add("Registrera alien");
-        metoder.add("Ändra aliens information");
-        metoder.add("Lista alla aliens för en plats");
-        metoder.add("Lista alla aliens av en ras");
-        metoder.add("Lista över aliens registrerade mellan två datum");
+        metoder.add("Registrera en Alien");
+        metoder.add("Ändra information om en Alien");
+        metoder.add("Lista alla Aliens på en plats");
+        metoder.add("Lista alla Aliens av en ras");
+        metoder.add("Lista alla Aliens registrerade mellan två datum");
         metoder.add("Registrera ny utrustning");
-        metoder.add("Visa info om en alien");
-        metoder.add("Visa områdeschef över utvalt område");
+        metoder.add("Visa information om en Alien");
+        metoder.add("Visa områdeschef för ett område");
         for (String enMetod : metoder) {
             cblistaMetoderAgent.addItem(enMetod);
         }
@@ -154,28 +154,28 @@ public class AgentFonster extends javax.swing.JFrame {
         if (valdMetod.equals("Ändra lösenord")) {
             new AgentNyttLosenord(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Registrera alien")) {
+        if (valdMetod.equals("Registrera en Alien")) {
             new AgentLaggTillAlien(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Ändra aliens information")) {
+        if (valdMetod.equals("Ändra information om en Alien")) {
             new AgentUppdateraAlien(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Lista alla aliens för en plats")) {
+        if (valdMetod.equals("Lista alla Aliens på en plats")) {
             new AgentListaAlienPlats(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Lista över aliens registrerade mellan två datum")) {
+        if (valdMetod.equals("Lista alla Aliens registrerade mellan två datum")) {
             new AgentListaAlienDatum(databas, id).setVisible(true);
         }
         if (valdMetod.equals("Registrera ny utrustning")) {
             new AgentLaggTillUtr(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Visa info om en alien")) {
+        if (valdMetod.equals("Visa information om en Alien")) {
             new AgentVisaInfoAlien(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Visa områdeschef över utvalt område")) {
+        if (valdMetod.equals("Visa områdeschef för ett område")) {
             new AgentVisaOmrC(databas, id).setVisible(true);
         }
-        if (valdMetod.equals("Lista alla aliens av en ras")) {
+        if (valdMetod.equals("Lista alla Aliens av en ras")) {
             new AgentListaAlienRas(databas, id).setVisible(true);
         }
     }//GEN-LAST:event_btnOkAgentActionPerformed
