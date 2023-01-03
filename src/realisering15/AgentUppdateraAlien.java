@@ -26,7 +26,6 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
         this.databas = databas;
         fyllCbValjAlienID();
         fyllCbValjInfo();
-
     }
 
     /**

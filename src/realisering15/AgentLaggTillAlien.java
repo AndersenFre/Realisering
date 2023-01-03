@@ -14,8 +14,7 @@ import oru.inf.InfException;
 public class AgentLaggTillAlien extends javax.swing.JFrame {
 
     private static InfDB databas;
-    //Sparar ID för inloggad agent
-    private String id = null;
+    private String id;
 
     /**
      * Creates new form LaggTillAlienFonster
