@@ -5,7 +5,9 @@
 package realisering15;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  * @author Grupp15
@@ -23,7 +25,8 @@ public class AgentFonster extends javax.swing.JFrame {
         this.databas = databas;
         initComponents();
         fyllCbValjMetod();
-
+        btnTillbakaTillAdmin.setVisible(false);
+        gorBtnTillbakaTillAdminSynlig();
     }
 
     /**
@@ -42,6 +45,7 @@ public class AgentFonster extends javax.swing.JFrame {
         btnOkAgent = new javax.swing.JButton();
         btnLoggaUtAgent = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnTillbakaTillAdmin = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -70,6 +74,13 @@ public class AgentFonster extends javax.swing.JFrame {
 
         jLabel1.setText("Välj en åtgärd");
 
+        btnTillbakaTillAdmin.setText("Tillbaka till adminfönster");
+        btnTillbakaTillAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaTillAdminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,7 +90,9 @@ public class AgentFonster extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnLoggaUtAgent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTillbakaTillAdmin)
+                        .addGap(54, 54, 54)
                         .addComponent(btnOkAgent)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -87,7 +100,7 @@ public class AgentFonster extends javax.swing.JFrame {
                         .addComponent(lblValkommenAgent)
                         .addGap(181, 181, 181))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(cblistaMetoderAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,7 +118,8 @@ public class AgentFonster extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoggaUtAgent)
-                    .addComponent(btnOkAgent))
+                    .addComponent(btnOkAgent)
+                    .addComponent(btnTillbakaTillAdmin))
                 .addContainerGap())
         );
 
@@ -130,7 +144,7 @@ public class AgentFonster extends javax.swing.JFrame {
             cblistaMetoderAgent.addItem(enMetod);
         }
     }
-    
+
     /**
      * Metod som fyller comboBoxen med olika val en agent kan göra
      */
@@ -173,9 +187,34 @@ public class AgentFonster extends javax.swing.JFrame {
         new Start(databas).setVisible(true);
         AgentFonster.this.dispose();
     }//GEN-LAST:event_btnLoggaUtAgentActionPerformed
+
+    /**
+     * Metod som tar användaren tillbaka till adminsidan
+     */
+    private void btnTillbakaTillAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaTillAdminActionPerformed
+        AgentFonster.this.dispose();
+    }//GEN-LAST:event_btnTillbakaTillAdminActionPerformed
+
+    /**
+     * Metod som tar gör btnTillbakaTillAdmin synlig om agenten är admin
+     */
+    public void gorBtnTillbakaTillAdminSynlig() {
+        try {
+            String adminStatus = databas.fetchSingle("SELECT Administrator FROM agent WHERE Agent_ID=" + id);
+            
+            if (adminStatus.equals("J")) {
+                btnTillbakaTillAdmin.setVisible(true);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUtAgent;
     private javax.swing.JButton btnOkAgent;
+    private javax.swing.JButton btnTillbakaTillAdmin;
     private javax.swing.JComboBox<String> cblistaMetoderAgent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

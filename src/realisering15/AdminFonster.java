@@ -39,6 +39,7 @@ public class AdminFonster extends javax.swing.JFrame {
         cblistaMetoderAdmin = new javax.swing.JComboBox<>();
         btnLoggaUtAdmin = new javax.swing.JButton();
         btnOkAdmin = new javax.swing.JButton();
+        btnAgentMetoder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,17 +62,19 @@ public class AdminFonster extends javax.swing.JFrame {
             }
         });
 
+        btnAgentMetoder.setText("Agentmetoder");
+        btnAgentMetoder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgentMetoderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnLoggaUtAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnOkAdmin))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -82,7 +85,14 @@ public class AdminFonster extends javax.swing.JFrame {
                                 .addComponent(lblValjAtgardAdmin)
                                 .addGap(18, 18, 18)
                                 .addComponent(cblistaMetoderAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 186, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLoggaUtAdmin)
+                        .addGap(129, 129, 129)
+                        .addComponent(btnAgentMetoder)
+                        .addGap(138, 138, 138)))
+                .addComponent(btnOkAdmin)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -97,7 +107,8 @@ public class AdminFonster extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoggaUtAdmin)
-                    .addComponent(btnOkAdmin))
+                    .addComponent(btnOkAdmin)
+                    .addComponent(btnAgentMetoder))
                 .addContainerGap())
         );
 
@@ -178,7 +189,13 @@ public class AdminFonster extends javax.swing.JFrame {
         new Start(databas).setVisible(true);
         AdminFonster.this.dispose();
     }//GEN-LAST:event_btnLoggaUtAdminActionPerformed
+
+    private void btnAgentMetoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentMetoderActionPerformed
+        new AgentFonster(databas, id).setVisible(true);
+    }//GEN-LAST:event_btnAgentMetoderActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgentMetoder;
     private javax.swing.JButton btnLoggaUtAdmin;
     private javax.swing.JButton btnOkAdmin;
     private javax.swing.JComboBox<String> cblistaMetoderAdmin;
