@@ -7,7 +7,6 @@ package realisering15;
 import oru.inf.InfDB;
 
 /**
- *
  * @author Grupp15
  */
 public class Start extends javax.swing.JFrame {

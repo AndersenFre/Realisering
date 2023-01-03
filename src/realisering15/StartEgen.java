@@ -4,14 +4,11 @@
  */
 package realisering15;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class StartEgen {
@@ -21,12 +18,10 @@ public class StartEgen {
         try {
             databas = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         } catch (InfException ex) {
-            Logger.getLogger(AgentInloggning.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Kontakt med databas misslyckades");
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
 
         new Start(databas).setVisible(true);
     }
-
 }

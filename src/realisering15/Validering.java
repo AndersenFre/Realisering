@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- *
  * @author Grupp15
  */
 public class Validering {

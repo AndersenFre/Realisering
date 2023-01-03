@@ -130,9 +130,9 @@ public class AlienInloggning extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
                 }
-            } catch (InfException ex1) {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-                System.out.println("Internt felmeddelande" + ex1.getMessage());
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
