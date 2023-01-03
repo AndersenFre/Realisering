@@ -23,6 +23,8 @@ private String id;
         initComponents();
         this.databas = databas;
         this.id=id;
+        fyllCbValjAgentID();
+        fyllCbValjInfo();
     }
 
     /**
@@ -69,6 +71,11 @@ private String id;
         lblUppdateraAgentNyInfo.setText("Skriv in det nya värdet:");
 
         btnUppdateraAgentAndra.setText("Ändra");
+        btnUppdateraAgentAndra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUppdateraAgentAndraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,7 +142,26 @@ private String id;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void fyllCbValjAgentID() {
+        try {
+            ArrayList<String> allaAlienID = databas.fetchColumn("SELECT Agent_ID FROM Agent");
+            for (String ettAlienID : allaAlienID) {
+                cbUppdateraAgentID.addItem(ettAlienID);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
+    }
+    private void fyllCbValjInfo() {
+        String[] InfoOmAgent = {"Namn", "Telefon", "Anställningsdatum", "Lösenord", "Område"};
 
+        for (String enInfo : InfoOmAgent) {
+            cbUppdateraAgentValjInfo.addItem(enInfo);
+        }
+    }
+   
+    
     private void btnUppdateraAgentTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraAgentTillbakaActionPerformed
         // TODO add your handling code here:
         AdminUppdateraAgent.this.dispose();
@@ -144,6 +170,40 @@ private String id;
     private void cbUppdateraAgentValjInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUppdateraAgentValjInfoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbUppdateraAgentValjInfoActionPerformed
+
+    private void btnUppdateraAgentAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraAgentAndraActionPerformed
+        // TODO add your handling code here:
+                if (Validering.textFaltHarVarde(txtUppdateraAgentNyttVarde)) {
+            try {
+                String valtAgentID = cbUppdateraAgentID.getSelectedItem().toString();
+                String valtInfo = cbUppdateraAgentValjInfo.getSelectedItem().toString();
+
+                if (valtInfo.equals("Namn")) {
+                    String nyttNamn = txtUppdateraAgentNyttVarde.getText();
+                    databas.update("Update agent Set namn='" + nyttNamn + "' where agent_Id =" + valtAgentID);
+                } else if (valtInfo.equals("Telefon")) {
+                    String nyttTelenr = txtUppdateraAgentNyttVarde.getText();
+                    databas.update("Update agent Set telefon='" + nyttTelenr + "' where agent_id =" + valtAgentID);
+                } else if (valtInfo.equals("Anställningsdatum")) {
+                    String nyttDatum = txtUppdateraAgentNyttVarde.getText();
+                    databas.update("Update agent set Anstallningsdatum='" + nyttDatum + "' where agent_id=" + valtAgentID);
+                } else if (valtInfo.equals("Lösenord")) {
+                    String nyttLosen = txtUppdateraAgentNyttVarde.getText();
+                    databas.update("Update agent set Losenord='" + nyttLosen + "' where agent_id=" + valtAgentID);
+                } else if (valtInfo.equals("Område")) {
+                    String nyttOmrade = txtUppdateraAgentNyttVarde.getText();
+                    databas.update("Update agent set omrade=" + nyttOmrade + " where agent_id=" + valtAgentID);
+                }
+                JOptionPane.showMessageDialog(null, "Informationen för Agent med ID: " + valtAgentID + " har ändrats");
+
+            } catch (InfException ex1) {
+                JOptionPane.showMessageDialog(null, "Något gick fel");
+                System.out.println("Internt felmeddelande" + ex1.getMessage());
+            }
+            
+            
+        }
+    }//GEN-LAST:event_btnUppdateraAgentAndraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUppdateraAgentAndra;
