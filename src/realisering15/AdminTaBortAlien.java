@@ -11,7 +11,6 @@ import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminTaBortAlien extends javax.swing.JFrame {
@@ -135,9 +134,9 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             for (String benamning : allaAlienID) {
                 cbValjAlienID.addItem(benamning);
             }
-        } catch (InfException ex1) {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }
 
@@ -244,9 +243,9 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Alien har raderats");
             AdminTaBortAlien.this.dispose();
 
-        } catch (InfException ex1) {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }//GEN-LAST:event_btnTaBortAlienRaderActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

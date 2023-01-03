@@ -6,14 +6,11 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminTaBortAgent extends javax.swing.JFrame {
@@ -147,7 +144,6 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -203,7 +199,6 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
         catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());  
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRaderaActionPerformed
 
@@ -244,8 +239,7 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());     
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          }
     }//GEN-LAST:event_cbAgentListaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRadera;

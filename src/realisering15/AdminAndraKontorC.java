@@ -5,14 +5,11 @@
 package realisering15;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminAndraKontorC extends javax.swing.JFrame {
@@ -146,7 +143,6 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminAndraOmrC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAndraKontorsCActionPerformed
 
@@ -161,7 +157,6 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
             }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            Logger.getLogger(AdminAndraKontorC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -178,7 +173,6 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

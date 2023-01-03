@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import oru.inf.InfDB;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminFonster extends javax.swing.JFrame {

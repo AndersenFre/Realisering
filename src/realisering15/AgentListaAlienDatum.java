@@ -5,14 +5,11 @@
 package realisering15;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentListaAlienDatum extends javax.swing.JFrame {
@@ -139,7 +136,7 @@ public class AgentListaAlienDatum extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "De aliens som registrerats mellan " + franDatum + " och " + tillDatum + " har ID: " + aliensIOmrade);
             } catch (InfException ex) {
-                Logger.getLogger(AgentListaAlienDatum.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Internt felmeddelande" + ex.getMessage());
                 JOptionPane.showMessageDialog(null, "Inkorrekt datum, skriv enligt följande: YYYY-MM-DD");
             }
         }

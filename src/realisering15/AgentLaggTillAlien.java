@@ -9,7 +9,6 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentLaggTillAlien extends javax.swing.JFrame {
@@ -211,9 +210,9 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
 
                 databas.insert(tillLagg);
                 JOptionPane.showMessageDialog(null, "En ny Alien har registrerats");
-            } catch (InfException ex1) {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-                System.out.println("Internt felmeddelande" + ex1.getMessage());
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnActionRegistreraNyAlienActionPerformed

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import oru.inf.InfDB;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentFonster extends javax.swing.JFrame {
@@ -165,7 +164,6 @@ public class AgentFonster extends javax.swing.JFrame {
         if (valdMetod.equals("Lista alla aliens av en ras")) {
             new AgentListaAlienRas(databas, id).setVisible(true);
         }
-
     }//GEN-LAST:event_btnOkAgentActionPerformed
 
     /**

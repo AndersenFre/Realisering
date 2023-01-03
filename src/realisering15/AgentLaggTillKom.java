@@ -9,7 +9,6 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentLaggTillKom extends javax.swing.JFrame {
@@ -169,9 +168,9 @@ public class AgentLaggTillKom extends javax.swing.JFrame {
                 databas.insert(tillLaggUtr);
                 databas.insert(tillLaggKom);
                 JOptionPane.showMessageDialog(null, "Ny kommunikationsutrustning har registrerats");
-            } catch (InfException ex1) {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-                System.out.println("Internt felmeddelande" + ex1.getMessage());
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnRegTekActionPerformed

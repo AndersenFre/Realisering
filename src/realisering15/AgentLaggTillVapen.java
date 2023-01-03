@@ -4,13 +4,11 @@
  */
 package realisering15;
 
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentLaggTillVapen extends javax.swing.JFrame {
@@ -156,9 +154,9 @@ public class AgentLaggTillVapen extends javax.swing.JFrame {
                 databas.insert(tillLaggUtr);
                 databas.insert(tillLaggVapen);
                 JOptionPane.showMessageDialog(null, "Ett nytt vapen har registrerats");
-            } catch (InfException ex1) {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
-                System.out.println("Internt felmeddelande" + ex1.getMessage());
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnVapenRegActionPerformed

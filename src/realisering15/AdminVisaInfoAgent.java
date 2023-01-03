@@ -6,14 +6,11 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminVisaInfoAgent extends javax.swing.JFrame {
@@ -174,7 +171,8 @@ public class AdminVisaInfoAgent extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Det finns ingen agent registrerad med ID: " + ettAgentID);
                 }
             } catch (InfException ex) {
-                Logger.getLogger(AdminVisaInfoAgent.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnSokActionPerformed

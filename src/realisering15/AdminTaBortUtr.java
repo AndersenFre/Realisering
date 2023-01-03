@@ -11,7 +11,6 @@ import oru.inf.InfException;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Grupp15
  */
 public class AdminTaBortUtr extends javax.swing.JFrame {
@@ -137,9 +136,9 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
             for (String benamning : allaUtrID) {
                 cbUtrID.addItem(benamning);
             }
-        } catch (InfException ex1) {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }
 
@@ -193,9 +192,9 @@ public class AdminTaBortUtr extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Utrustningen har raderats");
             AdminTaBortUtr.this.dispose();
 
-        } catch (InfException ex1) {
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex1.getMessage());
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }//GEN-LAST:event_btnRaderaUtrIDActionPerformed
 

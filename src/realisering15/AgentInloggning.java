@@ -5,13 +5,10 @@
 package realisering15;
 
 import javax.swing.JOptionPane;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /**
- *
  * @author Grupp15
  */
 public class AgentInloggning extends javax.swing.JFrame {
@@ -145,9 +142,9 @@ public class AgentInloggning extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
                 }
-            } catch (InfException ex1) {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Inget resultat hittades");
-                System.out.println("Internt felmeddelande" + ex1.getMessage());
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed

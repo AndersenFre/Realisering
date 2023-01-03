@@ -6,8 +6,6 @@ package realisering15;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -167,7 +165,6 @@ public class AdminAndraAdminStatus extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminTaBortAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cbValjAgentActionPerformed
 
@@ -191,7 +188,6 @@ public class AdminAndraAdminStatus extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
-            Logger.getLogger(AdminAndraAdminStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAndraStatusActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
