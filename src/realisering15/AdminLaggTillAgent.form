@@ -24,45 +24,48 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnLaggTillAgentTillbaka" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="lblLaggTillA" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTelNr" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAnstallningsdatum" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblNamn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNyttAnstallningsdatum" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNyTelNr" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNyttNamn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNyttID" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="83" max="32767" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLaggTillAgentTillbaka" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnLaggTill" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAdminStatus" min="-2" max="-2" attributes="0"/>
                   <Component id="lblLosenord" min="-2" max="-2" attributes="0"/>
                   <Component id="lblOmrade" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNyttOmrade" pref="96" max="32767" attributes="0"/>
                   <Component id="txtNyttLosen" max="32767" attributes="0"/>
-                  <Component id="txtNyAdminStatus" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="18" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="lblLaggTillA" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelNr" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNyTelNr" alignment="0" pref="101" max="32767" attributes="0"/>
+                          <Component id="txtNyttNamn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNyttID" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="txtNyttAnstallningsdatum" min="-2" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="lblAnstallningsdatum" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,13 +77,13 @@
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAdminStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAnstallningsdatum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtNyttID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNyAdminStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNyttAnstallningsdatum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -102,11 +105,7 @@
                   <Component id="txtNyTelNr" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNyttOmrade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lblAnstallningsdatum" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtNyttAnstallningsdatum" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnLaggTillAgentTillbaka" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -155,11 +154,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblAdminStatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Administrat&#xf6;r:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblLosenord">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord:"/>
@@ -185,8 +179,9 @@
     <Component class="javax.swing.JTextField" name="txtNyTelNr">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNyttAnstallningsdatum">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtNyAdminStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNyttLosen">
     </Component>

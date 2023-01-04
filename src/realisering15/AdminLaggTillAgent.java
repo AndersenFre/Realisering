@@ -41,7 +41,6 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
         lblTelNr = new javax.swing.JLabel();
         lblAnstallningsdatum = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        lblAdminStatus = new javax.swing.JLabel();
         lblLosenord = new javax.swing.JLabel();
         lblOmrade = new javax.swing.JLabel();
         btnLaggTill = new javax.swing.JButton();
@@ -49,7 +48,6 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
         txtNyttNamn = new javax.swing.JTextField();
         txtNyTelNr = new javax.swing.JTextField();
         txtNyttAnstallningsdatum = new javax.swing.JTextField();
-        txtNyAdminStatus = new javax.swing.JTextField();
         txtNyttLosen = new javax.swing.JTextField();
         txtNyttOmrade = new javax.swing.JTextField();
 
@@ -73,8 +71,6 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
 
         lblAnstallningsdatum.setText("Anställningsdatum:");
 
-        lblAdminStatus.setText("Administratör:");
-
         lblLosenord.setText("Lösenord:");
 
         lblOmrade.setText("Område:");
@@ -86,43 +82,47 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
             }
         });
 
+        txtNyttAnstallningsdatum.setText("YYYY-MM-DD");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnLaggTillAgentTillbaka)
-                        .addGap(218, 218, 218))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(146, 146, 146)
-                            .addComponent(lblLaggTillA))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblID)
-                                .addComponent(lblTelNr)
-                                .addComponent(lblAnstallningsdatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblNamn)
-                                .addComponent(txtNyttAnstallningsdatum)
-                                .addComponent(txtNyTelNr)
-                                .addComponent(txtNyttNamn)
-                                .addComponent(txtNyttID))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addGap(87, 87, 87))))
+                .addContainerGap()
+                .addComponent(btnLaggTillAgentTillbaka)
+                .addGap(218, 218, 218)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLaggTill)
-                    .addComponent(lblAdminStatus)
                     .addComponent(lblLosenord)
                     .addComponent(lblOmrade)
                     .addComponent(txtNyttOmrade, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(txtNyttLosen)
-                    .addComponent(txtNyAdminStatus))
+                    .addComponent(txtNyttLosen))
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(lblLaggTillA))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblID)
+                            .addComponent(lblTelNr)
+                            .addComponent(lblNamn)
+                            .addComponent(txtNyTelNr, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(txtNyttNamn)
+                            .addComponent(txtNyttID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(87, 87, 87)))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNyttAnstallningsdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblAnstallningsdatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,12 +132,12 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lblAdminStatus)
-                    .addComponent(lblID))
+                    .addComponent(lblID)
+                    .addComponent(lblAnstallningsdatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNyttID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNyAdminStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNyttAnstallningsdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNamn)
@@ -154,11 +154,7 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNyTelNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNyttOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblAnstallningsdatum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNyttAnstallningsdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLaggTillAgentTillbaka)
                     .addComponent(btnLaggTill))
@@ -173,18 +169,18 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillAgentTillbakaActionPerformed
 
     private void btnLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillActionPerformed
-        if (Validering.isHeltal(txtNyttID) && Validering.textFaltHarVarde(txtNyttNamn) && Validering.textFaltHarVarde(txtNyTelNr) && Validering.textFaltHarVarde(txtNyttLosen) && Validering.textFaltHarVarde(txtNyAdminStatus) && Validering.textFaltHarVarde(txtNyttAnstallningsdatum) && Validering.isHeltal(txtNyttOmrade)) {
+        if (Validering.isHeltal(txtNyttID) && Validering.textFaltHarVarde(txtNyttNamn) && Validering.textFaltHarVarde(txtNyTelNr) && Validering.textFaltHarVarde(txtNyttLosen) && Validering.textFaltHarVarde(txtNyttAnstallningsdatum) && Validering.isHeltal(txtNyttOmrade)) {
             try {
                 String nyttID = txtNyttID.getText();
                 String nyttNamn = txtNyttNamn.getText();
                 String TelNr = txtNyTelNr.getText();
                 String nyttLosen = txtNyttLosen.getText();
-                String nyAdminStatus = txtNyAdminStatus.getText();
                 String nyttAnstallningsdatum = txtNyttAnstallningsdatum.getText();
                 String nyttOmrade = txtNyttOmrade.getText();
-                String allaVarden = "insert into agent values(" + nyttID + ",'" + nyttNamn + "', '" + TelNr + "', '" + nyttAnstallningsdatum + "', '" + nyAdminStatus + "', '" + nyttLosen + "', " + nyttOmrade + ")";
-
+                String allaVarden = "insert into agent values(" + nyttID + ",'" + nyttNamn + "', '" + TelNr + "', '" + nyttAnstallningsdatum + "', 'N', '" + nyttLosen + "', " + nyttOmrade + ")";
+                String laggTillFaltAgent = "insert into faltagent values (" + nyttID +")";
                 databas.insert(allaVarden);
+                databas.insert(laggTillFaltAgent);
                 JOptionPane.showMessageDialog(null, "" + nyttNamn + " har registrerats.");
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Registreringen misslyckades, försök igen");
@@ -197,7 +193,6 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
     private javax.swing.JButton btnLaggTill;
     private javax.swing.JButton btnLaggTillAgentTillbaka;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblAdminStatus;
     private javax.swing.JLabel lblAnstallningsdatum;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblLaggTillA;
@@ -205,7 +200,6 @@ public class AdminLaggTillAgent extends javax.swing.JFrame {
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOmrade;
     private javax.swing.JLabel lblTelNr;
-    private javax.swing.JTextField txtNyAdminStatus;
     private javax.swing.JTextField txtNyTelNr;
     private javax.swing.JTextField txtNyttAnstallningsdatum;
     private javax.swing.JTextField txtNyttID;
