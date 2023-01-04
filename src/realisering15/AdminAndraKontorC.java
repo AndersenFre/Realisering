@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -128,7 +129,9 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraKontCTillbakaActionPerformed
 
     /**
-     * Metod som uppdaterar vilken agent som är kontorschef
+     * Metod som uppdaterar vilken agent som är kontorschef samt tar bort den
+     * nya kontorschefen från tabellen faltagent och lägger till den gamla
+     * kontorschefen i tabellen faltagent
      */
     private void btnAndraKontorsCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraKontorsCActionPerformed
         try {
@@ -136,6 +139,12 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
             String nyKontorsChefID = cbNyKontorsC.getSelectedItem().toString();
 
             databas.update("UPDATE kontorschef SET agent_id=" + nyKontorsChefID + " WHERE agent_id=" + gammalKontorsChefID);
+
+            String laggTillFaltAgent = "INSERT INTO faltagent VALUES (" + gammalKontorsChefID + ")";
+            databas.insert(laggTillFaltAgent);
+
+            String taBortFaltAgent = "DELETE FROM faltagent WHERE agent_id= (" + nyKontorsChefID + ")";
+            databas.delete(taBortFaltAgent);
 
             JOptionPane.showMessageDialog(null, ("En ny kontorschef har registrerats med agentID " + nyKontorsChefID));
             txtFieldNuvarandeKontorsC.setText(nyKontorsChefID);
@@ -167,6 +176,9 @@ public class AdminAndraKontorC extends javax.swing.JFrame {
     private void fyllCbNyKontorsC() {
         try {
             ArrayList<String> allaAgentID = databas.fetchColumn("SELECT agent_ID FROM agent");
+   
+            Collections.sort(allaAgentID);
+            
             for (String ettAgentID : allaAgentID) {
                 cbNyKontorsC.addItem(ettAgentID);
             }
