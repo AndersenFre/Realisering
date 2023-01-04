@@ -131,10 +131,11 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
 
         ArrayList<String> allaAlienID = new ArrayList<>();
         
-        Collections.sort(allaAlienID);
-        
         try {
             allaAlienID = databas.fetchColumn(fraga);
+            
+            Collections.sort(allaAlienID);
+            
             for (String benamning : allaAlienID) {
                 cbValjAlienID.addItem(benamning);
             }
