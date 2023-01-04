@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -160,6 +161,8 @@ public class AgentListaAlienRas extends javax.swing.JFrame {
         raser.add("Worm");
         raser.add("Squid");
 
+        Collections.sort(raser);
+        
         for (String enRas : raser) {
             cbVisaRasRaser.addItem(enRas);
         }

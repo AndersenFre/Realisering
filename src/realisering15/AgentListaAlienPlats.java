@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -128,6 +129,9 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
         ArrayList<String> allaOmraden;
         try {
             allaOmraden = databas.fetchColumn(fraga);
+           
+            Collections.sort(allaOmraden);
+            
             for (String benamning : allaOmraden) {
                 cbValjOmrade.addItem(benamning);
             }

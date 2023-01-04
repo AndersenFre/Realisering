@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -143,6 +144,9 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
     private void fyllCbValjAlienID() {
         try {
             ArrayList<String> allaAlienID = databas.fetchColumn("SELECT alien_ID FROM Alien");
+            
+            Collections.sort(allaAlienID);
+            
             for (String ettAlienID : allaAlienID) {
                 cbValjAlienID.addItem(ettAlienID);
             }
@@ -156,9 +160,18 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
      * Metod som fyller scrollistan cbValjInfo med val
      */
     private void fyllCbValjInfo() {
-        String[] InfoOmAlien = {"Registreringsdatum", "Lösenord", "Namn", "Telefon", "Plats", "Ansvarig Agent"};
+        ArrayList<String> infoOmAlien = new ArrayList<>();
+        
+        infoOmAlien.add("Registreringsdatum");
+        infoOmAlien.add("Lösenord");
+        infoOmAlien.add("Namn");
+        infoOmAlien.add("Telefon");
+        infoOmAlien.add("Plats");
+        infoOmAlien.add("Ansvarig Agent");
 
-        for (String enInfo : InfoOmAlien) {
+        Collections.sort(infoOmAlien);
+        
+        for (String enInfo : infoOmAlien) {
             cbValjInfoDuVillAndra.addItem(enInfo);
         }
     }
