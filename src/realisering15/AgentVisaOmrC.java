@@ -4,6 +4,7 @@
  */
 package realisering15;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -150,6 +151,7 @@ public class AgentVisaOmrC extends javax.swing.JFrame {
                 {
                 cbValjOmrade.addItem(benamning);
                 }
+            Collections.sort(allaOmraden);
             }
        catch(InfException ex1)
             {
