@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -138,7 +139,6 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                                 .addGap(127, 127, 127)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnActionRegistreraNyAlien)
                                 .addContainerGap())
                             .addGroup(layout.createSequentialGroup()
@@ -197,10 +197,11 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(lblAntalArmarBoogies)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActionRegistreraNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTillbakaNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnActionRegistreraNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTillbakaNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -219,6 +220,8 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
         raser.add("Worm");
         raser.add("Squid");
 
+        Collections.sort(raser);
+        
         for (String enRas : raser) {
             cbValjRas.addItem(enRas);
         }

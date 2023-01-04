@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -128,7 +129,10 @@ public class AdminTaBortAlien extends javax.swing.JFrame {
     private void fyllCbValjAlienID() {
         String fraga = "SELECT alien_id FROM alien";
 
-        ArrayList<String> allaAlienID;
+        ArrayList<String> allaAlienID = new ArrayList<>();
+        
+        Collections.sort(allaAlienID);
+        
         try {
             allaAlienID = databas.fetchColumn(fraga);
             for (String benamning : allaAlienID) {

@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -140,6 +141,9 @@ public class AgentFonster extends javax.swing.JFrame {
         metoder.add("Registrera ny utrustning");
         metoder.add("Visa information om en Alien");
         metoder.add("Visa områdeschef för ett område");
+        
+        Collections.sort(metoder);
+        
         for (String enMetod : metoder) {
             cblistaMetoderAgent.addItem(enMetod);
         }

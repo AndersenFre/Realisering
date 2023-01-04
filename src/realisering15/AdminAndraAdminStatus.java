@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -135,6 +136,9 @@ public class AdminAndraAdminStatus extends javax.swing.JFrame {
     private void fyllCbValjAgent() {
         try {
             ArrayList<String> allaAgentID = databas.fetchColumn("SELECT agent_ID FROM agent");
+            
+            Collections.sort(allaAgentID);
+            
             for (String ettAgentID : allaAgentID) {
                 cbValjAgent.addItem(ettAgentID);
             }

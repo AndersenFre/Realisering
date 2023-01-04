@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import oru.inf.InfDB;
 
 /**
@@ -132,6 +133,9 @@ public class AdminFonster extends javax.swing.JFrame {
         metoder.add("Ta bort Agent");
         metoder.add("Ändra Kontorschef");
         metoder.add("Ändra Områdeschef");
+        
+        Collections.sort(metoder);
+        
         for (String enMetod : metoder) {
             cblistaMetoderAdmin.addItem(enMetod);
         }

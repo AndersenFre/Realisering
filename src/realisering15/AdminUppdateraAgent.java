@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JComboBox;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -146,6 +147,9 @@ private String id;
         // Metod som fyller combobox med ID och kolumner från Agent-tabellen
         try {
             ArrayList<String> allaAlienID = databas.fetchColumn("SELECT Agent_ID FROM Agent");
+            
+            Collections.sort(allaAlienID);
+            
             for (String ettAlienID : allaAlienID) {
                 cbUppdateraAgentID.addItem(ettAlienID);
             }
@@ -155,9 +159,17 @@ private String id;
         }
     }
     private void fyllCbValjInfo() {
-        String[] InfoOmAgent = {"Namn", "Telefon", "Anställningsdatum", "Lösenord", "Område"};
+        ArrayList<String> infoOmAgent = new ArrayList<>();
+        
+        infoOmAgent.add("Namn");
+        infoOmAgent.add("Telefon");
+        infoOmAgent.add("Anställningsdatum");
+        infoOmAgent.add("Lösenord");
+        infoOmAgent.add("Område");
 
-        for (String enInfo : InfoOmAgent) {
+        Collections.sort(infoOmAgent);
+        
+        for (String enInfo : infoOmAgent) {
             cbUppdateraAgentValjInfo.addItem(enInfo);
         }
     }

@@ -5,6 +5,7 @@
 package realisering15;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -161,6 +162,9 @@ public class AdminAndraOmrC extends javax.swing.JFrame {
     private void fyllCbValjOmrade() {
         try {
             ArrayList<String> allaOmraden = databas.fetchColumn("SELECT omrades_ID FROM omrade");
+            
+            Collections.sort(allaOmraden);
+            
             for (String ettOmrade : allaOmraden) {
                 cbValjOmrade.addItem(ettOmrade);
             }
@@ -177,6 +181,9 @@ public class AdminAndraOmrC extends javax.swing.JFrame {
     private void fyllCbNyOmradeschef() {
         try {
             ArrayList<String> allaAgentID = databas.fetchColumn("SELECT agent_ID FROM agent");
+            
+            Collections.sort(allaAgentID);
+            
             for (String ettAgentID : allaAgentID) {
                 cbNyOmradeschef.addItem(ettAgentID);
             }
