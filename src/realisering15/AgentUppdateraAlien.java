@@ -168,6 +168,7 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
         infoOmAlien.add("Telefon");
         infoOmAlien.add("Plats");
         infoOmAlien.add("Ansvarig Agent");
+        //Lägg in möjlighet att ändra ras och ras-attribut - Fre
 
         Collections.sort(infoOmAlien);
         

@@ -139,14 +139,15 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                                 .addGap(127, 127, 127)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnActionRegistreraNyAlien)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblValjRas)
                                     .addComponent(cbValjRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnActionRegistreraNyAlien)
+                                .addContainerGap())))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,25 +233,19 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
     private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
         if (Validering.textFaltHarVarde(txtIDNyAlien) && Validering.textFaltHarVarde(txtRegDatNyAlien) && Validering.textFaltHarVarde(txtLosenNyAlien) && Validering.textFaltHarVarde(txtNamnNyAlien) && Validering.textFaltHarVarde(txtTelefonNyAlien) && Validering.textFaltHarVarde(txtPlatsNyAlien) && Validering.textFaltHarVarde(txtAnsvarigAgentNyAlien)) {
             try {
-                //Ska vara int
                 String alienID = txtIDNyAlien.getText();
-                //Ska vara string
                 String regDat = txtRegDatNyAlien.getText();
-                //Ska vara String
                 String losen = txtLosenNyAlien.getText();
-                //Ska vara String
                 String namn = txtNamnNyAlien.getText();
-                //Ska vara String
                 String tele = txtTelefonNyAlien.getText();
-                //Ska vara int
                 String plats = txtPlatsNyAlien.getText();
-                //Ska vara int
                 String ansvarAgent = txtAnsvarigAgentNyAlien.getText();
-                //Insert into alien
                 String tillLagg = "insert into alien values(" + alienID + ",'" + regDat + "','" + losen + "','" + namn + "','" + tele + "'," + plats + "," + ansvarAgent + ")";
                 
                 databas.insert(tillLagg);
                 String valdRas = cbValjRas.getSelectedItem().toString();
+                //Göra txt fält osynligt om man väljer worm?
+                //Inmatningskontroll på txtAntalArmarBoogies
                 String antalArmBog = txtAntalArmarBoogies.getText();
                 if(valdRas.equals("Boglodite"))
                 {

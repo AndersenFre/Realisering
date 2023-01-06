@@ -124,6 +124,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
      * Metod som fyller scrollistan cbValjOmrade med tillgängliga områden
      */
     private void fyllCbValjOmrade() {
+        //Byt ut område till plats
         String fraga = "SELECT benamning FROM OMRADE";
 
         ArrayList<String> allaOmraden;
@@ -150,6 +151,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
         // 
         try {
             String valtOmrade = cbValjOmrade.getSelectedItem().toString();
+            //Byt ut frågan så den visar från plats och inte område
             String fragaAlien = "SELECT * FROM alien where plats in (select omrades_id from omrade where benamning ='" + valtOmrade + "') order by alien_id";
             soktaAliens = databas.fetchRows(fragaAlien);
             txtAreaVisaInfo.append("ID" + "\t");
