@@ -4,16 +4,28 @@
  */
 package realisering15;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author felixlundqvist
  */
 public class AgentAndraRasPaAlien extends javax.swing.JFrame {
+    
+    private static InfDB databas;
+    private String id;
 
     /**
      * Creates new form AgentAndraRasPaAlien
      */
-    public AgentAndraRasPaAlien() {
+    public AgentAndraRasPaAlien(InfDB databas, String id) {
+        this.databas = databas;
+        this.id = id;
+        fyllCbValjAlienID();
         initComponents();
     }
 
@@ -26,21 +38,55 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        cbValjAlienID = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("Ändra ras för en Alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+     private void fyllCbValjAlienID() {
+        try {
+            ArrayList<String> allaAlienID = databas.fetchColumn("SELECT alien_ID FROM Alien");
+            
+            Collections.sort(allaAlienID);
+            
+            for (String ettAlienID : allaAlienID) {
+                cbValjAlienID.addItem(ettAlienID);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -78,5 +124,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbValjAlienID;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
