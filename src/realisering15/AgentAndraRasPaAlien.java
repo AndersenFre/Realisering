@@ -66,6 +66,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
 
         lblNyRas.setText("Ny Ras:");
 
+        txtAreaVisaRas.setEditable(false);
         txtAreaVisaRas.setColumns(20);
         txtAreaVisaRas.setRows(5);
         txtAreaVisaRasInfo.setViewportView(txtAreaVisaRas);
@@ -96,9 +97,9 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(cbValjAlienID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbValjRas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
-                                .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(117, 117, 117))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                                .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(103, 103, 103))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -180,26 +181,31 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
 
         try {
             String valtID = cbValjAlienID.getSelectedItem().toString();
-            String valdRas = cbValjRas.getSelectedItem().toString();
-            String soktAttribut = "";
-            txtAreaVisaRas.append(valdRas + "\t");
 
-            if (valdRas.equals("Boglodite")) {
-                String fragaBog = "Select antal_boogies from boglodite where alien_id =" + valtID;
-                soktAttribut = databas.fetchSingle(fragaBog);
-                txtAreaVisaRas.append(valdRas + "\t");
-                txtAreaVisaRas.append(soktAttribut);
-            }
-            if (valdRas.equals("Squid")) {
-                String fragaSquid = "Select antal_armar from squid where alien_id =" + valtID;
-                soktAttribut = databas.fetchSingle(fragaSquid);
-                txtAreaVisaRas.append(valdRas + "\t");
-                txtAreaVisaRas.append(soktAttribut);
+            ArrayList<String> bogloditer = databas.fetchColumn("SELECT alien_id FROM boglodite");
+            ArrayList<String> worms = databas.fetchColumn("SELECT alien_id FROM worm");
+            ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
 
+            String ras = "";
+            String attribut = "";
+            for (String enBoglodite : bogloditer) {
+                if (enBoglodite.equals(valtID)) {
+                    ras = "Boglodite";
+                    attribut = databas.fetchSingle("SELECT antal_boogies FROM boglodite WHERE alien_id="+valtID);
+                }
             }
-            if (valdRas.equals("Worm")) {
-                txtAreaVisaRas.append(valdRas + "\t");
+            for (String enWorm : worms) {
+                if (enWorm.equals(valtID)) {
+                    ras = "Worm";
+                }
             }
+            for (String enSquid : squids) {
+                if (enSquid.equals(valtID)) {
+                    ras = "Squid";
+                    attribut = databas.fetchSingle("SELECT antal_armar FROM squid WHERE alien_id="+valtID);
+                }
+            }
+            txtAreaVisaRas.append(ras+"\t"+attribut);
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
