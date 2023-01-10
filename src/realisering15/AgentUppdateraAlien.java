@@ -162,7 +162,7 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
     private void fyllCbValjInfo() {
         ArrayList<String> infoOmAlien = new ArrayList<>();
         
-        infoOmAlien.add("IDNummer");
+        infoOmAlien.add("ID-Nummer");
         infoOmAlien.add("Registreringsdatum");
         infoOmAlien.add("Lösenord");
         infoOmAlien.add("Namn");
@@ -187,7 +187,7 @@ public class AgentUppdateraAlien extends javax.swing.JFrame {
                 String valtAlienID = cbValjAlienID.getSelectedItem().toString();
                 String valtInfo = cbValjInfoDuVillAndra.getSelectedItem().toString();
                 
-                if(valtInfo.equals("IDNummer")){
+                if(valtInfo.equals("ID-Nummer")){
                     String nyttID = txtNyttVarde.getText();
                     databas.update("Update alien Set alien_id= " + nyttID + " where alien_id =" + valtAlienID);
                 }  else if (valtInfo.equals("Registreringsdatum")) {
