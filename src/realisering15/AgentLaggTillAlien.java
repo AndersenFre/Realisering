@@ -58,6 +58,7 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
         lblValjRas = new javax.swing.JLabel();
         lblAntalArmarBoogies = new javax.swing.JLabel();
         txtAntalArmarBoogies = new javax.swing.JTextField();
+        lblUndantagWorm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -100,6 +101,8 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
 
         lblAntalArmarBoogies.setText("Antal armar/Boogies");
 
+        lblUndantagWorm.setText("(Vid Worm fyll i 0)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,14 +132,20 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnTillbakaNyAlien)
-                                .addGap(73, 73, 73)
-                                .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29))
+                                .addGap(173, 173, 173))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTelefonNyAlien)
-                                    .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(127, 127, 127)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTelefonNyAlien)
+                                        .addGap(97, 97, 97)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAntalArmarBoogies)
+                                    .addComponent(lblUndantagWorm)
+                                    .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
@@ -149,9 +158,7 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                                 .addContainerGap())))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAntalArmarBoogies)
-                    .addComponent(lblRubrikNyAlien))
+                .addComponent(lblRubrikNyAlien)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,16 +196,17 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefonNyAlien)
-                    .addComponent(lblValjRas))
+                    .addComponent(lblValjRas)
+                    .addComponent(lblAntalArmarBoogies))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefonNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbValjRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(lblAntalArmarBoogies)
+                    .addComponent(cbValjRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUndantagWorm)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAntalArmarBoogies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActionRegistreraNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTillbakaNyAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -229,7 +237,7 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
      * Metod som lägger till en ny alien med önskade attribut/önskad data
      */
     private void btnActionRegistreraNyAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionRegistreraNyAlienActionPerformed
-        if (Validering.textFaltHarVarde(txtIDNyAlien) && Validering.textFaltHarVarde(txtRegDatNyAlien) && Validering.textFaltHarVarde(txtLosenNyAlien) && Validering.textFaltHarVarde(txtNamnNyAlien) && Validering.textFaltHarVarde(txtTelefonNyAlien) && Validering.textFaltHarVarde(txtPlatsNyAlien) && Validering.textFaltHarVarde(txtAnsvarigAgentNyAlien)) {
+        if (Validering.textFaltHarVarde(txtIDNyAlien) && Validering.textFaltHarVarde(txtRegDatNyAlien) && Validering.textFaltHarVarde(txtLosenNyAlien) && Validering.textFaltHarVarde(txtNamnNyAlien) && Validering.textFaltHarVarde(txtTelefonNyAlien) && Validering.textFaltHarVarde(txtPlatsNyAlien) && Validering.textFaltHarVarde(txtAnsvarigAgentNyAlien) && Validering.textFaltHarVarde(txtAntalArmarBoogies) && Validering.isHeltal(txtAntalArmarBoogies) && Validering.isPositivt(txtAntalArmarBoogies)) {
             try {
                 String alienID = txtIDNyAlien.getText();
                 String regDat = txtRegDatNyAlien.getText();
@@ -282,6 +290,7 @@ public class AgentLaggTillAlien extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegDatNyAlien;
     private javax.swing.JLabel lblRubrikNyAlien;
     private javax.swing.JLabel lblTelefonNyAlien;
+    private javax.swing.JLabel lblUndantagWorm;
     private javax.swing.JLabel lblValjRas;
     private javax.swing.JTextField txtAnsvarigAgentNyAlien;
     private javax.swing.JTextField txtAntalArmarBoogies;

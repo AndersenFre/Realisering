@@ -11,7 +11,7 @@ import javax.swing.JTextField;
  * @author Grupp15
  */
 public class Validering {
-
+    //Kontrollerar om det har fyllts i ett värde
     public static boolean textFaltHarVarde(JTextField ettTextFalt) {
         boolean resultat = true;
 
@@ -21,7 +21,7 @@ public class Validering {
         }
         return resultat;
     }
-
+    //Kontrollerar om värdet som fyllts i är ett heltal
     public static boolean isHeltal(JTextField ettTextFalt) {
         boolean resultat = true;
 
@@ -31,6 +31,17 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Var god ange heltal!");
             resultat = false;
         }
+        return resultat;
+    }
+    //Kontrollerar om värdet som fyllts i är positivt
+    public static boolean isPositivt(JTextField ettTextFalt) {
+        boolean resultat = true;
+        int ettTextFaltSiffra = Integer.parseInt(ettTextFalt.getText());
+        if(ettTextFaltSiffra < 0)
+            {
+                JOptionPane.showMessageDialog(null, "Var god ange ett positivt tal!");
+                resultat = false;
+            }
         return resultat;
     }
 
