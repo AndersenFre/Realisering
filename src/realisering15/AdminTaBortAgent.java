@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Grupp15
  */
 public class AdminTaBortAgent extends javax.swing.JFrame {
+
     private static InfDB databas;
     private String id;
 
@@ -139,9 +140,9 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
     private void fyllCbAgentLista() {
         try {
             ArrayList<String> allaAgentID = databas.fetchColumn("SELECT agent_ID FROM agent");
-            
+
             Collections.sort(allaAgentID);
-            
+
             for (String ettAgentID : allaAgentID) {
                 cbAgentLista.addItem(ettAgentID);
             }
@@ -152,57 +153,91 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
     }
 
     /**
-     * Metod som tar bort information om en agent från tabellerna där information om agenten lagras (agent, faltagent, områdeschef och kontorschef)
+     * Metod som tar bort information om en agent från tabellerna där
+     * information om agenten lagras (agent, faltagent, områdeschef och
+     * kontorschef)
      */
     private void btnRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaderaActionPerformed
         try {
             String valtAgentID = cbAgentLista.getSelectedItem().toString();
             String raderaAgent = "DELETE FROM agent WHERE agent_id=" + valtAgentID;
-            String raderaOmradeschef = "DELETE FROM omradeschef WHERE agent_id="+valtAgentID;
-            String raderaKontorschef = "DELETE FROM kontorschef WHERE agent_id="+valtAgentID;
-            String raderaFaltagent = "DELETE FROM faltagent WHERE agent_id="+valtAgentID;
-            
+            String raderaOmradeschef = "DELETE FROM omradeschef WHERE agent_id=" + valtAgentID;
+            String raderaKontorschef = "DELETE FROM kontorschef WHERE agent_id=" + valtAgentID;
+            String raderaFaltagent = "DELETE FROM faltagent WHERE agent_id=" + valtAgentID;
+            String raderaFranUtrustning = "DELETE FROM innehar_utrustning WHERE agent_id=" + valtAgentID;
+            String raderaFranFordon = "DELETE FROM innehar_fordon WHERE agent_id=" + valtAgentID;
+
             ArrayList<String> omradeschefer = databas.fetchColumn("SELECT agent_id FROM omradeschef");
             ArrayList<String> kontorschefer = databas.fetchColumn("SELECT agent_id FROM kontorschef");
             ArrayList<String> faltagenter = databas.fetchColumn("SELECT agent_id FROM faltagent");
-            
+            ArrayList<String> agenterSomHarUtrustning = databas.fetchColumn("SELECT agent_id FROM innehar_utrustning");
+            ArrayList<String> agenterSomHarFordon = databas.fetchColumn("SELECT agent_id FROM innehar_utrustning");
+            ArrayList<String> agenterAnsvarigaForAliens = databas.fetchColumn("SELECT ansvarig_agent FROM alien");
+
             boolean arOmradeschef = false;
             boolean arKontorschef = false;
             boolean arFaltagent = false;
-            
-            for(String enOmradeschef : omradeschefer){
-                if(valtAgentID.equals(enOmradeschef)){
+            boolean harUtrustning = false;
+            boolean harFordon = false;
+            boolean arAnsvarigForAlien = false;
+
+            for (String enOmradeschef : omradeschefer) {
+                if (valtAgentID.equals(enOmradeschef)) {
                     arOmradeschef = true;
-                }    
+                }
             }
-            for(String enKontorschef : kontorschefer){
-                if(valtAgentID.equals(enKontorschef)){
+            for (String enKontorschef : kontorschefer) {
+                if (valtAgentID.equals(enKontorschef)) {
                     arKontorschef = true;
-                }    
+                }
             }
-             for(String enFaltagent : faltagenter){
-                if(valtAgentID.equals(enFaltagent)){
+            for (String enFaltagent : faltagenter) {
+                if (valtAgentID.equals(enFaltagent)) {
                     arFaltagent = true;
-                }    
+                }
             }
-             
-            if(arOmradeschef == true){
-                databas.delete(raderaOmradeschef);
+            for (String enAgent : agenterSomHarUtrustning) {
+                if (valtAgentID.equals(enAgent)) {
+                    harUtrustning = true;
+                }
             }
-            if(arKontorschef == true){
-                databas.delete(raderaKontorschef);
+            for (String enAgent : agenterSomHarFordon) {
+                if (valtAgentID.equals(enAgent)) {
+                    harFordon = true;
+                }
             }
-            if(arFaltagent == true){
-                databas.delete(raderaFaltagent);
+            for (String enAgent : agenterAnsvarigaForAliens) {
+                if (valtAgentID.equals(enAgent)) {
+                    arAnsvarigForAlien = true;
+                }
             }
-            databas.delete(raderaAgent);
-            JOptionPane.showMessageDialog(null, "Agenten har raderats");
-            AdminTaBortAgent.this.dispose();
-            
-        } 
-        catch (InfException ex) {
+
+            if (arAnsvarigForAlien == true) {
+                JOptionPane.showMessageDialog(null, "Det går ej att radera agenter som ansvarar för aliens");
+            } else {
+                if (arOmradeschef == true) {
+                    databas.delete(raderaOmradeschef);
+                }
+                if (arKontorschef == true) {
+                    databas.delete(raderaKontorschef);
+                }
+                if (arFaltagent == true) {
+                    databas.delete(raderaFaltagent);
+                }
+                if (harUtrustning == true) {
+                    databas.delete(raderaFranUtrustning);
+                }
+                if (harFordon == true) {
+                    databas.delete(raderaFranFordon);
+                }
+                databas.delete(raderaAgent);
+                JOptionPane.showMessageDialog(null, "Agenten har raderats");
+                AdminTaBortAgent.this.dispose();
+            }
+
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex.getMessage());  
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }//GEN-LAST:event_btnRaderaActionPerformed
 
@@ -242,8 +277,8 @@ public class AdminTaBortAgent extends javax.swing.JFrame {
             txtAreaEnAgent.append(kontorschef);
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-            System.out.println("Internt felmeddelande" + ex.getMessage());     
-          }
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
     }//GEN-LAST:event_cbAgentListaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRadera;
