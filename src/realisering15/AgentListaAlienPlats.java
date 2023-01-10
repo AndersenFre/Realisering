@@ -26,7 +26,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
         initComponents();
         this.id = id;
         this.databas = databas;
-        fyllCbValjOmrade();
+        fyllCbValjPlats();
     }
 
     /**
@@ -38,7 +38,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbValjOmrade = new javax.swing.JComboBox<>();
+        cbValjPlats = new javax.swing.JComboBox<>();
         btnListaAlienTillbaka = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaVisaInfo = new javax.swing.JTextArea();
@@ -47,9 +47,9 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cbValjOmrade.addActionListener(new java.awt.event.ActionListener() {
+        cbValjPlats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbValjOmradeActionPerformed(evt);
+                cbValjPlatsActionPerformed(evt);
             }
         });
 
@@ -87,7 +87,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblValjOmrade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbValjPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(67, 67, 67))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,7 +101,7 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
                 .addComponent(lblListaAlienOmrRubrik)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbValjPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValjOmrade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,18 +123,18 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
     /**
      * Metod som fyller scrollistan cbValjOmrade med tillgängliga områden
      */
-    private void fyllCbValjOmrade() {
+    private void fyllCbValjPlats() {
         //Byt ut område till plats
-        String fraga = "SELECT benamning FROM OMRADE";
+        String fraga = "SELECT benamning FROM PLATS";
 
-        ArrayList<String> allaOmraden;
+        ArrayList<String> allaPlatser;
         try {
-            allaOmraden = databas.fetchColumn(fraga);
+            allaPlatser = databas.fetchColumn(fraga);
            
-            Collections.sort(allaOmraden);
+            Collections.sort(allaPlatser);
             
-            for (String benamning : allaOmraden) {
-                cbValjOmrade.addItem(benamning);
+            for (String benamning : allaPlatser) {
+                cbValjPlats.addItem(benamning);
             }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
@@ -145,14 +145,14 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
     /**
      * Metod som visar vilka aliens som befinner sig inom valt område
      */
-    private void cbValjOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOmradeActionPerformed
+    private void cbValjPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjPlatsActionPerformed
         txtAreaVisaInfo.setText("");
         ArrayList<HashMap<String, String>> soktaAliens;
         // 
         try {
-            String valtOmrade = cbValjOmrade.getSelectedItem().toString();
+            String valdPlats = cbValjPlats.getSelectedItem().toString();
             //Byt ut frågan så den visar från plats och inte område
-            String fragaAlien = "SELECT * FROM alien where plats in (select omrades_id from omrade where benamning ='" + valtOmrade + "') order by alien_id";
+            String fragaAlien = "SELECT * FROM alien where plats in(select plats_id from plats where benamning ='" + valdPlats + "') order by alien_id";
             soktaAliens = databas.fetchRows(fragaAlien);
             txtAreaVisaInfo.append("ID" + "\t");
             txtAreaVisaInfo.append("Namn" + "\t");
@@ -166,10 +166,10 @@ public class AgentListaAlienPlats extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
-    }//GEN-LAST:event_cbValjOmradeActionPerformed
+    }//GEN-LAST:event_cbValjPlatsActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListaAlienTillbaka;
-    private javax.swing.JComboBox<String> cbValjOmrade;
+    private javax.swing.JComboBox<String> cbValjPlats;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblListaAlienOmrRubrik;
     private javax.swing.JLabel lblValjOmrade;
