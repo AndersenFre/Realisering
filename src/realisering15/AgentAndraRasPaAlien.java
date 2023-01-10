@@ -9,6 +9,7 @@ import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  *
@@ -25,8 +26,9 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
     public AgentAndraRasPaAlien(InfDB databas, String id) {
         this.databas = databas;
         this.id = id;
-        fyllCbValjAlienID();
         initComponents();
+        fyllCbValjAlienID();
+        fyllCbValjNyRas();
     }
 
     /**
@@ -38,13 +40,44 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblAndraRas = new javax.swing.JLabel();
         cbValjAlienID = new javax.swing.JComboBox<>();
+        cbValjRas = new javax.swing.JComboBox<>();
+        lblAlienID = new javax.swing.JLabel();
+        lblNyRas = new javax.swing.JLabel();
+        txtAreaVisaRasInfo = new javax.swing.JScrollPane();
+        txtAreaVisaRas = new javax.swing.JTextArea();
+        txtRasAttribut = new javax.swing.JTextField();
+        lblRasAttribut = new javax.swing.JLabel();
+        btnBekrafta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Ändra ras för en Alien");
+        lblAndraRas.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblAndraRas.setText("Ändra ras för en Alien");
+
+        cbValjAlienID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjAlienIDActionPerformed(evt);
+            }
+        });
+
+        lblAlienID.setText("Välj Alien ID:");
+
+        lblNyRas.setText("Ny Ras:");
+
+        txtAreaVisaRas.setColumns(20);
+        txtAreaVisaRas.setRows(5);
+        txtAreaVisaRasInfo.setViewportView(txtAreaVisaRas);
+
+        lblRasAttribut.setText("Antal armar/boogies:");
+
+        btnBekrafta.setText("Bekräfta");
+        btnBekrafta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBekraftaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,24 +87,71 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
+                        .addComponent(lblAndraRas))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAlienID)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbValjAlienID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbValjRas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                                .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(117, 117, 117))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBekrafta))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(lblNyRas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRasAttribut)
+                            .addComponent(txtAreaVisaRasInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addComponent(lblAndraRas)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAreaVisaRasInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAlienID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbValjAlienID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNyRas)
+                    .addComponent(lblRasAttribut))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbValjRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnBekrafta)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
+        
+        
+    }//GEN-LAST:event_btnBekraftaActionPerformed
+
+    private void cbValjAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAlienIDActionPerformed
+        // TODO add your handling code here:
+       
+        
+       
+    }//GEN-LAST:event_cbValjAlienIDActionPerformed
 
      private void fyllCbValjAlienID() {
         try {
@@ -87,44 +167,32 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }
+      private void fyllCbValjNyRas() {
+        ArrayList<String> raser = new ArrayList<String>();
+        raser.add("Boglodite");
+        raser.add("Worm");
+        raser.add("Squid");
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        Collections.sort(raser);
+        
+        for (String enRas : raser) {
+            cbValjRas.addItem(enRas);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgentAndraRasPaAlien().setVisible(true);
-            }
-        });
     }
 
+
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBekrafta;
     private javax.swing.JComboBox<String> cbValjAlienID;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbValjRas;
+    private javax.swing.JLabel lblAlienID;
+    private javax.swing.JLabel lblAndraRas;
+    private javax.swing.JLabel lblNyRas;
+    private javax.swing.JLabel lblRasAttribut;
+    private javax.swing.JTextArea txtAreaVisaRas;
+    private javax.swing.JScrollPane txtAreaVisaRasInfo;
+    private javax.swing.JTextField txtRasAttribut;
     // End of variables declaration//GEN-END:variables
 }
