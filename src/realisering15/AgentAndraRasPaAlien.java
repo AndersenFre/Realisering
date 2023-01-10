@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,6 +52,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
         txtRasAttribut = new javax.swing.JTextField();
         lblRasAttribut = new javax.swing.JLabel();
         btnBekrafta = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +83,13 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,7 +113,9 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(btnTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBekrafta))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -135,7 +147,9 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
                     .addComponent(cbValjRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(btnBekrafta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBekrafta)
+                    .addComponent(btnTillbaka))
                 .addContainerGap())
         );
 
@@ -172,7 +186,44 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
 
 
     private void btnBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBekraftaActionPerformed
+        try {
+            String valtID = cbValjAlienID.getSelectedItem().toString();
+            String valdRas = cbValjRas.getSelectedItem().toString();
+            String attribut = txtRasAttribut.getText();
 
+            //Tar bort från gamla rastabellen
+            ArrayList<String> bogloditer = databas.fetchColumn("SELECT alien_id FROM boglodite");
+            ArrayList<String> worms = databas.fetchColumn("SELECT alien_id FROM worm");
+            ArrayList<String> squids = databas.fetchColumn("SELECT alien_id FROM squid");
+            for (String enBoglodite : bogloditer) {
+                if (enBoglodite.equals(valtID)) {
+                    databas.delete("DELETE FROM boglodite WHERE alien_id=" + valtID);
+                }
+            }
+            for (String enWorm : worms) {
+                if (enWorm.equals(valtID)) {
+                    databas.delete("DELETE FROM worm WHERE alien_id=" + valtID);
+                }
+            }
+            for (String enSquid : squids) {
+                if (enSquid.equals(valtID)) {
+                    databas.delete("DELETE FROM squid WHERE alien_id=" + valtID);
+                }
+            }
+
+            //Uppdaterar ny ras och rasattribut
+            if (valdRas.equals("Boglodite")) {
+                databas.insert("INSERT INTO boglodite VALUES (" + valtID + ", " + attribut + ")");
+            } else if (valdRas.equals("Worm")) {
+                databas.insert("INSERT INTO worm VALUES (" + valtID + ")");
+            } else if (valdRas.equals("Squid")) {
+                databas.insert("INSERT INTO squid VALUES (" + valtID + ", " + attribut + ")");
+            }
+            JOptionPane.showMessageDialog(null, "Aliens ras och attribut har uppdaterats");
+
+        } catch (InfException ex) {
+            Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnBekraftaActionPerformed
 
@@ -191,7 +242,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             for (String enBoglodite : bogloditer) {
                 if (enBoglodite.equals(valtID)) {
                     ras = "Boglodite";
-                    attribut = databas.fetchSingle("SELECT antal_boogies FROM boglodite WHERE alien_id="+valtID);
+                    attribut = databas.fetchSingle("SELECT antal_boogies FROM boglodite WHERE alien_id=" + valtID);
                 }
             }
             for (String enWorm : worms) {
@@ -202,10 +253,10 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             for (String enSquid : squids) {
                 if (enSquid.equals(valtID)) {
                     ras = "Squid";
-                    attribut = databas.fetchSingle("SELECT antal_armar FROM squid WHERE alien_id="+valtID);
+                    attribut = databas.fetchSingle("SELECT antal_armar FROM squid WHERE alien_id=" + valtID);
                 }
             }
-            txtAreaVisaRas.append(ras+"\t"+attribut);
+            txtAreaVisaRas.append(ras + "\t" + attribut);
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
@@ -213,8 +264,13 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbValjAlienIDActionPerformed
 
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        AgentAndraRasPaAlien.this.dispose();
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBekrafta;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbValjAlienID;
     private javax.swing.JComboBox<String> cbValjRas;
     private javax.swing.JLabel lblAlienID;
