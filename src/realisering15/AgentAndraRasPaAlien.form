@@ -33,13 +33,16 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAlienID" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="cbValjAlienID" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbValjRas" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="183" max="32767" attributes="0"/>
-                              <Component id="txtRasAttribut" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblWorm" max="32767" attributes="0"/>
+                                  <Component id="txtRasAttribut" pref="111" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -92,7 +95,9 @@
                   <Component id="cbValjRas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtRasAttribut" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblWorm" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnBekrafta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbaka" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -182,6 +187,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWorm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Om worm skriv 0"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
