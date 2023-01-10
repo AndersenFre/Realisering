@@ -28,7 +28,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
         this.id = id;
         initComponents();
         fyllCbValjAlienID();
-        fyllCbValjNyRas();
+        fyllCbValjRas();
     }
 
     /**
@@ -148,9 +148,40 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
 
     private void cbValjAlienIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAlienIDActionPerformed
         // TODO add your handling code here:
-       
-        
-       
+        txtAreaVisaRas.setText("");
+        String valtID = cbValjAlienID.getSelectedItem().toString();
+        String valdRas = cbValjRas.getSelectedItem().toString();
+        String soktAttribut = "";
+        txtAreaVisaRas.append(valdRas + "\t");
+        try
+        {    
+            if(valdRas.equals("Boglodite"))
+            {
+                String fragaBog = "Select antal_boogies from boglodite where alien_id =" + valtID;
+                soktAttribut = databas.fetchSingle(fragaBog);
+                txtAreaVisaRas.append(valdRas + "\t");
+                txtAreaVisaRas.append(soktAttribut);
+            }
+            if(valdRas.equals("Squid"))
+            {
+                String fragaSquid = "Select antal_armar from squid where alien_id =" + valtID;
+                soktAttribut = databas.fetchSingle(fragaSquid);
+                txtAreaVisaRas.append(valdRas + "\t");
+                txtAreaVisaRas.append(soktAttribut);
+            
+            }
+            if(valdRas.equals("Worm"))
+                {
+                txtAreaVisaRas.append(valdRas + "\t");
+                }
+                
+        }
+        catch (InfException ex)
+        { 
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }   
+          
     }//GEN-LAST:event_cbValjAlienIDActionPerformed
 
      private void fyllCbValjAlienID() {
@@ -167,7 +198,7 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }
-      private void fyllCbValjNyRas() {
+      private void fyllCbValjRas() {
         ArrayList<String> raser = new ArrayList<String>();
         raser.add("Boglodite");
         raser.add("Worm");
