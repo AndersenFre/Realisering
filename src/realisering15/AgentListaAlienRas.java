@@ -126,7 +126,7 @@ public class AgentListaAlienRas extends javax.swing.JFrame {
         txtAreaAliens.setText("");
         ArrayList<String> soktAlienID;
         ArrayList<HashMap<String, String>> soktaAliens;
-        // 
+        
         try {
             String valdRas = cbVisaRasRaser.getSelectedItem().toString();
             String fragaRas = "SELECT Alien_ID FROM " + valdRas;
