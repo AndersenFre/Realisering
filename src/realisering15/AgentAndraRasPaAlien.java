@@ -9,13 +9,9 @@ import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
- * @author felixlundqvist
+ * @author Grupp15
  */
 public class AgentAndraRasPaAlien extends javax.swing.JFrame {
 
@@ -230,7 +226,8 @@ public class AgentAndraRasPaAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Aliens ras och attribut har uppdaterats");
 
             } catch (InfException ex) {
-                Logger.getLogger(AgentAndraRasPaAlien.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Något gick fel");
+                System.out.println("Internt felmeddelande" + ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnBekraftaActionPerformed
